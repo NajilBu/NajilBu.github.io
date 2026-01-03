@@ -73,10 +73,13 @@ footer {
         flex-direction: column;
         gap: 10px;
         margin: 15px 0 0 0;
+        align-items: center;
     }
 
     nav a {
         padding: 8px 12px;
+        width: 100%;
+        text-align: center;
     }
 
     section {
