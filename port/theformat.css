@@ -166,10 +166,28 @@ section {
 
     nav ul {
         gap: 6vw;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        padding: 0.5vh 1vw;
+        font-size: clamp(12px, 2.5vw, 18px);
     }
 
     section {
         scroll-margin-top: 10vh;
         padding-top: calc(10vh + 30px);
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        gap: 2vw;
+    }
+
+    nav a {
+        padding: 0.3vh 0.5vw;
+        font-size: 14px;
     }
 }
