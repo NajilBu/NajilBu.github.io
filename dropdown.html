@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DROPDOWN</title>
+</head>
+
+<style>
+    .DROPDOWN button{
+        background-color: thistle;
+        color: white;
+        padding: 10px 15px;
+        cursor: pointer;
+
+    }
+    .DROPDOWN a{
+        display: block;
+        color: black;
+        padding: 10px 15px;
+        text-decoration: none;
+    }
+    .DROPDOWN .content{
+        background-color: antiquewhite;
+        position: absolute;
+        min-width: 100px;
+        box-shadow: 2px 5px 3px;
+        display: none;
+    }
+
+    .DROPDOWN:hover .content{
+        display: block;
+
+    }
+
+    .content a:hover{
+        background-color: skyblue;
+    }
+    button:hover{
+        background-color: blue;
+    }
+</style>
+<body>
+    <div class="DROPDOWN">
+        <button id="dp">DROPDOWN</button>
+        <div class="content">
+            <a href="">Apple</a>
+            <a href="">Orange</a>
+            <a href="">Banana</a>
+            <a href="">Mango</a>
+        </div>
+    </div>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, omnis magnam dicta sequi dolores dignissimos aut itaque illum error atque quasi sint architecto aliquam consectetur. Unde fuga quas ipsam aperiam.</p>
+    
+
+
+    <!--or this-->
+
+   <label for="course">Or like this</label>
+<select id="course" name="course">
+    <option value="">-- Select --</option>
+    <option value="it">Information Technology</option>
+    <option value="cs">Computer Science</option>
+    <option value="is">Information Systems</option>
+</select>
+
+</body>
+</html>
