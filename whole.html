@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" href="SOURCES/image.png" type="image/x-icon">
+    <title> Misa website</title>
+     <script src="SOURCES/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <h1>Your Idol</h1>
+    <h3> <i>Saja Boys</i></h3>
+
+    <a href="https://youtu.be/FELZw2U9vpw?si=KOyPA3NL6qkYwfd-" target="_blank" rel="noopener" title="Click it to go to Youtube">
+        <button>This is a button</button>
+    </a>
+    <hr>
+  
+    <!--height and width can be changed-->
+    <img id="idolimg" src="SOURCES/float.png" height="400" width="600" alt="This is your idol" title="This is your idol"
+    onclick=playAudio()>
+   
+
+    <audio id="aud" src="SOURCES/saja-boy-jingle.mp3"></audio>
+
+    <script>
+
+    
+        function playAudio() {
+            let img = document.getElementById("idolimg");
+            let audio = document.getElementById("aud");
+            audio.play();
+
+            img.src ="SOURCES/pose.png";
+
+            setTimeout(function() {
+                img.src = "SOURCES/float.png";
+            }, 1300); 
+        }
+    </script>
+
+    <h4>Members</h4>
+    <ul>
+        <li>Jinu</li>
+        <li>Abby</li>
+        <li>Romance</li>
+        <li>Mystery</li>
+        <li>Baby</li>
+    </ul>
+    <hr>
+    <h4>Lyrics</h4>
+    <pre>
+        [Intro]
+        Pray for me now
+        Pray for me now (Dies irae)
+        Pray for me now (Illa)
+        Pray for me now (Vos solve in)
+        Pray for me now (Favilla)
+        Pray for me now (Maledictus)
+        Pray for me now (Erus)
+        Pray for me now (In flamas)
+        Pray for me now (Eternum)
+        I'll be your idol
+
+        [Verse 1: Abby, Romance, Mystery, Mystery & Abby]
+        Keeping you in check (Uh), keeping you obsessed (Uh)
+        Play me on repeat, kkeudeobsi in your head
+        Anytime it hurts (Uh), play another verse (Uh)
+        I can be your sanctuary
+        Know I'm the only one right now (Now)
+        I will love you more when it all burns down
+        More than power, more than gold (Yeah)
+        Yeah, you gave me your heart, now I'm hеre for your soul
+
+        [Pre-Chorus: Jinu]
+        I'm the only one who'll lovе your sins
+        Feel the way my voice gets underneath your skin
+        You might also like
+        [Chorus: Jinu, Abby]
+        Listen 'cause I'm preachin' to the choir
+        Can I get the mic' a little higher?
+        Gimme your desire
+        I can be the star you rely on (You rely on)
+        Nae hwanghol-ui chwihae, you can't look away (Hey)
+        Don't you know I'm here to save you?
+        Now we runnin' wild
+        Yeah, I'm all you need, I'ma be your idol
+
+        [Post-Chorus]
+        Uh
+        Uh
+
+        [Verse 2: Baby, Abby, Romance]
+        Uh! bichi naneun fame, gyesok oechyeo, I'm your idol
+        Thank you for the pain 'cause it got me going viral
+        Uh, yeah, natji anneun fever, makin' you a believer
+        Nareul wihae neon jonjaehaneun idol
+        Don't let it show, keep it all inside
+        The pain and the shame, keep it outta sight
+        Your obsession feeds our connection
+        I sungan give me all your attention
+
+        [Pre-Chorus: Jinu]
+        You know I'm the only one who'll love your sins
+        Feel the way my voice gets underneath your skin
+        [Chorus: Jinu, Romance]
+        Listen 'cause I'm preachin' to the choir
+        Can I get the mic a little higher?
+        Gimme your desire
+        I can be the star you rely on (You rely on)
+        Nae hwanghol-ui chwihae, you can't look away (Yeah)
+        Don't you know I'm here to save you?
+        Now we runnin' wild
+        Yeah, I'm all you need, I'ma be your idol
+
+        [Post-Chorus: All]
+        Be your idol
+
+        [Bridge: All, Jinu]
+        Living in your mind now
+        Too late 'cause you're mine now
+        I will make you free
+        When you're all part of me
+
+        [Chorus: Jinu, All]
+        (Listen 'cause I'm) Preaching to the choir
+        (Now) Can I get the mic a little higher?
+        Gimme your desire
+        Watch me set your world on fire
+        Nae hwanghol-ui chwihae, you can't look away (Hey)
+        No one is coming to save you
+        Now we runnin' wild
+        You're down on your knees, I'ma be your idol
+    </pre>
+</body>
+
+</html>

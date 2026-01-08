@@ -1,0 +1,54 @@
+p{
+    color: rgb(135, 62, 62);
+    font-family: verdana, Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-bottom: 5px dotted gray;
+    border-radius: 20px;
+    padding: 5px;
+    text-shadow: 3px 1px 3px;
+    margin: 15px;
+}/* for tag selector*/
+#p1{
+    color: aliceblue;/* color name*/
+}
+#p2{
+    color: rgb(255,255,255)/*Rgb selector*/
+}
+#p3{
+    color: #0000; /*hexadecimal*/
+}/*for specific id*/
+#p4{
+    color: hsl(hue, saturation, lightness)/*hsl value*/
+}
+*{
+    margin: 0;
+}/*all*/
+.table{
+    padding: 10%;
+}/*for class selector*/
+#thebox{
+    max-width: max-content;
+    max-height: fit-content;
+    box-shadow: 10px 2px 5px;
+    margin: 5px;
+    padding: 8px;
+}
+h1{
+    font-family: 'Times New Roman', Times, serif;
+    border-style: double; 
+    padding: 10px;
+    margin: 5px;
+    border-width: 5px;
+    border-radius: 5px;/*rounded corner*/
+}
+body{
+    margin: 5px;
+    display: flow-root; 
+}
+#pic{
+    float: right;/*picture wrap*/
+}
+div{
+    display: flow-root;/*keep content inside the container*/
+}

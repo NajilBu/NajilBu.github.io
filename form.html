@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <form method="POST" enctype="multipart/form-data"><!--POST TO SEND DATA-->
+        <label for="Name">Name: </label> <!--For link the label and id-->
+        <input type="text" id="Name" minlength="5" required maxlength="20" placeholder="Enter Your name">
+        
+        <label for="Password">Password: </label>
+        <input type="password" id="Password" required minlength="8"><br>
+    
+        <label for="Email">Email: </label>
+        <input type="email" id="Email">
+
+        <label for="Phone">Contact no: </label>
+        <input type="tel" id="Phone" maxlength="11" placeholder="09159018444" pattern="[0-9]{11}"><br>
+
+        <label for="bday">Birthdate:</label>
+        <input type="date" id="bday"><br>
+
+
+        <label for="Male">Male</label>
+        <input type="radio" id="Male" value="Male" name="title">
+        <label for="Female">Female</label>
+        <input type="radio" id="Female" value="FeMale" name="title"><br>
+
+        <label for="payment">Payment</label>
+        <select id="payment">
+            <option value="visa">visa</option>
+        </select>
+
+        <label for="subs">subscribe</label>
+        <input type="checkbox" id="subs"><br>
+        
+       <!-- <label for="comment">comment</label>
+        <textarea id="comment" rows="3" cols="25"></textarea>-->
+
+        <label for="file">Picture</label>
+        <input type="file" id="file" accept="image/png, image/jpeg"><br>
+        <input type="submit">
+        <input type="reset">
+
+
+
+    </form>
+</body>
+</html>
