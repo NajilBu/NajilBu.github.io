@@ -5,7 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+<style>
+    *{
+        box-sizing: border-box;
+    }
+    header{
+        background-color: azure;
+        padding: 25px;
+        margin: 0px;
+        text-align: center;
+    }
+    footer{
+         background-color: rgb(15, 40, 40);
+        padding: 25px;
+        margin: 0px;
+        text-align: center;
+    }
+    .navbar{
+        background-color: rgb(42, 48, 70);
+        padding: 15px;
+        
+    }
+    .navbar ul{
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+   
+    }
+    .navbar li{     
+        text-align: center;
+        padding: 0px 10px;
+        list-style-type: none;
+        font-size: 2em;
+    }
+    main{
+        display: flex;
+        justify-content: center;
+    }
+    aside{
+        width: 20%;
+    }
+    section{
+        width: 50%;
+    }
+    article{
+        width: 30%;
+    }
+</style>
 <body>
+    <header>
+        <h2>HEADER</h2>
+    </header>
+    <nav class="navbar">
+        <ul>
+            <li>ONE</li>
+            <li>TWO</li>
+            <li>THREE</li>
+        </ul>
+    </nav>
+    <main>
+        <aside>
+            <h2>This is a aside</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta velit ipsam veritatis facere ut culpa doloribus blanditiis nam, dolorem consequatur, perspiciatis quia laboriosam tempore recusandae iure, magnam distinctio? Perspiciatis, quibusdam!</p>
+        </aside>
+        <section>
+            <h2>This is a section</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta velit ipsam veritatis facere ut culpa doloribus blanditiis nam, dolorem consequatur, perspiciatis quia laboriosam tempore recusandae iure, magnam distinctio? Perspiciatis, quibusdam!</p>
+        </section>
+        <article>
+            <h2>This is a article</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta velit ipsam veritatis facere ut culpa doloribus blanditiis nam, dolorem consequatur, perspiciatis quia laboriosam tempore recusandae iure, magnam distinctio? Perspiciatis, quibusdam!</p>
+        </article>
+       
+    </main>
+
+    <footer><h3>FOOTER</h3></footer>
     
 </body>
 </html>
