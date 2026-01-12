@@ -10,6 +10,10 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+        main{
+            display: flex;
+            justify-content: center;
+        }
         ul {
             list-style-type: none;
             padding: 0;
@@ -26,11 +30,24 @@
         a:hover {
             text-decoration: underline;
         }
+        div{
+            width: 40%;
+            height: 800px;
+            border: 2px solid gray;
+            box-shadow: 2px 5px gray;
+            overflow: auto;
+        }
+        div::-webkit-scrollbar {
+        display: none;
+        }
     </style>
 </head>
 <body>
     <h1>Navigate to HTML Pages</h1>
-    <ul>
+    <main>
+         <div class="htmlprac">
+        <h2>HTML</h2>
+        <ul>
         <li><a href="audio.html" target="_blank">Audio</a></li>
         <li><a href="favicon.html" target="_blank">Icon Image</a></li>
         <li><a href="fonty.html" target="_blank">Fonty</a></li>
@@ -56,6 +73,17 @@
         <li><a href="NaviBar.html" target="_blank">Navibar</a></li>
         <li><a href="Layout.html" target="_blank">Web Layout</a></li>
         <li><a href="Imagegal.html" target="_blank">Image Gallery</a></li>
+        
     </ul>
+    </div>
+    <div>
+        <h2>JAVASCRIPT</h2>
+         <ul>
+        <li><a href="audio.html" target="_blank">Audio</a></li>
+            </ul>  
+    </div>
+    </main>
+   
+    
 </body>
 </html>
