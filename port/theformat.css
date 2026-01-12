@@ -136,6 +136,8 @@ section {
 
 .project-item:hover {
     transform: translateY(-5px);
+   
+   
 }
 
 .project-item img {
