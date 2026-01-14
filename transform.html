@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 80px;
+    }
+    .box{
+        width: 250px;
+        height: 250px;
+        border: 5px solid black;
+        border-radius: 15px;
+        font-size: 12em;
+        transition: transform 0.5s ease;
+        text-align: center;
+
+    }
+    /*combine for multiple like box4*/
+    #box1:hover{
+        transform: translateX(-50px);/* move at x axis*/
+    }
+    #box2:hover{
+        transform: rotateX(45deg);/*for image itself inward*/
+    }
+    #box3:hover{
+        transform: scaleX(2);/* increase size*/
+    }
+   #box4:hover{
+        transform: translateY(-50px);/*move at y axis*/
+    }
+    #box5:hover{
+        transform: rotateY(45deg);/*for image itself inward*/
+    }
+    #box6:hover{
+        transform: scaleY(2);/*increase size*/
+    }
+    #box7:hover{
+        transform: translate(-50px, -50px);/*diagonally*/
+    }
+    #box8:hover{
+        transform: rotate(70deg);/*rotate clockwise*/
+    }
+    #box9:hover{
+        transform: scale(2);/*increase size*/
+    }
+    #box10:hover {
+        transform: rotate(75deg) scale(2) translate(-50px, -50px);/* left to right combined*/
+    }
+ 
+</style>
+<body>
+    <!--Tranform to rotate,skew,scale or translate elements -->
+
+    <div class="box" id="box1">X</div >
+    <div class="box" id="box2">X</div>
+    <div class="box" id="box3">X</div>
+    <div class="box" id="box4">Y</div>
+    <div class="box" id="box5">Y</div >
+    <div class="box" id="box6">Y</div>
+    <div class="box" id="box7">Z</div>
+    <div class="box" id="box8">Z</div>
+    <div class="box" id="box9">Z</div >
+    <div class="box" id="box10">0</div >
+   
+</body>
+</html>
