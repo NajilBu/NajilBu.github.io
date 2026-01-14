@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox</title>
+    
+</head>
+<style>
+    .container{
+        display: flex;
+        flex-direction: row; 
+        border: 5px solid gray;
+        height: 70vh;
+
+        justify-content: space-evenly; /*for x axis*/
+        align-items: center; /*for y axis*/
+
+
+        /* for multiple row*/
+        flex-wrap: wrap;/*make sure content is still in page move it to next line*/
+        /*align-content: flex-start; */
+
+        /*row-gap: 5px; if not using margin for the boxes*/
+    }
+    .box{
+        width: 150px;
+        height: 150px;
+        font-size: 7em;
+        text-align: center;
+        border-radius: 10px;
+        margin: 5px;  /* or use column/row gap on container class*/  
+        font-family: 'Times New Roman', Times, serif;
+    }
+    #box1{
+        background-color: red;
+    }
+    
+    #box2{
+         background-color: blue;
+    }
+    
+    #box3{
+         background-color: yellow;
+    }
+    
+    #box4{
+         background-color: green;
+    }
+</style>
+<body>  
+    <div class="container">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div>
+    </div>
+    
+</body>
+</html>
