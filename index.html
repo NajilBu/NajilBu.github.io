@@ -6,13 +6,20 @@
     <title>Practice library</title>
     <link rel="icon" href="SOURCES/pxArt.png" type="image/x-icon">
     <style>
+        * {
+    box-sizing: border-box;
+    }
+
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+          
         }
         main{
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         ul {
             list-style-type: none;
@@ -30,15 +37,16 @@
         a:hover {
             text-decoration: underline;
         }
-        div{
-            width: 40%;
-            height: 800px;
+        div::-webkit-scrollbar {
+        display: none;
+        }
+
+        .htmlprac{
+            width: 20%;
+             height: 800px;
             border: 2px solid gray;
             box-shadow: 2px 5px gray;
             overflow: auto;
-        }
-        div::-webkit-scrollbar {
-        display: none;
         }
     </style>
 </head>
@@ -78,11 +86,18 @@
         <li><a href="anima.html" target="_blank">Animation</a></li>
     </ul>
     </div>
-    <div>
+    <div class="htmlprac">
         <h2>JAVASCRIPT</h2>
          <ul>
         <li><a href="audio.html" target="_blank">Audio</a></li>
             </ul>  
+    </div>
+    <div class="htmlprac">
+        <h2>Simple Projects</h2>
+         <ul>
+        <li><a href="" target="_blank">Circle Bouncing</a></li>
+        <li><a href="" target="_blank">Scroll up Animation</a></li>
+        </ul>  
     </div>
     </main>
    
