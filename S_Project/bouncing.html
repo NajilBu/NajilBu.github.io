@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="srcs/ball.png" type="image/x-icon">
     <title>Balls</title>
 </head>
 <style>
     main{
-        height: 100VH;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -16,15 +17,65 @@
         border: 3px solid black;
         width: 1400px;
         height: 850px;
+        display: flex;
+        justify-content: center;
+        position: relative;
     }
+    .ball{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+       
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+       
+    }
+    #ball1{
+       background-color: blue;
+        position: absolute;
+        top: 120px;
+        left: 120px;
+        animation-name: bounceside;
+         animation-duration: 6s ;
+    }
+    #ball2{
+        background-color: rgb(94, 29, 29);
+        position: absolute;
+        top: 120px;
+        left: 1120px;
+        animation-name: bounce;
+        animation-duration: 3s ;
+        
+    }
+    h2{
+        font-size: 3em;
+    }
+
+    @keyframes bounceside{
+            0%   { transform: translate(0px, 0px) scale(1,1); }   /* start on the floor */
+            20%   { transform: translate(0px, 600px) scale(1.4,.4);}   /* start on the floor */
+            40%  { transform: translate(250px, 200px) scale(1,1); } /* rise to peak */
+            60%  { transform: translate(500px, 600px) scale(1.2,0.6); } /* back to floor */
+            80%  { transform: translate(750px, 200px) scale(1,1); } /* second peak */
+            100% { transform: translate(1000px, 600px) scale(1.05,0.95); }/* end on floor */
+    }
+     @keyframes bounce{
+            0%   { transform: translateY(0px) scale(1,1); }   /* start on the floor */
+            20%   { transform: translateY(400px) scale(1.25,.6);}   /* start on the floor */
+            40%  { transform: translateY(100px) scale(1,1); } /* rise to peak */
+            60%  { transform: translateY(400px) scale(1.1,0.8); } /* back to floor */
+            80%  { transform: translateY(200px) scale(1,1); } /* second peak */
+            100% { transform: translateY(400px) scale(1.05,0.95); }/* end on floor */
+    }
+   
 </style>
 <body>
     <main>
         <div class="container">
-
-            <div class="ball">
-
-            </div>
+            <h2>A trial of a ball</h2>
+            <div class="ball" id="ball1"></div>
+            <div class="ball" id="ball2"></div>
         </div>
 
     </main>
