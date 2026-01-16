@@ -3,9 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SCROLL</title>
 </head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+    body{
+        width: 100%;
+        height: 100vh;
+        margin: 0px;
+        padding: 0px;
+        
+    }
+    h1{
+        width: 100%;
+        height: 100vh;
+        text-align: center;
+        font-size: 60px;
+        display: block;
+    }
+    .view{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        
+      
+    }
+    .block{
+        width: 350px;
+        height: 200px;
+        background-color: aqua;
+        border: 2px solid gray;
+        margin: 50px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+                    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+                    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        animation-timeline: view();
+        animation-range: entry 0% cover 40%;
+    }
+
+    @keyframes appear{
+        from{
+            opacity: 0;
+            clip-path: inset(100% 100% 0 0);
+        }
+        to{
+            opacity: 1;
+            clip-path: inset(0 0 0 0);
+        }
+    }
+     @keyframes appearscale{
+        from{
+            opacity: 0;
+            transform: scale(0);
+        }
+        to{
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+     @keyframes appearslideleft{
+        from{
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        to{
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+     @keyframes appearslideright{
+        from{
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        to{
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+     @keyframes appearslideup{
+        from{
+            opacity: 0;
+            transform: translateY(100%);
+        }
+        to{
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .end{
+        width: 100%;
+        height: 100vh;
+    }
+
+     .block:nth-child(1) {
+        background: rgb(232, 88, 67);
+        animation-name: appear;
+      }
+      .block:nth-child(2) {
+        background: rgb(26, 84, 207);
+        animation-name: appear;
+      }
+      .block:nth-child(3) {
+        background: rgb(36, 217, 127);
+        animation-name: appear;
+      }
+      .block:nth-child(4) {
+        background: rgb(157, 86, 247);
+        animation-name: appear;
+        width: 500px;
+      }
+      .block:nth-child(5) {
+        background: rgb(250, 201, 82);
+        animation-name: appearscale;
+      }
+      .block:nth-child(6) {
+        background: rgb(26, 84, 207);
+        animation-name: appearscale;
+      }
+      .block:nth-child(7) {
+        background: rgb(157, 86, 247);
+        animation-name: appearscale;
+      }
+      .block:nth-child(8) {
+        background: rgb(36, 217, 127);
+        animation-name: appearscale;
+        width: 500px;
+      }
+      .block:nth-child(9) {
+        background: rgb(232, 88, 67);
+        animation-name: appearslideleft;
+      }
+      .block:nth-child(10) {
+        background: rgb(250, 201, 82);
+        animation-name: appearslideleft;
+        width: 500px;
+      }
+      .block:nth-child(11) {
+        background: rgb(26, 84, 207);
+        animation-name: appearslideleft;
+      }
+      .block:nth-child(12) {
+        background: rgb(36, 217, 127);
+        animation-name: appearslideleft;
+      }
+      .block:nth-child(13) {
+        background: rgb(157, 86, 247);
+        animation-name: appearslideright;
+      }
+      .block:nth-child(14) {
+        background: rgb(250, 201, 82);
+        animation-name: appearslideright;
+      }
+      .block:nth-child(15) {
+        background: rgb(232, 88, 67);
+        animation-name: appearslideright;
+      }
+      .block:nth-child(16) {
+        background: rgb(36, 217, 127);
+        animation-name: appearslideright;
+        width: 500px;
+      }
+      .block:nth-child(17) {
+        background: rgb(157, 86, 247);
+        animation-name: appearslideup;
+      }
+      .block:nth-child(18) {
+        background: rgb(26, 84, 207);
+        animation-name: appearslideup;
+      }
+      .block:nth-child(19) {
+        background: rgb(250, 201, 82);
+        animation-name: appearslideup;
+      }
+      .block:nth-child(20) {
+        background: rgb(232, 88, 67);
+        animation-name: appearslideup;
+        width: 500px;
+      }
+
+        
+    
+</style>
 <body>
     
+    <h1>Animate On Scroll</h1>
+    <div class="view">
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+    </div>
+
+    
+    <h1>END</h2>
+   
 </body>
 </html>
