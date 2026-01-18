@@ -21,13 +21,13 @@
             flex-wrap: wrap;
             gap: 10px;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
+        ol {
+            padding: 15px;
             display: block;
         }
         li {
             margin: 10px 5px;
+           
         }
         a {
             text-decoration: none;
@@ -37,6 +37,9 @@
         a:hover {
             text-decoration: underline;
         }
+        li:hover{
+            transform: translateX(7px);
+        }
         div::-webkit-scrollbar {
         display: none;
         }
@@ -45,14 +48,34 @@
             width: 20%;
             height: 600px;
             border: 2px solid gray;
-            box-shadow: 2px 5px gray;
+            box-shadow: 2px 5px 10px gray;
             overflow: auto;
+            border-radius: 5px;
+            animation: slide ease both;
+           
+            animation-duration: 2s;
+            
+            animation-range: entry 0% cover 40%;
         }
         h2{
             margin: 5px;
             
             text-align: center;
 
+        }
+        .container:nth-child(4n +1){ animation-delay: 0s; }
+        .container:nth-child(4n +2){ animation-delay: 0.2s; }
+        .container:nth-child(4n +3){ animation-delay: 0.4s; }
+        .container:nth-child(4n +4){ animation-delay: 0.6s; }
+        @keyframes slide{
+            from{
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+            to{
+            opacity: 1;
+            transform: translateY(0);
+        }
         }
     </style>
 </head>
@@ -61,7 +84,9 @@
     <main>
          <div class="container" id="html">
         <h2>HTML</h2>
-        <ul>
+        <div>
+            <h3>Brocode</h3>
+        <ol >
         <li><a href="HTML/audio.html" target="_blank">Audio</a></li>
         <li><a href="HTML/favicon.html" target="_blank">Icon Image</a></li>
         <li><a href="HTML/fonty.html" target="_blank">Fonty</a></li>
@@ -73,14 +98,13 @@
         <li><a href="HTML/list.html" target="_blank">List</a></li>
         <li><a href="HTML/pagination.html" target="_blank">Pagination</a></li>
         <li><a href="HTML/position.html" target="_blank">Position</a></li>
-        <li><a href="HTML/Practice1.html" target="_blank">Mahh Page</a></li>
+       
         <li><a href="HTML/print.html" target="_blank">This is the title</a></li>
         <li><a href="HTML/pseudoclas.html" target="_blank">Pseudoclas</a></li>
         <li><a href="HTML/span.html" target="_blank">Span</a></li>
         <li><a href="HTML/tables.html" target="_blank">Tables</a></li>
         <li><a href="HTML/trycss.html" target="_blank">Trycss</a></li>
         <li><a href="HTML/Videos.html" target="_blank">Video</a></li>
-        <li><a href="HTML/whole.html" target="_blank">Misa website</a></li>
         <li><a href="HTML/wnh.html" target="_blank">Wnh</a></li>
         <li><a href="HTML/dropdown.html" target="_blank">Dropdown</a></li>
         <li><a href="HTML/NaviBar.html" target="_blank">Navibar</a></li>
@@ -89,27 +113,62 @@
         <li><a href="HTML/flexboxes.html" target="_blank">Boxes that flex</a></li>
         <li><a href="HTML/transform.html" target="_blank">Transformer</a></li>
         <li><a href="HTML/anima.html" target="_blank">Animation</a></li>
-    </ul>
+        </ol>
+        </div>
+        <div>
+            <h3>Supersimpledev</h3>
+        </div>
+       
     </div>
     <div class="container" id="js">
         <h2>JAVASCRIPT</h2>
-        <ul>
-        <li><a href="port/index.html" target="_blank">My Portfolio</a></li>
-        </ul>  
+        <div>
+            <h3>Brocode</h3>
+            <ol>
+                <li><a href="Javascript/intro.html" target="_blank">Start</a></li>
+            </ol>  
+            </div>
+        <div>
+            <h3>Supersimpledev</h3>
+        </div>
     </div>
+
+    <div class="container" id="React">
+        <h2>React</h2>
+        
+        <div>
+            <h3>Brocode</h3>
+            <ol>
+                <li><a href="" target="_blank"></a></li>
+            </ol>  
+        </div> 
+    </div>
+
     <div class="container" id="s_proj">
         <h2>Simple Projects</h2>
-         <ul>
-        <li><a href="S_Project/bouncing.html" target="_blank">Circle Bouncing</a></li>
-        <li><a href="S_Project/scroll_up.html" target="_blank">Scroll up Animation</a></li>
-        </ul>  
+        <div>
+            <h3>Features</h3>
+             <ol>   
+                <li><a href="S_Project/bouncing.html" target="_blank">Circle Bouncing</a></li>
+                <li><a href="S_Project/scroll_up.html" target="_blank">Scroll up Animation</a></li>
+                <li><a href="HTML/whole.html" target="_blank">Misa website</a></li>
+                <li><a href="HTML/Practice1.html" target="_blank">Mahh Page</a></li>
+            </ol>  
+        </div>
+        
     </div>
+
     <div class="container" id="b_proj">
         <h2>Projects</h2>
-        <ul>
-        <li><a href="B_Project/index.html" target="_blank">My Portfolio</a></li>
-        </ul>  
+         <div>
+            <h3>Features</h3>
+            <ol>
+                <li><a href="B_Project/index.html" target="_blank">My Portfolio</a></li>
+            </ol> 
+        </div>
+         
     </div>
+ 
     </main>
    
     
