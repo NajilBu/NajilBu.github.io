@@ -36,16 +36,16 @@
     #ball1{
        background-color: blue;
         position: absolute;
-        top: 120px;
-        left: 120px;
+        top: 10%;
+        left: 5%;
         animation-name: bounceside;
          animation-duration: 6s ;
     }
     #ball2{
         background-color: rgb(94, 29, 29);
         position: absolute;
-        top: 120px;
-        left: 1120px;
+        top: 10%;
+        left: 80%;
         animation-name: bounce;
         animation-duration: 3s ;
         
@@ -55,20 +55,20 @@
     }
 
     @keyframes bounceside{
-            0%   { transform: translate(0px, 0px) scale(1,1); }   /* start on the floor */
-            20%   { transform: translate(0px, 600px) scale(1.4,.4);}   /* start on the floor */
-            40%  { transform: translate(250px, 200px) scale(1,1); } /* rise to peak */
-            60%  { transform: translate(500px, 600px) scale(1.2,0.6); } /* back to floor */
-            80%  { transform: translate(750px, 200px) scale(1,1); } /* second peak */
-            100% { transform: translate(1000px, 600px) scale(1.05,0.95); }/* end on floor */
+            0%   { transform: translate(0vw, 0vh) scale(1,1); }   /* start on the floor */
+            20%   { transform: translate(0vw, 55vh) scale(1.4,.4);}   /* start on the floor */
+            40%  { transform: translate(13vw, 16.4vh) scale(1,1); } /* rise to peak */
+            60%  { transform: translate(26vw, 55vh) scale(1.2,0.6); } /* back to floor */
+            80%  { transform: translate(39vw, 16.4vh) scale(1,1); } /* second peak */
+            100% { transform: translate(52vw, 55vh) scale(1.05,0.95); }/* end on floor */
     }
      @keyframes bounce{
-            0%   { transform: translateY(0px) scale(1,1); }   /* start on the floor */
-            20%   { transform: translateY(400px) scale(1.25,.6);}   /* start on the floor */
-            40%  { transform: translateY(100px) scale(1,1); } /* rise to peak */
-            60%  { transform: translateY(400px) scale(1.1,0.8); } /* back to floor */
-            80%  { transform: translateY(200px) scale(1,1); } /* second peak */
-            100% { transform: translateY(400px) scale(1.05,0.95); }/* end on floor */
+            0%   { transform: translateY(0vh) scale(1,1); }   /* start on the floor */
+            20%   { transform: translateY(37vh) scale(1.25,.6);}   /* start on the floor */
+            40%  { transform: translateY(9.2vh) scale(1,1); } /* rise to peak */
+            60%  { transform: translateY(37vh) scale(1.1,0.8); } /* back to floor */
+            80%  { transform: translateY(16.4vh) scale(1,1); } /* second peak */
+            100% { transform: translateY(37vh) scale(1.05,0.95); }/* end on floor */
     }
    
 </style>
