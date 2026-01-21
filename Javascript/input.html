@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User input</title>
+</head>
+<body>
+    
+    <h1>Welcome</h1>
+    <h2 id="name"></h2>
+
+    <div>
+        <label for="namein">Username: </label>
+        <input id="namein" type="text"><br><br>
+        <button id="subname">submit</button>
+    </div>
+    <script>
+
+        let winprom;
+
+        winprom = window.prompt(`enter name`)
+
+        document.getElementById("name").textContent = `${winprom}`;
+
+
+        let username;
+        document.getElementById("subname").onclick = function(){
+            username = document.getElementById("namein").value;
+            document.getElementById("name").textContent = `${username}`;
+        }
+    </script>
+</body>
+</html>
