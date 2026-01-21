@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math</title>
+</head>
+<body>
+    
+
+    <h3 id="p1"></h3>
+    <h3 id="p2"></h3>
+    <h3 id="p3"></h3>
+    <h3 id="p4"></h3>
+    <h3 id="p5"></h3>
+
+
+    <script>
+
+        let worker = 32;
+
+        console.log(worker);
+        document.getElementById("p1").textContent = `value = ${worker}`
+        
+        worker = worker * 2;
+        console.log(worker);
+        document.getElementById("p2").textContent = `value * = ${worker}`
+        
+
+        let boss = 4;
+        boss = boss ** 4; // exponents
+        console.log(boss);
+        document.getElementById("p3").textContent = `value exponets = ${worker}`
+        
+        // operands = values,variables
+        // operators = + - / *
+
+        boss++;//increment
+        worker--;//decrement
+
+        document.getElementById("p4").textContent = `inc = ${boss}, dec = ${worker}`
+    </script>
+</body>
+</html>
