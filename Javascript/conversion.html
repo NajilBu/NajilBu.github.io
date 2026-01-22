@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body{
+        text-align: center;
+        font-size: 3em;
+    }
+</style>
+<body>
+    
+    <h1 id="nocon"></h1>
+    <h1 id="con"></h1>
+
+
+    <script>
+
+        let age = window.prompt("Enter a number for no conversion");
+
+        age+= 1;
+
+        console.log(`Here is your num no con ${age} `+ typeof age);
+        document.getElementById("nocon").textContent = `Here is your num no con ${age}`;
+        age = Number(age);
+
+        age+= 1;
+        console.log(`Here is your num wtih con ${age} `+ typeof age);
+        document.getElementById("con").textContent = `Here is your num with con ${age} `;
+
+    </script>
+</body>
+</html>
