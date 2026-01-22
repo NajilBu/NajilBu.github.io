@@ -20,17 +20,20 @@
 
     <script>
 
-        let age = window.prompt("Enter a number for no conversion");
+        let input = window.prompt("Enter a number for no conversion");
 
-        age+= 1;
+        let num1 = input
+        let num2 = Number(input);
 
-        console.log(`Here is your num no con ${age} `+ typeof age);
-        document.getElementById("nocon").textContent = `Here is your num no con ${age}`;
-        age = Number(age);
+        num1+=1;
+        num2+= 1;
 
-        age+= 1;
-        console.log(`Here is your num wtih con ${age} `+ typeof age);
-        document.getElementById("con").textContent = `Here is your num with con ${age} `;
+        console.log(`Here is your num no con ${num1} `+ typeof num1);
+        document.getElementById("nocon").textContent = `Here is your num no con ${num1}`;
+
+      
+        console.log(`Here is your num wtih con ${num2} `+ typeof num2);
+        document.getElementById("con").textContent = `Here is your num with con ${num2} `;
 
     </script>
 </body>
