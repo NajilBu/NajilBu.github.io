@@ -1,0 +1,77 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Randomizer</title>
+    </head>
+    <style>
+       #box{
+        display: flex;
+        height: 800px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+       }
+       h3{
+        font-size: 3em;
+        
+       }
+       #roll{
+        width: 200px;
+        font-size: 3em;
+        padding: 4px;
+        margin: 5px;
+        border-radius: 10px;
+       }
+    </style>
+    <body>
+
+        <div id="box">
+
+            <button id="roll">roll</button>
+            <h3 id="label1"></h3>
+            <h3 id="label2"></h3>
+            <h3 id="label3"></h3>
+
+        </div>
+
+        <script>
+
+            const Rollb = document.getElementById("roll");
+            const label1 = document.getElementById("label1");
+            const label2 = document.getElementById("label2");
+            const label3 = document.getElementById("label3");
+
+            const min = 1;
+            const max = 6;
+
+            let ran1;
+            let ran2;
+            let ran3;
+
+            Rollb.onclick = function(){
+                ran1 = Math.floor(Math.random() * max/*max*/) + min;
+                ran2 = Math.floor(Math.random() * max/*max*/) + min;
+                ran3 = Math.floor(Math.random() * max/*max*/) + min;
+
+                label1.textContent = ran1;
+                label2.textContent = ran2;
+                label3.textContent = ran3;
+            }
+
+            let d6 = Math.floor(Math.random() * 6);/* 0 to 5*/
+            let d6_1 = Math.floor(Math.random() * 6/*max*/) + 1/*min*/;/*1 to 6*/
+
+            console.log(d6_1);
+
+            let minr = 50;
+            let maxr = 100;
+
+            let randomNumber = Math.floor(Math.random() * (max - min + 1/*to make sure it start at 1*/)) + min;/*50 to 100*/
+            console.log(randomNumber);
+
+        </script>
+        
+    </body>
+    </html>
