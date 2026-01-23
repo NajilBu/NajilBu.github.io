@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+
+<style>
+    body{
+        text-align: center;
+        align-items: center;
+
+    }
+    .Buttons{
+        font-size: 1.5em;
+        border-radius: 10px;
+        padding: 10px 20px;
+        background-color: aqua;
+        transition: background-color 0.25s;
+        box-shadow: 3px 5px 3px 4px gray;
+        border: 3px solid black;
+        margin: 5px;
+        cursor: pointer;
+        
+    }
+    h1{
+        font-size: 4em;
+        
+    }
+    button:hover{
+        background-color: rgb(85, 176, 176);
+    }
+</style>
+<body>
+
+   
+
+    <h1 id="Thenum">0</h1>
+    <div class="container">
+        <button id="increase" class="Buttons">increase</button>
+        <button id="reset" class="Buttons">reset</button>
+        <button id="decrease" class="Buttons">decrease</button>
+    </div>
+  
+   
+    <script>
+        let count = 0;
+        const increasebt = document.getElementById("increase");
+        const decreasebt = document.getElementById("decrease");
+        const resetbt = document.getElementById("reset");
+        const countlabel = document.getElementById("Thenum")
+
+        increasebt.onclick = function(){
+            count++;
+            countlabel.textContent = count;
+        };
+        decreasebt.onclick = function(){
+            count--;
+            countlabel.textContent = count;
+        };
+        resetbt.onclick = function(){
+            count = 0;
+            countlabel.textContent = count;
+        };
+
+
+
+    </script>
+</body>
+</html>
