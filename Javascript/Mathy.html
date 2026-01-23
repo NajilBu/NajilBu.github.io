@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Library Buttons</title>
+
+    <style>
+        h1{
+            text-align: center;
+            font-size: 5em;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        button{
+            padding: 10px 15px;
+            font-size: 2em;
+            cursor: pointer;
+
+        }
+        .InputCon{
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+
+        }
+        #Input{
+            font-size: 4em;
+            width: 10%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="display">0</h1>
+    <div class="InputCon">
+        <input type="number" id="Input" placeholder="Number">
+    </div>
+ 
+
+    <div class="container">
+       
+        <button onclick="roundNum()">Round</button>
+        <button onclick="floorNum()">Floor</button>
+        <button onclick="ceilNum()">Ceil</button>
+        <button onclick="truncNum()">Trunc</button>
+        <button onclick="powerNum()">Power</button>
+        <button onclick="sqrtNum()">Sqrt</button>
+        <button onclick="logNum()">Log</button>
+        <button onclick="sinNum()">Sin</button>
+        <button onclick="cosNum()">Cos</button>
+        <button onclick="tanNum()">Tan</button>
+        <button onclick="absNum()">Abs</button>
+        <button onclick="signNum()">Sign</button>
+    </div>
+
+    <script>
+        let x = 3.4;
+        let y = 0;
+    
+        document.getElementById("display").textContent = x;
+
+      
+
+        function getval(){
+            return Number(document.getElementById("Input").value);
+        }   
+       
+
+        function update() {
+            document.getElementById("display").textContent = x;
+        }
+
+        function roundNum() {
+            
+            x = Math.round(getval());
+            update();
+        }
+
+        function floorNum() {
+            x = Math.floor(getval());
+            update();
+        }
+
+        function ceilNum() {
+            x = Math.ceil(getval());
+            update();
+        }
+
+        function truncNum() {
+            x = Math.trunc(getval());
+            update();
+        }
+
+        function powerNum() {
+            x = Math.pow(getval(), 2); // x²
+            update();
+        }
+
+        function sqrtNum() {
+            x = Math.sqrt(getval());
+            update();
+        }
+
+        function logNum() {
+            x = Math.log(getval());
+            update();
+        }
+
+        function sinNum() {
+            x = Math.sin(getval());
+            update();
+        }
+
+        function cosNum() {
+            x = Math.cos(getval());
+            update();
+        }
+
+        function tanNum() {
+            x = Math.tan(getval());
+            update();
+        }
+
+        function absNum() {
+            x = Math.abs(getval());
+            update();
+        }
+
+        function signNum() {
+            x = Math.sign(getval());
+            update();
+        }
+    </script>
+
+</body>
+</html>
