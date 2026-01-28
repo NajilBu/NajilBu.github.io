@@ -11,25 +11,131 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            perspective: 800px;
         }
-        #box1{
+        .scene{
             width: 200px;
             height: 200px;
-            background-color: gray;
+        }
+        #box1{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            
+            transform-style: preserve-3d;
+            transition: transform 1s;
+            
+        }
+
+        .face{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: white;
             border: 2px solid black;
-            border-radius: 5px;
+            display: grid;
+            border-radius: 10px;
+        }
+        
+     
+        .front{
+            transform: rotateY(0deg) translateZ(100px);
+            background-color: red;
+        }
+        .back{
+            transform: rotateY(180deg) translateZ(100px);
+            background-color: blue;
+        }
+        .top{
+            transform: rotateX(90deg) translateZ(100px);
+            background-color: yellow;
+        }
+        .bottom{
+            transform: rotateX(-90deg) translateZ(100px);
+            background-color: green;
+        }
+        .left{
+            transform: rotateY(90deg) translateZ(100px);
+            background-color: white;
+        }
+        .right{
+            transform: rotateY(-90deg) translateZ(100px);
+            background-color: orange;
         }
     </style>
     <body>
-
-        <div id="box1">
-
+        <div class="scene">
+            <div id="box1">
+                <div class="face front">
+                    <div class="dot"></div>
+                </div>
+                <div class="face back">
+                    <div class="dot"></div>
+                </div>
+                <div class="face top">
+                    <div class="dot"></div>
+                </div>
+                <div class="face bottom">
+                    <div class="dot"></div>
+                </div>
+                <div class="face left">
+                    <div class="dot"></div>
+                </div>
+                <div class="face right">
+                    <div class="dot"></div>
+                </div>
+            </div>  
+        </div>
+      
+        <div class="pop">
+            <div class="tod"></div>
         </div>
 
         <script>
+           
+          
+            let x= 0;
+            let y =0;;
+            const box = document.getElementById("box1");
+
+            // box.addEventListener("click", ()=> {
+            // let d6 = Math.floor(Math.random() * 6);
+
+
+            // box.classList.remove("roll");
+            // void box.offsetWidth;
+            // box.classList.add("roll");
+
+            // let rolltime = d6 * 360;
+         
+            // });
+            const rotations = {
+                        1: "rotateX(0deg) rotateY(0deg)",
+                        2: "rotateX(-90deg) rotateY(0deg)",
+                        3: "rotateX(0deg) rotateY(90deg)",
+                        4: "rotateX(0deg) rotateY(-90deg)",
+                        5: "rotateX(90deg) rotateY(0deg)",
+                        6: "rotateX(180deg) rotateY(0deg)"
+                };  
+
+            let rolling = false;
+            box.addEventListener("click", () => {
             let d6 = Math.floor(Math.random() * 6);
 
-            console.log(d6);
+            if (rolling) return;
+            rolling = true;
+
+                x += 720;
+                y += 720;
+                   
+                box.style.transform =
+                    `rotateX(${x}deg) rotateY(${y}deg) ${rotations[d6]}` ; 
+            setTimeout(() => 
+                rolling = false
+            , 1000); 
+
+            });
+
         </script>
         
     </body>
