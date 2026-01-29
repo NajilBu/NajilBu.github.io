@@ -88,14 +88,14 @@
                     <div class="dot"></div><div></div><div class="dot"></div>
                 </div>
                 <div class="face top">
-                    <div class="dot"></div><div></div><div class="dot"></div>
-                    <div></div><div class="dot"></div><div></div>
-                    <div class="dot"></div><div></div><div class="dot"></div>
-                </div>
-                <div class="face bottom">
                     <div class="dot"></div><div></div><div></div>
                     <div></div><div ></div><div></div>
                     <div ></div><div></div><div class="dot"></div>
+                </div>
+                <div class="face bottom">
+                    <div class="dot"></div><div></div><div class="dot"></div>
+                    <div></div><div class="dot"></div><div></div>
+                    <div class="dot"></div><div></div><div class="dot"></div>
                 </div>
                 <div class="face left">
                    <div class="dot"></div><div></div><div class="dot"></div>
@@ -121,17 +121,6 @@
             let y =0;;
             const box = document.getElementById("box1");
 
-            // box.addEventListener("click", ()=> {
-            // let d6 = Math.floor(Math.random() * 6);
-
-
-            // box.classList.remove("roll");
-            // void box.offsetWidth;
-            // box.classList.add("roll");
-
-            // let rolltime = d6 * 360;
-         
-            // });
             const rotations = {
                         1: "rotateX(0deg) rotateY(0deg)",
                         2: "rotateX(-90deg) rotateY(0deg)",
@@ -143,7 +132,7 @@
 
             let rolling = false;
             box.addEventListener("click", () => {
-            let d6 = Math.floor(Math.random() * 6);
+            let d6 = Math.floor(Math.random() * 6) + 1;
 
             if (rolling) return;
             rolling = true;
@@ -157,7 +146,9 @@
                 rolling = false
             , 1000); 
 
+             console.log(d6);
             });
+           
 
         </script>
         
