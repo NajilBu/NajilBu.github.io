@@ -430,6 +430,13 @@ footer nav ul li a:hover {
             hamburger.classList.toggle('nav-active');
             nav.classList.toggle('nav-active');
         });
+
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+                hamburger.classList.remove('nav-active');
+                nav.classList.remove('nav-active');
+            }
+        });
     </script>
 </body>
 </html>
