@@ -306,13 +306,23 @@ footer nav ul li a:hover {
         width: 150px;
     }
     nav {
-        display: none;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100vh;
+        background: white;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        transition: left 0.3s;
+        z-index: 101;
+        padding: 2rem 1rem;
     }
     nav.nav-active {
-        display: block;
+        left: 0;
     }
     nav ul {
         flex-direction: column;
+        padding: 0;
     }
     nav ul li {
         margin-left: 0;
