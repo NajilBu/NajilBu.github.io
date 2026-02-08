@@ -1,15 +1,53 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://pyscript.net/releases/2026.1.1/core.css" />
-        <script type="module" src="https://pyscript.net/releases/2026.1.1/core.js"></script>
-    <title>Python cam</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Camera Streams</title>
+
+<style>
+body{
+    text-align:center;
+    background:#111;
+    color:white;
+    font-family:Arial;
+}
+
+.wrapper{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+video,img{
+    width:480px;
+    height:360px;
+    border:2px solid white;
+    border-radius:10px;
+}
+</style>
 </head>
+
 <body>
-        <h2>My Webcam Feed</h2>
+
+<h2>JS Webcam + Python OpenCV Webcam</h2>
+
+<div class="wrapper">
+    <!-- JS webcam -->
+    <div>
+        <h3>JS Camera</h3>
+        <video id="jsCam" autoplay playsinline></video>
+    </div>
 
    
+</div>
+
+<script>
+navigator.mediaDevices.getUserMedia({video:true})
+    .then(stream => document.getElementById("jsCam").srcObject = stream)
+    .catch(err => alert("JS Camera Error: " + err));
+</script>
+
 </body>
 </html>
