@@ -1,0 +1,65 @@
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Camera Streams</title>
+
+<style>
+body{
+    text-align:center;
+    background:#111;
+    color:white;
+    font-family:Arial;
+}
+
+.wrapper{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    position: relative;
+}
+
+video,img{
+    width:880px;
+    height:760px;
+    border:2px solid white;
+    border-radius:10px;
+}
+
+canvas{
+    position: absolute;
+    z-index: 1;
+       
+}
+</style>
+</head>
+
+<body>
+
+<h2>JS Webcam</h2>
+
+<div class="wrapper">
+    <canvas id="canvas"></canvas>
+    <!-- JS webcam -->
+    <!-- <div>
+        <h3>JS Camera</h3>
+        <video id="jsCam" autoplay playsinline></video>
+    </div> -->
+
+   
+    <img alt="old" id="face" src="./imagesfind/Find2.jpg" />
+
+</div>
+
+
+
+<script src="./face-api.min.js"></script>
+<script src="./fr-scripts.js"></script>
+
+</body>
+</html>

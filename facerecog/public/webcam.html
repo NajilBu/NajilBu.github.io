@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <style>
+    #containerP{
+        display: flex;
+        justify-content: center;
+    }
+    canvas{
+        position: absolute;
+    }
+ </style>
+<body>
+    <div id="containerP">
+        <video id="video" width="720" height="560" autoplay muted></video>  
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="./face-api.min.js"></script>
+<script src="./cam-script.js"></script>
+</body>
+</html>
