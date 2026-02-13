@@ -15,17 +15,19 @@ const run = async () => {
     ]);
   //  const ImagePath = './IMAGE/Bumacod/1.jpg'; //find this
  ///   const LabelName = ImagePath.split('/')[2];
-    const FaceRef = await faceapi.fetchImage(ImagePath) //find this
-    const faceAIData = await faceapi.detectAllFaces(FaceRef)
-                .withFaceLandmarks()
-                .withFaceDescriptors()
+    // const FaceRef = await faceapi.fetchImage(ImagePath) //find this
+    // const faceAIData = await faceapi.detectAllFaces(FaceRef)
+    //             .withFaceLandmarks()
+    //             .withFaceDescriptors()
           
   
-    const LabelDesc = [
-        new faceapi.LabeledFaceDescriptors(LabelName, faceAIData.map(fd => fd.descriptor))
-    ]
-                
-    let facematcher = new faceapi.FaceMatcher(LabelDesc);
+
+    // const LabelDesc = [
+    //     new faceapi.LabeledFaceDescriptors(LabelName, faceAIData.map(fd => fd.descriptor))
+    // ]
+         
+    const labelDesc = await loadImages();
+    let facematcher = new faceapi.FaceMatcher(labelDesc, 0.6);
     // Set canvas size once
     canvas.width = videofeed.width;
     canvas.height = videofeed.height;
@@ -48,8 +50,11 @@ const run = async () => {
             resizedResults.forEach(face => {
             const bestMatch = facematcher.findBestMatch(face.descriptor);
             // Use folder name for label if recognized
-            const label = bestMatch.label === 'unknown' ? 'unknown' : LabelName;
-            const drawBox = new faceapi.draw.DrawBox(face.detection.box, { label });
+            const label = bestMatch.toString();
+            const drawBox = new faceapi.draw.DrawBox(face.detection.box, {
+            label: label
+             });
+
             drawBox.draw(canvas);
         });
 
@@ -62,13 +67,48 @@ const run = async () => {
     detectFaces();
 };
 
-async function loadImages(){
-    const response = await fetch('./recog_cam_multi.php');
-    const labels = await response.json();
+async function loadImages() {
+    const res = await fetch('./recog_cam_multi.php');
+    const labels = await res.json();
 
-    return Promise.all(
-        labels.map(as)
-    )
+    const validLabels = [];
+
+    for (const label of labels) {
+        const descriptions = [];
+        let i = 1;
+
+        while (true) {
+            try {
+                const img = await faceapi.fetchImage(`./IMAGE/${label}/${i}.jpg`);
+                const detection = await faceapi
+                    .detectSingleFace(img)
+                    .withFaceLandmarks()
+                    .withFaceDescriptor();
+
+                if (detection) {
+                    descriptions.push(detection.descriptor);
+                } else {
+                    console.warn(`No face detected: ${label}/${i}.jpg`);
+                }
+
+                i++;
+            } catch {
+                break;
+            }
+        }
+
+        // 🔥 CRITICAL FIX — SKIP EMPTY FOLDERS
+        if (descriptions.length > 0) {
+            validLabels.push(
+                new faceapi.LabeledFaceDescriptors(label, descriptions)
+            );
+        } else {
+            console.warn(`Skipping ${label}: No valid face data`);
+        }
+    }
+
+    return validLabels;
 }
+
 
 run();
