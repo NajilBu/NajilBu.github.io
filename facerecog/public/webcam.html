@@ -6,21 +6,37 @@
     <title>Document</title>
 </head>
  <style>
+    body{
+    text-align:center;
+    background:#111;
+    color:white;
+    font-family:Arial;
+}
     #containerP{
         display: flex;
         justify-content: center;
+        gap:20px;
+        flex-wrap:wrap;
+        position: relative;
     }
     canvas{
         position: absolute;
     }
  </style>
 <body>
+    <h2>JS Webcam</h2>
+
     <div id="containerP">
+       
+        
+        
         <video id="video" width="720" height="560" autoplay muted></video>  
-        <canvas id="canvas"></canvas>
+        <canvas id="canvas"></canvas>   
+    
+        
     </div>
 
     <script src="./face-api.min.js"></script>
-<script src="./cam-script.js"></script>
+    <script src="./cam-script.js"></script>
 </body>
 </html>

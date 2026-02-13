@@ -13,7 +13,7 @@ const run = async()=>{
     const facetocheck = document.getElementById('face')
 
 
-    const face1 = await faceapi.fetchImage('./images/N,Bumacod.jpg') //find this
+    const face1 = await faceapi.fetchImage('./images/oldMan1.png') //find this
     //const facetocheck = await faceapi.fetchImage('./imagesfind/Find.jpg')
     await face1.decode()
     await facetocheck.decode()
