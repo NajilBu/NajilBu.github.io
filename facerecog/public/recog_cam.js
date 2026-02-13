@@ -39,16 +39,11 @@ const run = async () => {
             .withAgeAndGender()
             .withFaceExpressions();
 
-    
-        
-       
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         faceapi.matchDimensions(canvas, videofeed);
 
-        const resizedResults = faceapi.resizeResults(VideoData, videofeed);
-       
-       
+        const resizedResults = faceapi.resizeResults(VideoData, videofeed);    
 
             resizedResults.forEach(face => {
             const bestMatch = facematcher.findBestMatch(face.descriptor);
