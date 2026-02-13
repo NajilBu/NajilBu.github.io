@@ -13,18 +13,7 @@ const run = async () => {
         faceapi.nets.ageGenderNet.loadFromUri('./models'),
         faceapi.nets.faceExpressionNet.loadFromUri('./models')
     ]);
-  //  const ImagePath = './IMAGE/Bumacod/1.jpg'; //find this
- ///   const LabelName = ImagePath.split('/')[2];
-    // const FaceRef = await faceapi.fetchImage(ImagePath) //find this
-    // const faceAIData = await faceapi.detectAllFaces(FaceRef)
-    //             .withFaceLandmarks()
-    //             .withFaceDescriptors()
-          
-  
-
-    // const LabelDesc = [
-    //     new faceapi.LabeledFaceDescriptors(LabelName, faceAIData.map(fd => fd.descriptor))
-    // ]
+ 
          
     const labelDesc = await loadImages();
     let facematcher = new faceapi.FaceMatcher(labelDesc, 0.6);
@@ -68,7 +57,7 @@ const run = async () => {
 };
 
 async function loadImages() {
-    const res = await fetch('./recog_cam_multi.php');
+    const res = await fetch('./recog_cam_multi.json');
     const labels = await res.json();
 
     const validLabels = [];
@@ -97,7 +86,7 @@ async function loadImages() {
             }
         }
 
-        // 🔥 CRITICAL FIX — SKIP EMPTY FOLDERS
+        
         if (descriptions.length > 0) {
             validLabels.push(
                 new faceapi.LabeledFaceDescriptors(label, descriptions)
