@@ -51,7 +51,6 @@ const run = async()=>{
         drawBox.draw(canvas)
    })
 
-   console.log(faceAIData)
 }
 
 run()

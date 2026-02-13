@@ -5,49 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
-</head>
-    <style>
-body{
+ <style>
+    body{
     text-align:center;
     background:#111;
     color:white;
     font-family:Arial;
 }
-
-.wrapper{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-video,img{
-    width:680px;
-    height:560px;
-    border:2px solid white;
-    border-radius:10px;
-}
-</style>
+    #containerP{
+        display: flex;
+        justify-content: center;
+        gap:20px;
+        flex-wrap:wrap;
+        position: relative;
+    }
+    canvas{
+        position: absolute;
+    }
+    video{
+        border:2px solid white;
+        border-radius:10px; 
+        
+    }
+ </style>
+ 
 <body>
-
-<h2>JS Webcam + Python OpenCV Webcam</h2>
-
-<div class="wrapper">
-    <!-- JS webcam -->
+    <h2>JS Webcam</h2>
     <div>
-        <h3>JS Camera</h3>
-        <video alt="VIDEO_CAM" id="jsCam" autoplay playsinline></video>
+                <h3>JS Camera</h3>
+         </div>
+    <div id="containerP">
+         
+        <video id="video" width="720" height="560" autoplay muted></video>  
+        <canvas id="canvas"></canvas>   
+    
     </div>
 
-   
-</div>
-
-<script>
-navigator.mediaDevices.getUserMedia({video:true})
-    .then(stream => document.getElementById("jsCam").srcObject = stream)
-    .catch(err => alert("JS Camera Error: " + err));
-</script>
-
+    <script src="./face-api.min.js"></script>
+    <script src="./camwork.js"></script>
 </body>
 </html>
