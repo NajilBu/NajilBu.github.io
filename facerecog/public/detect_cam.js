@@ -35,9 +35,11 @@ const run = async()=>{
 
 setInterval(async()=>{
 
-let facedata = await faceapi.detectAllFaces(videofeed).withFaceLandmarks().withFaceDescriptors().withAgeAndGender().withFaceExpressions()
-   console.log(facedata)
-
+let facedata = await faceapi
+.detectAllFaces(videofeed)
+.withFaceLandmarks().withFaceDescriptors()
+.withAgeAndGender().withFaceExpressions()
+   
 
    canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height)
    facedata = faceapi.resizeResults(facedata,videofeed)

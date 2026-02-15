@@ -57,7 +57,7 @@ const run = async () => {
 };
 
 async function loadImages() {
-    const res = await fetch('./recog_cam_multi.json');
+    const res = await fetch('./recog_cam_multi.php');
     const labels = await res.json();
 
     const validLabels = [];
