@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picture</title>
+</head>
+<style>
+ 
+    body{
+    text-align:center;
+    background:#111;
+    color:white;
+    font-family:Arial;
+}
+    #containerP{
+        display: flex;
+        justify-content: center;
+        gap:20px;
+        flex-wrap:wrap;
+        position: relative;
+    }
+    canvas{
+        position: absolute;
+        display: none;
+    }
+    video{
+        border:2px solid white;
+        border-radius:10px; 
+        
+    }
+    #take{
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+    }
+    #take:hover{
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+ 
+</style>
+<body>
+
+     <h2>JS Face Recognition</h2>
+    <div>
+                <h3>JS Camera</h3>
+         </div>
+    <div id="containerP">
+         
+        <video id="video" width="720" height="560" autoplay muted></video>  
+      
+        <canvas id="canvas"></canvas>   
+    
+    </div>
+      <button id="take" onclick="takePhoto()">Take Picture</button>
+    
+  <script>
+    
+    const videofeed = document.getElementById("video");
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+    videofeed.srcObject = stream;
+    videofeed.onloadedmetadata = () => {
+        videofeed.play()
+        canvas.width = videofeed.width;
+        canvas.height = videofeed.height;
+    }
+    })
+    .catch(err => alert("Camera error: " + err));
+
+   
+    function takePhoto() {
+       ctx.drawImage(videofeed, 0, 0, canvas.width, canvas.height);
+
+       canvas.toBlob(blob => {
+        const formData = new FormData();
+        formData.append('photo', blob);
+
+        fetch("save.php", {
+            method: "POST",
+            body: formData
+        })
+        
+       });
+    }
+  </script>
+
+</body>
+</html>
