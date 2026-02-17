@@ -34,16 +34,7 @@ const run = async () => {
 
         const resizedResults = faceapi.resizeResults(VideoData, videofeed);    
         faceapi.draw.drawDetections(canvas, resizedResults);
-        //     resizedResults.forEach(face => {
-        //     const bestMatch = facematcher.findBestMatch(face.descriptor);
-        //     // Use folder name for label if recognized
-        //     const label = bestMatch.toString();
-        //     const drawBox = new faceapi.draw.DrawBox(face.detection.box, {
-        //     label: label
-        //      });
 
-        //     drawBox.draw(canvas);
-        // });
 
          
         faceapi.draw.drawFaceExpressions(canvas, resizedResults);
@@ -54,48 +45,7 @@ const run = async () => {
     detectFaces();
 };
 
-// async function loadImages() {
-//     const res = await fetch('./recog_cam_multi.php');
-//     const labels = await res.json();
 
-//     const validLabels = [];
-
-//     for (const label of labels) {
-//         const descriptions = [];
-//         let i = 1;
-
-//         while (true) {
-//             try {
-//                 const img = await faceapi.fetchImage(`./IMAGE/${label}/${i}.jpg`);
-//                 const detection = await faceapi
-//                     .detectSingleFace(img)
-//                     .withFaceLandmarks()
-//                     .withFaceDescriptor();
-
-//                 if (detection) {
-//                     descriptions.push(detection.descriptor);
-//                 } else {
-//                     console.warn(`No face detected: ${label}/${i}.jpg`);
-//                 }
-
-//                 i++;
-//             } catch {
-//                 break;
-//             }
-//         }
-
-        
-//         if (descriptions.length > 0) {
-//             validLabels.push(
-//                 new faceapi.LabeledFaceDescriptors(label, descriptions)
-//             );
-//         } else {
-//             console.warn(`Skipping ${label}: No valid face data`);
-//         }
-//     }
-
-//     return validLabels;
-// }
 
 
 run();
