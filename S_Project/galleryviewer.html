@@ -1,11 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Gallery</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery</title>
+<style>
+    body{
+        text-align:center;
+        background:#111;
+        color:white;
+        font-family:Arial;
+    }
+    #containerP{
+        display: flex;
+        justify-content: center;
+        gap:20px;
+        flex-wrap:wrap;
+        position: relative;
+        margin-top: 20px;
+    }
+    .imgBox{
+        border:2px solid white;
+        border-radius:10px;
+        overflow:hidden;
+        width:220px;
+        height:160px;
+        cursor:pointer;
+        transition:0.3s;
+    }
+    .imgBox:hover{
+        transform:scale(1.05);
+        border-color:#007bff;
+    }
+    .imgBox img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+    #back{
+        margin-top:20px;
+        padding:10px 15px;
+        font-size:16px;
+        border:none;
+        border-radius:5px;
+    }
+    #back:hover{
+        background:#007bff;
+        color:white;
+        cursor:pointer;
+    }
+    /* fullscreen preview */
+    #preview{
+        display:none;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,0.9);
+        justify-content:center;
+        align-items:center;
+        z-index:999;
+    }
+    #preview img{
+        max-width:90%;
+        max-height:90%;
+        border:3px solid white;
+        border-radius:10px;
+    }
+</style>
 </head>
 <body>
-    
+
+<h2>JS Face Recognition</h2>
+<h3>Captured Images Gallery</h3>
+
+<div id="containerP"></div>
+
+<button id="back" onclick="location.href='index.html'">Back to Camera</button>
+
+<div id="preview" onclick="this.style.display='none'">
+    <img id="previewImg">
+</div>
+
+<script>
+async function loadGallery(){
+    try{
+        const res = await fetch('galleryviewer.php');
+        const images = await res.json();
+
+        const container = document.getElementById('containerP');
+
+        if(images.length === 0){
+            container.innerHTML = "<h3>No images found</h3>";
+            return;
+        }
+
+        images.forEach(src => {
+            const div = document.createElement('div');
+            div.className = 'imgBox';
+            const img = document.createElement('img');
+            img.src = src;
+            img.onclick = () => previewImg(src);
+            div.appendChild(img);
+            container.appendChild(div);
+        });
+    } catch(e){
+        console.error(e);
+    }
+}
+
+function previewImg(src){
+    document.getElementById('preview').style.display = 'flex';
+    document.getElementById('previewImg').src = src;
+}
+
+// Load gallery on page load
+window.onload = loadGallery;
+</script>
+
 </body>
 </html>

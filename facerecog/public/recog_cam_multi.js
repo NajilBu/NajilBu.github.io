@@ -61,32 +61,43 @@ async function loadImages() {
     const labels = await res.json();
 
     const validLabels = [];
+    const exts = ['jpg', 'png'];
 
     for (const label of labels) {
         const descriptions = [];
         let i = 1;
 
         while (true) {
-            try {
-                const img = await faceapi.fetchImage(`./IMAGE/${label}/${i}.jpg`);
-                const detection = await faceapi
-                    .detectSingleFace(img)
-                    .withFaceLandmarks()
-                    .withFaceDescriptor();
+            let found = false;
 
-                if (detection) {
-                    descriptions.push(detection.descriptor);
-                } else {
-                    console.warn(`No face detected: ${label}/${i}.jpg`);
+            for (const ext of exts) {
+                try {
+                    const img = await faceapi.fetchImage(`./IMAGE/${label}/${i}.${ext}`);
+
+                    const detection = await faceapi
+                        .detectSingleFace(img)
+                        .withFaceLandmarks()
+                        .withFaceDescriptor();
+
+                    if (detection) {
+                        descriptions.push(detection.descriptor);
+                    } else {
+                        console.warn(`No face detected: ${label}/${i}.${ext}`);
+                    }
+
+                    found = true;
+                    break;
+
+                } catch (err) {
+                    // try next extension
                 }
-
-                i++;
-            } catch {
-                break;
             }
+
+            if (!found) break; // no jpg and no png → stop looping
+
+            i++;
         }
 
-        
         if (descriptions.length > 0) {
             validLabels.push(
                 new faceapi.LabeledFaceDescriptors(label, descriptions)
@@ -98,6 +109,7 @@ async function loadImages() {
 
     return validLabels;
 }
+
 
 
 run();
