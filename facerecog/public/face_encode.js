@@ -1,7 +1,26 @@
+ let captureCount = 0;
+    const MAX = 10;
+    let countdown = 5;
+
+    const instructions = [
+        "Look straight",
+        "Turn left",
+        "Turn right",
+        "Look up",
+        "Look down",
+        "Look straight",
+        "Turn left",
+        "Turn right",
+        "Look up",
+        "Look down"
+    ];
+
 const run = async () => {
     const videofeed = document.getElementById('video');
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
+
+   
 
     const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
     videofeed.srcObject = stream;
@@ -45,7 +64,60 @@ const run = async () => {
     detectFaces();
 };
 
+function startCapture(){
+    const user = document.getElementById('username').value.trim();
+    if(!user){
+        alert("Please enter a username");
+        return;
+    }
+        captureCount = 0;
+        startCountdown(user);
+}
+function  startCountdown(username){
 
+    if(captureCount >= MAX){
+        document.getElementById(`instruction`)
+        .innerText = "Capture complete!";
+        alert("Capture complete!");
+        return;
+    }
+
+    countdown = 5;
+    document.getElementById('instruction').innerText =
+        instructions[captureCount] + " | " + countdown;
+
+     
+    const timer = setInterval(() => {
+        countdown--;
+        document.getElementById('instruction').innerText =
+            instructions[captureCount] + " | " + countdown;
+        if(countdown === 0){
+            clearInterval(timer);
+            captureImage(username, captureCount + 1);
+            captureCount++;
+            setTimeout(() => startCountdown(username), 1000);
+        }   
+    }, 1000);
+}
+
+function captureImage(username, num){
+    const canvas = document.getElementById('canvas');
+    const video = document.getElementById('video'); 
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    canvas.getContext('2d').drawImage(video, 0, 0);
+
+    const img = canvas.toDataURL('image/jpeg');
+
+    fetch(`face_encode.php`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({image: img, user: username, num: num})
+    });
+}
 
 
 run();
