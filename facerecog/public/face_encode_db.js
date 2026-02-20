@@ -15,12 +15,21 @@
             "Look down"
         ];
 
+        const tickSound = document.getElementById("tickS");
+        const directionSound = document.getElementById("instrucS");
+
+        const soundMap = {
+            "Look straight": "sounds/straight.mp3",
+            "Turn left": "sounds/left.mp3",
+            "Turn right": "sounds/right.mp3",
+            "Look up": "sounds/up.mp3",
+            "Look down": "sounds/down.mp3"
+        };
+
     const run = async () => {
         const videofeed = document.getElementById('video');
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-
-    
 
         const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
         videofeed.srcObject = stream;
@@ -70,7 +79,7 @@
             captureCount = 0;
             startCountdown(user);
     }
-    function  startCountdown(username){
+    function startCountdown(username){
 
         if(captureCount >= MAX){
             document.getElementById(`instruction`)
@@ -80,17 +89,36 @@
         }
 
         countdown = 5;
-        document.getElementById('instruction').innerText =
-            instructions[captureCount] + " | " + countdown;
+        const instruction = instructions[captureCount];
 
-        
+        document.getElementById('instruction').innerText =
+            instruction + " | " + countdown;
+           
+           if(soundMap[instruction]){
+                    directionSound.src = soundMap[instruction];
+                    directionSound.currentTime = 0;
+                    directionSound.playbackRate = 0.7; 
+                    directionSound.play();
+            }
+
+            tickSound.currentTime = 0;
+            tickSound.play();
+
+
         const timer = setInterval(async () => {
+
+          
             countdown--;
             document.getElementById('instruction').innerText =
                 instructions[captureCount] + " | " + countdown;
             if(countdown === 0){
                 clearInterval(timer);
+                tickSound.pause();
+                tickSound.currentTime = 0;
+                const instruction = instructions[captureCount];
+                
                 await captureEncoding(username, captureCount + 1);
+             
                 captureCount++;
                 setTimeout(() => startCountdown(username), 1000);
             }   
