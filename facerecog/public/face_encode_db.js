@@ -53,9 +53,6 @@
 
             const resizedResults = faceapi.resizeResults(VideoData, videofeed);    
             faceapi.draw.drawDetections(canvas, resizedResults);
-
-
-            
             faceapi.draw.drawFaceExpressions(canvas, resizedResults);
 
             requestAnimationFrame(detectFaces);
@@ -87,35 +84,47 @@
             instructions[captureCount] + " | " + countdown;
 
         
-        const timer = setInterval(() => {
+        const timer = setInterval(async () => {
             countdown--;
             document.getElementById('instruction').innerText =
                 instructions[captureCount] + " | " + countdown;
             if(countdown === 0){
                 clearInterval(timer);
-                captureImage(username, captureCount + 1);
+                await captureEncoding(username, captureCount + 1);
                 captureCount++;
                 setTimeout(() => startCountdown(username), 1000);
             }   
         }, 1000);
     }
 
-    function captureImage(username, num){
-        const canvas = document.getElementById('canvas');
+    async function captureEncoding(username, num){
+       
         const video = document.getElementById('video'); 
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
+        const detections = await faceapi
+        .detectSingleFace(video)
+        .withFaceLandmarks()
+        .withFaceDescriptor();
+        
+        // canvas.width = video.videoWidth;
+        // canvas.height = video.videoHeight;
 
-        canvas.getContext('2d').drawImage(video, 0, 0);
+        if(!detections){
+            alert("No face detected, please try again.");
+            return;
+        }
 
-        const img = canvas.toDataURL('image/jpeg');
+        // canvas.getContext('2d').drawImage(video, 0, 0);
 
-        fetch(`face_encode.php`, {
+        // const img = canvas.toDataURL('image/jpeg');
+
+        const encoding = Array.from(detections.descriptor);
+
+        fetch(`face_encode_db.php`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({image: img, user: username, num: num})
+            body: JSON.stringify({user: username, num: num , encoding: encoding})
         });
     }
 
