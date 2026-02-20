@@ -1,35 +1,32 @@
 <?php
 header('Content-Type: application/json');
-ini_set('display_errors', 0);
-error_reporting(0);
 
-$dir = "./ENCODING";
-if(!is_dir($dir)){
+$host = "localhost";
+$db   = "face_recognition";
+$user = "root";
+$pass = "";
+
+$conn = new mysqli($host, $user, $pass, $db);
+if ($conn->connect_error) {
     echo json_encode([]);
     exit;
 }
 
-$folders = array_values(array_filter(scandir($dir), function($f) use ($dir) {
-    return $f !== '.' && $f !== '..' && is_dir("$dir/$f");
-}));
+$sql = "SELECT username, encodings FROM face_encodings";
+$result = $conn->query($sql);
 
-$result = [];
+$data = [];
 
-foreach ($folders as $folder) {
-    $files = glob("$dir/$folder/*.json");
-    $encodings = [];
-    foreach ($files as $file) {
-        $content = file_get_contents($file);
-        if($content){
-            $encoding = json_decode($content, true);
-            if($encoding) $encodings[] = $encoding;
-        }
-    }
-    if(count($encodings) > 0){
-        $result[$folder] = $encodings;
+while ($row = $result->fetch_assoc()) {
+    $encodings = json_decode($row['encodings'], true);
+
+    if (is_array($encodings) && count($encodings) > 0) {
+        $data[$row['username']] = $encodings;
     }
 }
 
-echo json_encode($result);
+echo json_encode($data);
+$conn->close();
 exit;
+
 ?>

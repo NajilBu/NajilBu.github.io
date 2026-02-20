@@ -124,7 +124,7 @@
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({user: username, num: num , encoding: encoding})
+            body: JSON.stringify({user: username, encoding: encoding})
         });
     }
 

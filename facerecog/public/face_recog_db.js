@@ -16,7 +16,11 @@ const run = async () => {
  
          
     const labelDesc = await loadImages();
-    let facematcher = new faceapi.FaceMatcher(labelDesc, 0.6);
+    if (labelDesc.length === 0) {
+    alert("No faces in database yet");
+    return;
+}
+    let facematcher = new faceapi.FaceMatcher(labelDesc, 0.5);
     // Set canvas size once
     canvas.width = videofeed.width;
     canvas.height = videofeed.height;
@@ -60,6 +64,7 @@ async function loadImages() {
     const res = await fetch('./face_recog_db.php');
     const text = await res.text();
     console.log(text);
+
     const LabeledDescriptors = [];
     const data = JSON.parse(text);
    
