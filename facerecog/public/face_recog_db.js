@@ -20,6 +20,15 @@ const run = async () => {
     alert("No faces in database yet");
     return;
 }
+const scanCooldown = {};
+
+function canScan(label){
+    if(!scanCooldown[label] || Date.now() - scanCooldown[label] > 15000){
+        scanCooldown[label] = Date.now();
+        return true;
+    }
+    return false;
+}
     let facematcher = new faceapi.FaceMatcher(labelDesc, 0.5);
     // Set canvas size once
     canvas.width = videofeed.width;
@@ -38,16 +47,31 @@ const run = async () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         faceapi.matchDimensions(canvas, videofeed);
 
-        const resizedResults = faceapi.resizeResults(VideoData, videofeed);    
+        // const resizedResults = faceapi.resizeResults(VideoData, videofeed);    
 
-            resizedResults.forEach(face => {
+        //     resizedResults.forEach(face => {
+        //     const bestMatch = facematcher.findBestMatch(face.descriptor);
+        //     // Use folder name for label if recognized
+        //     const label = bestMatch.label;
+        //     const drawBox = new faceapi.draw.DrawBox(face.detection.box, {
+        //     label: label
+        //      });
+
+        //     drawBox.draw(canvas);
+        // });
+        resizedResults.forEach(face => {
             const bestMatch = facematcher.findBestMatch(face.descriptor);
-            // Use folder name for label if recognized
-            const label = bestMatch.toString();
-            const drawBox = new faceapi.draw.DrawBox(face.detection.box, {
-            label: label
-             });
+            const label = bestMatch.label;
 
+            if(label !== "unknown"){
+                if(canScan(label)){
+                    sendAttendance(label);
+                }
+            }
+
+            const drawBox = new faceapi.draw.DrawBox(face.detection.box, {
+                label: label
+            });
             drawBox.draw(canvas);
         });
 
@@ -76,6 +100,20 @@ async function loadImages() {
     }
 
     return LabeledDescriptors;
+}
+async function sendAttendance(username){
+    const schedule = new Date().toISOString().slice(0,16);
+
+    const res = await fetch('../checklist/api.php?action=face_scan',{
+        method:'POST',
+        body:new URLSearchParams({
+            username: username,
+            schedule: schedule
+        })
+    });
+
+    const data = await res.json();
+    console.log("Attendance:", data);
 }
 
 

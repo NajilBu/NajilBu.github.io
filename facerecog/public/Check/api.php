@@ -105,6 +105,55 @@ if($action==='process'){
     echo json_encode(['status'=>'ok']);
     exit;
 }
+// ==========================
+// FACE SCAN LOGGING API
+// ==========================
+if($action === 'face_scan'){
+    $username = $_POST['username'];
+
+    $stmt = $conn->prepare("SELECT id FROM students WHERE name=? LIMIT 1");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $res = $stmt->get_result();
+
+    if($res->num_rows === 0){
+        echo json_encode(['status'=>'error','msg'=>'Student not found']);
+        exit;
+    }
+
+    $row = $res->fetch_assoc();
+    $id = $row['id'];
+
+    $schedule = $_POST['schedule'] ?? date('Y-m-d H:i');
+    $mode = $_SESSION['mode'] ?? 'IN';
+
+    if($mode === 'IN'){
+        $stmt = $conn->prepare("INSERT INTO log (student_id, lab, schedule, time_In) VALUES (?,?,?,NOW())");
+        $lab = 'LAB1';
+        $stmt->bind_param("iss",$id,$lab,$schedule);
+        $stmt->execute();
+        echo json_encode(['status'=>'in','name'=>$username]);
+        exit;
+    }
+
+    if($mode === 'OUT'){
+        $check = $conn->query("SELECT id_log FROM log WHERE student_id=$id AND time_Out IS NULL ORDER BY id_log DESC LIMIT 1");
+
+        if($check->num_rows > 0){
+            $stmt = $conn->prepare("UPDATE log SET time_Out=NOW(), schedule=? WHERE student_id=? AND time_Out IS NULL ORDER BY id_log DESC LIMIT 1");
+            $stmt->bind_param("si",$schedule,$id);
+            $stmt->execute();
+        } else {
+            $stmt = $conn->prepare("INSERT INTO log (student_id, lab, schedule, time_Out) VALUES (?,?,?,NOW())");
+            $lab = 'LAB1';
+            $stmt->bind_param("iss",$id,$lab,$schedule);
+            $stmt->execute();
+        }
+
+        echo json_encode(['status'=>'out','name'=>$username]);
+        exit;
+    }
+}
 
 // ---------------- INVALID REQUEST ----------------
 echo json_encode(['error'=>'Invalid API request']);
