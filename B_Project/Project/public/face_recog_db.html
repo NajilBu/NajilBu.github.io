@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <style>
+    body{
+    text-align:center;
+    background:#111;
+    color:white;
+    font-family:Arial;
+}
+    #containerP{
+        display: flex;
+        justify-content: center;
+        gap:20px;
+        flex-wrap:wrap;
+        position: relative;
+    }
+    canvas{
+        position: absolute;
+    }
+    video{
+        border:2px solid white;
+        border-radius:10px; 
+        
+    }
+    #regis {
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+    }
+    #regis:hover{
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+    #toggleAttendance {
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+    }
+     #toggleAttendance:hover{
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+ </style>
+ 
+<body>
+    <h2>JS Face Recognition</h2>
+    <div>
+                <h3>IN&OUT</h3>
+         </div>
+    <div id="containerP">
+         
+        <video id="video" width="720" height="560" autoplay muted></video>  
+        <canvas id="canvas"></canvas>   
+    
+    </div>
+    <div>
+       
+
+    <button id="regis" onclick="window.location.href='face_encode.html'">Encode a face</button>
+
+    <button id="toggleAttendance" class="btn">
+    Enable Attendance
+    </button>
+</a>
+    </div>
+
+    <script src="./face-api.min.js"></script>
+    <script src="./face_recog_db.js"></script>
+</body>
+</html>
