@@ -27,7 +27,7 @@
         border-radius:10px; 
         
     }
-    #regis{
+    #regis {
         margin-top: 20px;
         padding: 10px;
         font-size: 16px;
@@ -35,6 +35,18 @@
         border-radius: 5px;
     }
     #regis:hover{
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+    #toggleAttendance {
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+    }
+     #toggleAttendance:hover{
         background-color: #007bff;
         color: white;
         cursor: pointer;
@@ -53,8 +65,13 @@
     
     </div>
     <div>
-        <a href="face_encode.html">
-    <button id="regis">Encode a face</button>
+       
+
+    <button id="regis" onclick="window.location.href='face_encode.html'">Encode a face</button>
+
+    <button id="toggleAttendance" class="btn">
+    Enable Attendance
+    </button>
 </a>
     </div>
 

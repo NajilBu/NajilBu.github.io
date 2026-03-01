@@ -21,7 +21,19 @@ const run = async () => {
     return;
 }
 const scanCooldown = {};
+let attendanceEnabled = false;
 
+const btn = document.getElementById('toggleAttendance');
+
+btn.addEventListener('click', () => {
+    attendanceEnabled = !attendanceEnabled;
+
+    btn.textContent = attendanceEnabled 
+        ? "Attendance Enabled" 
+        : "Enable Attendance";
+
+    btn.classList.toggle('active', attendanceEnabled);
+});
 function canScan(label){
     if(!scanCooldown[label] || Date.now() - scanCooldown[label] > 15000){
         scanCooldown[label] = Date.now();
@@ -29,10 +41,12 @@ function canScan(label){
     }
     return false;
 }
-    let facematcher = new faceapi.FaceMatcher(labelDesc, 0.5);
+    let facematcher = new faceapi.FaceMatcher(labelDesc, 0.65);
     // Set canvas size once
-    canvas.width = videofeed.width;
-    canvas.height = videofeed.height;
+    videofeed.onloadedmetadata = () => {
+    canvas.width = videofeed.videoWidth;
+    canvas.height = videofeed.videoHeight;
+    };  
     canvas.style.left = videofeed.offsetLeft + 'px';
     canvas.style.top = videofeed.offsetTop + 'px';
 
@@ -40,15 +54,14 @@ function canScan(label){
         const VideoData = await faceapi.detectAllFaces(videofeed)
             .withFaceLandmarks()
             .withFaceDescriptors()
-            .withAgeAndGender()
-            .withFaceExpressions();
+        
 
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         faceapi.matchDimensions(canvas, videofeed);
-
-        // const resizedResults = faceapi.resizeResults(VideoData, videofeed);    
-
+        const resizedResults = faceapi.resizeResults(VideoData,videofeed);
+   
+    
         //     resizedResults.forEach(face => {
         //     const bestMatch = facematcher.findBestMatch(face.descriptor);
         //     // Use folder name for label if recognized
@@ -59,11 +72,13 @@ function canScan(label){
 
         //     drawBox.draw(canvas);
         // });
+
+        
         resizedResults.forEach(face => {
             const bestMatch = facematcher.findBestMatch(face.descriptor);
             const label = bestMatch.label;
 
-            if(label !== "unknown"){
+           if(attendanceEnabled && label !== "unknown"){
                 if(canScan(label)){
                     sendAttendance(label);
                 }
@@ -73,10 +88,11 @@ function canScan(label){
                 label: label
             });
             drawBox.draw(canvas);
+            console.log(`Detected: ${label}`);
         });
 
          
-        faceapi.draw.drawFaceExpressions(canvas, resizedResults);
+        //faceapi.draw.drawFaceExpressions(canvas, resizedResults);
 
         requestAnimationFrame(detectFaces);
     };
@@ -87,7 +103,7 @@ function canScan(label){
 async function loadImages() {
     const res = await fetch('./face_recog_db.php');
     const text = await res.text();
-    console.log(text);
+   
 
     const LabeledDescriptors = [];
     const data = JSON.parse(text);
@@ -104,7 +120,7 @@ async function loadImages() {
 async function sendAttendance(username){
     const schedule = new Date().toISOString().slice(0,16);
 
-    const res = await fetch('../checklist/api.php?action=face_scan',{
+    const res = await fetch('../public/Check/api.php?action=face_scan',{
         method:'POST',
         body:new URLSearchParams({
             username: username,
