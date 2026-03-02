@@ -78,12 +78,6 @@ function canScan(label){
             const bestMatch = facematcher.findBestMatch(face.descriptor);
             const label = bestMatch.label;
 
-           if(attendanceEnabled && label !== "unknown"){
-                if(canScan(label)){
-                    sendAttendance(label);
-                }
-            }
-
             const drawBox = new faceapi.draw.DrawBox(face.detection.box, {
                 label: label
             });
@@ -116,20 +110,6 @@ async function loadImages() {
     }
 
     return LabeledDescriptors;
-}
-async function sendAttendance(username){
-    const schedule = new Date().toISOString().slice(0,16);
-
-    const res = await fetch('../public/Check/api.php?action=face_scan',{
-        method:'POST',
-        body:new URLSearchParams({
-            username: username,
-            schedule: schedule
-        })
-    });
-
-    const data = await res.json();
-    console.log("Attendance:", data);
 }
 
 
