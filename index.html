@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,45 +8,52 @@
     <link rel="icon" href="SOURCES/pxArt.png" type="image/x-icon">
     <style>
         * {
-    box-sizing: border-box;
-    }
+            box-sizing: border-box;
+        }
 
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-          
+
         }
-        main{
+
+        main {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
         }
+
         ol {
             padding: 25px;
             display: block;
         }
+
         li {
             margin: 10px 5px;
-           
+
         }
+
         a {
             text-decoration: none;
             color: #007bff;
             font-size: 18px;
         }
+
         a:hover {
             text-decoration: underline;
         }
-        li:hover{
+
+        li:hover {
             transform: translateX(7px);
         }
+
         div::-webkit-scrollbar {
-        display: none;
+            display: none;
         }
 
-        .container{
-            width: 400px;
+        .container {
+            width: 350px;
             height: 600px;
             border: 2px solid gray;
             box-shadow: 2px 5px 10px gray;
@@ -54,157 +62,181 @@
             animation: slide ease both;
             padding-left: 5px;
             animation-duration: 2s;
-            
-            
+
+
         }
-        h2{
+
+        h2 {
             margin: 5px;
             text-align: center;
 
         }
-        .container:nth-child(4n +1){ animation-delay: 0s; }
-        .container:nth-child(4n +2){ animation-delay: 0.2s; }
-        .container:nth-child(4n +3){ animation-delay: 0.4s; }
-        .container:nth-child(4n +4){ animation-delay: 0.6s; }
-        @keyframes slide{
-            from{
-            opacity: 0;
-            transform: translateY(-100%);
+
+        .container:nth-child(4n +1) {
+            animation-delay: 0s;
         }
-            to{
-            opacity: 1;
-            transform: translateY(0);
+
+        .container:nth-child(4n +2) {
+            animation-delay: 0.2s;
         }
+
+        .container:nth-child(4n +3) {
+            animation-delay: 0.4s;
+        }
+
+        .container:nth-child(4n +4) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes slide {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
+
 <body>
     <h1>Navigate to Practices Pages</h1>
     <main>
-         <div class="container" id="html">
-        <h2>HTML</h2>
-        <div>
-            <h3>Tutorial</h3>
-            <ol >
-                <li><a href="HTML/audio.html" target="_blank">Audio</a></li>
-                <li><a href="HTML/favicon.html" target="_blank">Icon Image</a></li>
-                <li><a href="HTML/fonty.html" target="_blank">Fonty</a></li>
-                <li><a href="HTML/form.html" target="_blank">Form</a></li>
-                <li><a href="HTML/formating.html" target="_blank">Formating</a></li>
-                <li><a href="HTML/headfoot.html" target="_blank">Headfoot</a></li>
-                <li><a href="HTML/hyperlink.html" target="_blank">Hyperlink</a></li>
-                <li><a href="HTML/images.html" target="_blank">IMAGES</a></li>
-                <li><a href="HTML/list.html" target="_blank">List</a></li>
-                <li><a href="HTML/pagination.html" target="_blank">Pagination</a></li>
-                <li><a href="HTML/position.html" target="_blank">Position</a></li>
-                <li><a href="HTML/print.html" target="_blank">This is the title</a></li>
-                <li><a href="HTML/pseudoclas.html" target="_blank">Pseudoclas</a></li>
-                <li><a href="HTML/span.html" target="_blank">Span</a></li>
-                <li><a href="HTML/tables.html" target="_blank">Tables</a></li>
-                <li><a href="HTML/trycss.html" target="_blank">Trycss</a></li>
-                <li><a href="HTML/Videos.html" target="_blank">Video</a></li>
-                <li><a href="HTML/wnh.html" target="_blank">Wnh</a></li>
-                <li><a href="HTML/dropdown.html" target="_blank">Dropdown</a></li>
-                <li><a href="HTML/NaviBar.html" target="_blank">Navibar</a></li>
-                <li><a href="HTML/Layout.html" target="_blank">Web Layout</a></li>
-                <li><a href="HTML/Imagegal.html" target="_blank">Image Gallery</a></li>
-                <li><a href="HTML/flexboxes.html" target="_blank">Boxes that flex</a></li>
-                <li><a href="HTML/transform.html" target="_blank">Transformer</a></li>
-                <li><a href="HTML/anima.html" target="_blank">Animation</a></li>
-            </ol>
-        </div>
-       
-       
-    </div>
-    <div class="container" id="js">
-        <h2>JAVASCRIPT</h2>
-        <div>
-            <h3>Tutorial</h3>
-            <ol>
-                <li><a href="Javascript/intro.html" target="_blank">Start</a></li>
-                <li><a href="Javascript/variable.html" target="_blank">Variable</a></li>
-                <li><a href="Javascript/arithmetric.html" target="_blank">arithmetric</a></li>
-                <li><a href="Javascript/input.html" target="_blank">User input</a></li>
-                <li><a href="Javascript/conversion.html" target="_blank">Datatype conversion</a></li>
-                <li><a href="Javascript/constant.html" target="_blank">Constants</a></li>
-                <li><a href="Javascript/counter.html" target="_blank">Counter</a></li>
-                <li><a href="Javascript/Mathy.html" target="_blank">Math</a></li>
-                <li><a href="Javascript/random.html" target="_blank">Randomizer</a></li>
-                <li><a href="Javascript/ifstate.html" target="_blank">If statement</a></li>
-            </ol>  
-        </div>
-        
-    </div>
+        <div class="container" id="html">
+            <h2>HTML</h2>
+            <div>
+                <h3>Tutorial</h3>
+                <ol>
+                    <li><a href="HTML/1_audio.html" target="_blank">Audio</a></li>
+                    <li><a href="HTML/2_favicon.html" target="_blank">Icon Image</a></li>
+                    <li><a href="HTML/3_fonty.html" target="_blank">Fonty</a></li>
+                    <li><a href="HTML/4_form.html" target="_blank">Form</a></li>
+                    <li><a href="HTML/5_formating.html" target="_blank">Formating</a></li>
+                    <li><a href="HTML/6_headfoot.html" target="_blank">Headfoot</a></li>
+                    <li><a href="HTML/7_hyperlink.html" target="_blank">Hyperlink</a></li>
+                    <li><a href="HTML/8_images.html" target="_blank">IMAGES</a></li>
+                    <li><a href="HTML/9_list.html" target="_blank">List</a></li>
+                    <li><a href="HTML/10_pagination.html" target="_blank">Pagination</a></li>
+                    <li><a href="HTML/11_position.html" target="_blank">Position</a></li>
+                    <li><a href="HTML/12_print.html" target="_blank">This is the title</a></li>
+                    <li><a href="HTML/13_pseudoclas.html" target="_blank">Pseudoclas</a></li>
+                    <li><a href="HTML/14_span.html" target="_blank">Span</a></li>
+                    <li><a href="HTML/15_tables.html" target="_blank">Tables</a></li>
+                    <li><a href="HTML/16_trycss.html" target="_blank">Trycss</a></li>
+                    <li><a href="HTML/17_Videos.html" target="_blank">Video</a></li>
+                    <li><a href="HTML/18_wnh.html" target="_blank">Wnh</a></li>
+                    <li><a href="HTML/19_dropdown.html" target="_blank">Dropdown</a></li>
+                    <li><a href="HTML/20_NaviBar.html" target="_blank">Navibar</a></li>
+                    <li><a href="HTML/21_Layout.html" target="_blank">Web Layout</a></li>
+                    <li><a href="HTML/22_Imagegal.html" target="_blank">Image Gallery</a></li>
+                    <li><a href="HTML/23_flexboxes.html" target="_blank">Boxes that flex</a></li>
+                    <li><a href="HTML/24_transform.html" target="_blank">Transformer</a></li>
+                    <li><a href="HTML/25_anima.html" target="_blank">Animation</a></li>
+                </ol>
+            </div>
 
-    <div class="container" id="React">
-        <h2>React</h2>
-        
-        <div>
-            <h3>Tutorial</h3>
-            <ol>
-                <li><a href="" target="_blank"></a></li>
-            </ol>  
-        </div> 
-    </div>
 
-    <div class="container" id="s_proj">
-        <h2>Simple Projects</h2>
-        <div>
-            <h3>Smaller</h3>
-             <ol>   
-                <li><a href="S_Project/bouncing.html" target="_blank">Circle Bouncing</a></li>
-                <li><a href="HTML/whole.html" target="_blank">Misa website</a></li>
-                <li><a href="HTML/Practice1.html" target="_blank">Mahh Page</a></li>
-                <li><a href="S_Project/Dice.html" target="_blank">Roll Dice</a></li>
-                <li><a href="S_Project/weblearn.html" target="_blank">LearnHub</a></li>
-                <li><a href="S_Project/scroll_up.html" target="_blank">Scroll up Animation</a></li>
-                <li><a href="S_Project/PopulateElem.html" target="_blank">Populate div</a></li>
-                <li><a href="S_Project/Takepic.html" target="_blank">Take Picture</a></li>
-                <li><a href="S_Project/galleryviewer.html" target="_blank">Gallery Viewer</a></li>
-                <li><a href="facerecog/public/Check/checklist.html" target="_blank">Checklist</a></li>
-                
-            </ol>  
         </div>
-    </div>
+        <div class="container" id="js">
+            <h2>JAVASCRIPT</h2>
+            <div>
+                <h3>Tutorial</h3>
+                <ol>
+                    <li><a href="Javascript/1_intro.html" target="_blank">Start</a></li>
+                    <li><a href="Javascript/2_variable.html" target="_blank">Variable</a></li>
+                    <li><a href="Javascript/3_arithmetric.html" target="_blank">arithmetric</a></li>
+                    <li><a href="Javascript/4_input.html" target="_blank">User input</a></li>
+                    <li><a href="Javascript/5_conversion.html" target="_blank">Datatype conversion</a></li>
+                    <li><a href="Javascript/6_constant.html" target="_blank">Constants</a></li>
+                    <li><a href="Javascript/7_counter.html" target="_blank">Counter</a></li>
+                    <li><a href="Javascript/8_Mathy.html" target="_blank">Math</a></li>
+                    <li><a href="Javascript/9_random.html" target="_blank">Randomizer</a></li>
+                    <li><a href="Javascript/10_ifstate.html" target="_blank">If statement</a></li>
+                    <li><a href="Javascript/11_Checked.html" target="_blank">Checked</a></li>
+                </ol>
+            </div>
 
-    <div class="container" id="py_comvis">
-        <h2>Computer Vision</h2>
-        <div>
-            <h3>Smaller</h3>
-             <ol>
-                <li><a href="Python/html/opencam.html" target="_blank"> Webcam</a></li>
-                <li><a href="facerecog/public/webcam.html" target="_blank">Functional Webcam</a></li>
-                <li><a href="facerecog/public/detection.html" target="_blank">Face Detection</a></li>
-                <li><a href="facerecog/public/recognition.html" target="_blank">Face Recognition</a></li>
-                <li><a href="facerecog/public/detect_cam.html" target="_blank">Face Detection with Webcam</a></li>
-                <li><a href="facerecog/public/recog_cam.html" target="_blank">Face Recognition with Webcam</a></li>
-                <li><a href="facerecog/public/recog_cam_multi.html" target="_blank">Face Recognition with Webcam (Multiple)</a></li>
-                <li><a href="facerecog/public/face_encode.html" target="_blank">Face Encoding with Webcam(picture/folder)</a></li>
-                <li><a href="facerecog/public/face_encode_db.html" target="_blank">Face Encoding with Webcam(vector/db) Multiple</a></li>
-                <li><a href="facerecog/public/face_recog_db.html" target="_blank">Face Recognition with Webcam(vector/db) Multiple</a></li>
-                
-
-            </ol>
         </div>
-    </div>
 
-    <div class="container" id="b_proj">
-        <h2>Projects to do</h2>
-         <div>
-            <h3>Full</h3>
-            <ol>
-                <li><a href="B_Project/index.html" target="_blank">My Portfolio</a></li>
-                <li><a href="" target="_blank">Market list</a></li>
-                <li><a href="" target="_blank">call for disab</a></li>
-                <li><a href="" target="_blank">Life notification</a></li>
-                <li><a href="" target="_blank">Snake and ladder</a></li>
-                <li><a href="B_Project/Project/public/Check/checklist.html" target="_blank">Working time in/out face recognition</a></li>
-            </ol> 
+        <div class="container" id="React">
+            <h2>React</h2>
+
+            <div>
+                <h3>Tutorial</h3>
+                <ol>
+                    <li><a href="" target="_blank"></a></li>
+                </ol>
+            </div>
         </div>
-    </div>
- 
+
+        <div class="container" id="s_proj">
+            <h2>Simple Projects</h2>
+            <div>
+                <h3>Smaller</h3>
+                <ol>
+                    <li><a href="S_Project/1_bouncing.html" target="_blank">Circle Bouncing</a></li>
+                    <li><a href="HTML/2_whole.html" target="_blank">Misa website</a></li>
+                    <li><a href="HTML/3_Practice1.html" target="_blank">Mahh Page</a></li>
+                    <li><a href="S_Project/4_Dice.html" target="_blank">Roll Dice</a></li>
+                    <li><a href="S_Project/5_weblearn.html" target="_blank">LearnHub</a></li>
+                    <li><a href="S_Project/6_scroll_up.html" target="_blank">Scroll up Animation</a></li>
+                    <li><a href="S_Project/7_PopulateElem.html" target="_blank">Populate div</a></li>
+                    <li><a href="S_Project/8_Takepic.html" target="_blank">Take Picture</a></li>
+                    <li><a href="S_Project/9_galleryviewer.html" target="_blank">Gallery Viewer</a></li>
+
+                </ol>
+            </div>
+        </div>
+
+        <!-- <div class="container" id="py_comvis">
+            <h2>Computer Vision</h2>
+            <div>
+                <h3>Smaller</h3>
+                <ol>
+                    <li><a href="Python/html/opencam.html" target="_blank"> Webcam</a></li>
+                    <li><a href="facerecog/public/webcam.html" target="_blank">Functional Webcam</a></li>
+                    <li><a href="facerecog/public/detection.html" target="_blank">Face Detection</a></li>
+                    <li><a href="facerecog/public/recognition.html" target="_blank">Face Recognition</a></li>
+                    <li><a href="facerecog/public/detect_cam.html" target="_blank">Face Detection with Webcam</a></li>
+                    <li><a href="facerecog/public/recog_cam.html" target="_blank">Face Recognition with Webcam</a></li>
+                    <li><a href="facerecog/public/recog_cam_multi.html" target="_blank">Face Recognition with Webcam
+                            (Multiple)</a></li>
+                    <li><a href="facerecog/public/face_encode.html" target="_blank">Face Encoding with
+                            Webcam(picture/folder)</a></li>
+                    <li><a href="facerecog/public/face_encode_db.html" target="_blank">Face Encoding with
+                            Webcam(vector/db) Multiple</a></li>
+                    <li><a href="facerecog/public/face_recog_db.html" target="_blank">Face Recognition with
+                            Webcam(vector/db) Multiple</a></li>
+
+
+                </ol>
+            </div>
+        </div> -->
+
+        <div class="container" id="b_proj">
+            <h2>Projects to do</h2>
+            <div>
+                <h3>Full</h3>
+                <ol>
+                    <li><a href="B_Project/1_index.html" target="_blank">My Portfolio</a></li>
+                    <li><a href="" target="_blank">Market list</a></li>
+                    <li><a href="" target="_blank">call for disab</a></li>
+                    <li><a href="" target="_blank">Life notification</a></li>
+                    <li><a href="" target="_blank">Snake and ladder</a></li>
+                    <li><a href="" target="_blank">Note Taker</a></li>
+                </ol>
+            </div>
+        </div>
+
     </main>
-   
-    
+
+    <script>
+        console.log(window.innerWidth + "x" + window.innerHeight)
+
+    </script>
 </body>
+
 </html>

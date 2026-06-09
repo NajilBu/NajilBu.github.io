@@ -35,11 +35,11 @@
         videofeed.srcObject = stream;
 
         await Promise.all([
-            faceapi.nets.ssdMobilenetv1.loadFromUri('./models'),
-            faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
-            faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
-            faceapi.nets.ageGenderNet.loadFromUri('./models'),
-            faceapi.nets.faceExpressionNet.loadFromUri('./models')
+            faceapi.nets.ssdMobilenetv1.loadFromUri('./Project/public/models'),
+            faceapi.nets.faceLandmark68Net.loadFromUri('./Project/public/models'),
+            faceapi.nets.faceRecognitionNet.loadFromUri('./Project/public/models'),
+            faceapi.nets.ageGenderNet.loadFromUri('./Project/public/models'),
+            faceapi.nets.faceExpressionNet.loadFromUri('./Project/public/models')
         ]);
     
             

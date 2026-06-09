@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checked</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    #mycheckbox {
+        width: 20px;
+        height: 20px;
+    }
+</style>
+
+<body>
+    <h3>Click checkbox to subscribe to newsletter</h3>
+    <input type="checkbox" id="mycheckbox">
+    <p id="result">Not Checked</p>
+    <script>
+
+        document.getElementById("mycheckbox").onclick = function () {
+            const checkbox = document.getElementById("mycheckbox");
+            const result = document.getElementById("result");
+
+            if (checkbox.checked) {
+                result.textContent = "Checked";
+            } else {
+                result.textContent = "Not Checked";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -7,11 +7,11 @@ const run = async () => {
     videofeed.srcObject = stream;
 
      await Promise.all([
-        faceapi.nets.ssdMobilenetv1.loadFromUri('./models'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
-        faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
-        faceapi.nets.ageGenderNet.loadFromUri('./models'),
-        faceapi.nets.faceExpressionNet.loadFromUri('./models')
+        faceapi.nets.ssdMobilenetv1.loadFromUri('./Project/public/models'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('./Project/public/models'),
+        faceapi.nets.faceRecognitionNet.loadFromUri('./Project/public/models'),
+        faceapi.nets.ageGenderNet.loadFromUri('./Project/public/models'),
+        faceapi.nets.faceExpressionNet.loadFromUri('./Project/public/models')
     ]);
  
          
@@ -101,7 +101,7 @@ function canScan(label){
 };
 
 async function loadImages() {
-    const res = await fetch('./face_recog_db.php');
+    const res = await fetch('./B_Project/face_recog_db.php');
     const text = await res.text();
    
 
@@ -120,7 +120,7 @@ async function loadImages() {
 async function sendAttendance(username){
     const schedule = new Date().toISOString().slice(0,16);
 
-    const res = await fetch('../public/Check/api.php?action=face_scan',{
+    const res = await fetch('./B_Project/Project/public/Check/api.php?action=face_scan',{
         method:'POST',
         body:new URLSearchParams({
             username: username,
