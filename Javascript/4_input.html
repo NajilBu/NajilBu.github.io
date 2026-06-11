@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User input</title>
+    <title>User Input</title>
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
+
 <body>
-    
+
     <h1>Welcome</h1>
     <h2 id="name"></h2>
 
@@ -15,6 +24,17 @@
         <input id="namein" type="text"><br><br>
         <button id="subname">submit</button>
     </div>
+
+    <div
+        style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>Getting User Input:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>// 1. From window prompt
+winprom = window.prompt(`enter name`);
+
+// 2. From HTML input box
+username = document.getElementById("namein").value;</code></pre>
+    </div>
+
     <script>
 
         let winprom;
@@ -25,10 +45,11 @@
 
 
         let username;
-        document.getElementById("subname").onclick = function(){
+        document.getElementById("subname").onclick = function () {
             username = document.getElementById("namein").value;
             document.getElementById("name").textContent = `${username}`;
         }
     </script>
 </body>
+
 </html>

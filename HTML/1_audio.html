@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audio</title>
+    <title>Audio Element</title>
 </head>
+
+<style>
+    body {
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
+
 <body>
     <audio controls muted>
         <source src="../SOURCES/KZ Tandingan - Till My Heartaches End (Lyrics).mp3">
@@ -12,9 +21,21 @@
     <!--controls adds play button, muted starts the audio muted-->
 
     <button onclick="document.getElementById('aud').play()">Sound on a button</button>
-   <!--onclick plays the audio when button is clicked-->
-   <!--by geeting the audio's id -->
+    <!--onclick plays the audio when button is clicked-->
+    <!--by geeting the audio's id -->
 
     <audio id="aud" src="../SOURCES/saja-boy-jingle.mp3"></audio>
+    <br>
+    <div
+        style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>Audio Element Code:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>&lt;audio controls muted&gt;
+    &lt;source src="../SOURCES/audio.mp3"&gt;
+&lt;/audio&gt;
+
+&lt;!-- Button to play via Javascript --&gt;
+&lt;button onclick="document.getElementById('aud').play()"&gt;Play&lt;/button&gt;</code></pre>
+    </div>
 </body>
+
 </html>

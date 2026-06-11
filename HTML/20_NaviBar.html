@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation</title>
+    <title>Navigation Bar</title>
 </head>
 
 <style>
@@ -32,6 +32,12 @@
         float: left;
     }
 </style>
+<style>
+    body {
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
 <body>
     <h1>MY NAVIGATION STUFF</h1>
     <nav class="navbar">
@@ -48,5 +54,19 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est eligendi autem rem non ea praesentium nostrum repudiandae, corrupti deserunt delectus tempora vero voluptatibus maiores, pariatur fugit, necessitatibus nobis? Temporibus, animi!</p>
     </Main>
     
+    <div style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>Navigation Bar CSS Code:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>.navbar ul {
+    list-style-type: none; /* Removes bullets */
+    overflow: hidden; /* Contains floats */
+}
+.navbar li {
+    float: left; /* Aligns horizontally */
+}
+.navbar a {
+    display: block; /* Makes whole area clickable */
+    text-decoration: none; /* Removes underline */
+}</code></pre>
+    </div>
 </body>
 </html>

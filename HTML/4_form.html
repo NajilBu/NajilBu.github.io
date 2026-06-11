@@ -1,53 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HTML Forms</title>
 </head>
+<style>
+    body {
+        text-align: center;
+        font-size: 1.5em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form {
+        background-color: beige;
+        box-shadow: 10px 5px 10px gray;
+        border-style: groove;
+        border-width: 2px;
+        border-color: gray;
+        margin: 20px;
+        padding: 10px;
+        display: inline-block
+    }
+</style>
+
 <body>
-    
 
-    <form method="POST" enctype="multipart/form-data"><!--POST TO SEND DATA-->
-        <label for="Name">Name: </label> <!--For link the label and id-->
-        <input type="text" id="Name" minlength="5" required maxlength="20" placeholder="Enter Your name">
-        
-        <label for="Password">Password: </label>
-        <input type="password" id="Password" required minlength="8"><br>
-    
-        <label for="Email">Email: </label>
-        <input type="email" id="Email">
+    <span>
+        <form method="POST" enctype="multipart/form-data"><!--POST TO SEND DATA-->
+            <label for="Name">Name: </label> <!--For link the label and id-->
+            <input type="text" id="Name" minlength="5" required maxlength="20" placeholder="Enter Your name">
 
-        <label for="Phone">Contact no: </label>
-        <input type="tel" id="Phone" maxlength="11" placeholder="09159018444" pattern="[0-9]{11}"><br>
+            <label for="Password">Password: </label>
+            <input type="password" id="Password" required minlength="8"><br>
 
-        <label for="bday">Birthdate:</label>
-        <input type="date" id="bday"><br>
+            <label for="Email">Email: </label>
+            <input type="email" id="Email">
+
+            <label for="Phone">Contact no: </label>
+            <input type="tel" id="Phone" maxlength="11" placeholder="09159018444" pattern="[0-9]{11}"><br>
+
+            <label for="bday">Birthdate:</label>
+            <input type="date" id="bday"><br>
 
 
-        <label for="Male">Male</label>
-        <input type="radio" id="Male" value="Male" name="title">
-        <label for="Female">Female</label>
-        <input type="radio" id="Female" value="FeMale" name="title"><br>
+            <label for="Male">Male</label>
+            <input type="radio" id="Male" value="Male" name="title">
+            <label for="Female">Female</label>
+            <input type="radio" id="Female" value="FeMale" name="title"><br>
 
-        <label for="payment">Payment</label>
-        <select id="payment">
-            <option value="visa">visa</option>
-        </select>
+            <label for="payment">Payment</label>
+            <select id="payment">
+                <option value="visa">visa</option>
+            </select>
 
-        <label for="subs">subscribe</label>
-        <input type="checkbox" id="subs"><br>
-        
-       <!-- <label for="comment">comment</label>
+            <label for="subs">subscribe</label>
+            <input type="checkbox" id="subs"><br>
+
+            <!-- <label for="comment">comment</label>
         <textarea id="comment" rows="3" cols="25"></textarea>-->
 
-        <label for="file">Picture</label>
-        <input type="file" id="file" accept="image/png, image/jpeg"><br>
-        <input type="submit">
-        <input type="reset">
+            <label for="file">Picture</label>
+            <input type="file" id="file" accept="image/png, image/jpeg"><br>
+            <input type="submit">
+            <input type="reset">
 
 
 
-    </form>
+        </form>
+    </span>
+
+
+    <div
+        style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>Forms Code:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>&lt;form method="POST"&gt;
+    &lt;label for="Name"&gt;Name:&lt;/label&gt;
+    &lt;input type="text" id="Name" required placeholder="Enter name"&gt;
+
+    &lt;input type="radio" id="Male" name="gender"&gt;
+    &lt;input type="checkbox" id="subs"&gt;
+    &lt;input type="submit"&gt;
+&lt;/form&gt;</code></pre>
+    </div>
 </body>
+
 </html>

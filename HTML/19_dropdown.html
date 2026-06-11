@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DROPDOWN</title>
+    <title>Dropdown Menus</title>
 </head>
 
 <style>
@@ -40,6 +40,12 @@
         background-color: blue;
     }
 </style>
+<style>
+    body {
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
 <body>
     <div class="DROPDOWN">
         <button id="dp">DROPDOWN</button>
@@ -64,6 +70,15 @@
     <option value="cs">Computer Science</option>
     <option value="is">Information Systems</option>
 </select>
+    <div style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>Dropdown Menu Code:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>&lt;!-- CSS Hover Dropdown --&gt;
+.DROPDOWN:hover .content { display: block; }
 
+&lt;!-- HTML Select Dropdown --&gt;
+&lt;select id="course"&gt;
+    &lt;option value="it"&gt;Information Technology&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+    </div>
 </body>
 </html>

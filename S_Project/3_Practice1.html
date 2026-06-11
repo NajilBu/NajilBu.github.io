@@ -1,34 +1,46 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>
+<html>
 
-    button{
-        cursor: pointer;
-    }
-    video{
-        position: relative;
-        left: 55px;
-    }
-    td{
-        background-color: aliceblue;
-        height: 20px;
-       
-    }
-    tr{
-         background-color: lightblue;
-    }
-    table{
-        border: 2px solid black;
-    }
-</style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        button {
+            cursor: pointer;
+        }
 
-    <title>Mahh Page</title>
+        video {
+            position: relative;
+            left: 55px;
+        }
+
+        td {
+            background-color: aliceblue;
+            height: 20px;
+
+        }
+
+        tr {
+            background-color: lightblue;
+        }
+
+        table {
+            border: 2px solid black;
+        }
+    </style>
+
+    <title>HTML Practice</title>
     <link rel="icon" type="image/jpg" href="../SOURCES/Gen.jpg">
 </head>
+
+
 <body>
-   
+
     <h1>Till my heartaches end</h1>
     <h4>Cover by KZ Tandingan</h4>
-    <button onclick="window.open('https://www.youtube.com/watch?v=eNyryPbWjK0&amp;list=RDMMeNyryPbWjK0&amp;start_radio=1&amp;ab_channel=LyricsArt', '_blank');" target="_blank" title="Magic">click here its a button</button>
+    <button
+        onclick="window.open('https://www.youtube.com/watch?v=eNyryPbWjK0&amp;list=RDMMeNyryPbWjK0&amp;start_radio=1&amp;ab_channel=LyricsArt', '_blank');"
+        target="_blank" title="Magic">click here its a button</button>
     <br>
     <br>
     <h3>Music</h3>
@@ -39,9 +51,9 @@
     <br>
     <br>
 
-   
-    
-    
+
+
+
     <hr>
 
     <pre>        I recall when you said that you would never leave me
@@ -84,7 +96,7 @@
 
         Keep on dreaming till my heartaches end
     </pre>
-    
+
     <h4>Formating</h4>
     <p>This is fine</p>
     <p>This is <b>Bold</b></p>
@@ -98,12 +110,16 @@
     <p>This is <tt>monospaced</tt></p>
     <p>This is <mark style="background-color: violet;">Normal but with COLORS</mark></p>
     <p>This is fine</p>
-    
+
     <h1><span style="background-color: tomato;">This is a span title</span> </h1>
-    <h1><div style="background-color: coral;">This is a div title</div></h1>
+    <h1>
+        <div style="background-color: coral;">This is a div title</div>
+    </h1>
 
     <p><span style="background-color: tomato;">span sentence</span></p>
-    <p></p><div style="background-color: coral;">Div sentence</div><p></p>
+    <p></p>
+    <div style="background-color: coral;">Div sentence</div>
+    <p></p>
 
     <h4>Unordered list</h4>
     <ul style="background-color: grey; border: 3px solid;">
@@ -133,51 +149,57 @@
     <h3>Tables</h3>
 
     <table style="width: 100%;" border="1">
-        <tbody><tr align="center">
-            <th>Sunday</th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-        </tr>
-          
-        <tr align="center">
-            <td>Closed</td>
-            <td>9-5</td>
-            <td>9-5</td>
-            <td>9-5</td>
-            <td>9-5</td>
-            <td>9-5</td>
-            <td>9-5</td>
+        <tbody>
+            <tr align="center">
+                <th>Sunday</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+            </tr>
 
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </tbody></table>
+            <tr align="center">
+                <td>Closed</td>
+                <td>9-5</td>
+                <td>9-5</td>
+                <td>9-5</td>
+                <td>9-5</td>
+                <td>9-5</td>
+                <td>9-5</td>
 
-        
-    <button onclick="Dosomething()" style="font-size: 25px; background-color: azure; color: lightblue; border-radius: 25px;">button that change text</button>
-           
-        <p id="Greetings">Hello</p>
-
-        <script>
-                function Dosomething(){
-                    document.getElementById("Greetings").innerHTML = "Goodbye";
-                }
-        </script>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 
 
-    <button onclick="window.open('https://youtu.be/ytWz0qVvBZ0?si=5DXodrkMZBAcDhMm', '_blank');" target="_blank" title="Magic">I am a Dwarf</button>
+    <button onclick="Dosomething()"
+        style="font-size: 25px; background-color: azure; color: lightblue; border-radius: 25px;">button that change
+        text</button>
+
+    <p id="Greetings">Hello</p>
+
+    <script>
+        function Dosomething() {
+            document.getElementById("Greetings").innerHTML = "Goodbye";
+        }
+    </script>
 
 
+    <button onclick="window.open('https://youtu.be/ytWz0qVvBZ0?si=5DXodrkMZBAcDhMm', '_blank');" target="_blank"
+        title="Magic">I am a Dwarf</button>
 
-</body></html>
+
+</body>
+
+</html>

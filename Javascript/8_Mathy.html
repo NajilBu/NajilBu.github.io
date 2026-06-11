@@ -1,49 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Library Buttons</title>
+    <title>Math Functions</title>
 
     <style>
-        h1{
+        body {
+            text-align: center;
+
+        }
+
+        h1 {
             text-align: center;
             font-size: 5em;
         }
-        .container{
+
+        .container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
         }
-        button{
+
+        button {
             padding: 10px 15px;
             font-size: 2em;
             cursor: pointer;
 
         }
-        .InputCon{
+
+        .InputCon {
             display: flex;
             justify-content: center;
             margin: 20px;
 
         }
-        #Input{
+
+        #Input {
             font-size: 4em;
             width: 10%;
         }
     </style>
 </head>
+
+<style>
+    body {
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
 <body>
 
     <h1 id="display">0</h1>
     <div class="InputCon">
         <input type="number" id="Input" placeholder="Number">
     </div>
- 
+
 
     <div class="container">
-       
+
         <button onclick="roundNum()">Round</button>
         <button onclick="floorNum()">Floor</button>
         <button onclick="ceilNum()">Ceil</button>
@@ -58,25 +75,33 @@
         <button onclick="signNum()">Sign</button>
     </div>
 
+    <div
+        style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>Math Functions:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>x = Math.round(getval()); // Round to nearest
+x = Math.floor(getval()); // Round down
+x = Math.pow(getval(), 2); // Exponent (x squared)</code></pre>
+    </div>
+
     <script>
         let x = 3.4;
         let y = 0;
-    
+
         document.getElementById("display").textContent = x;
 
-      
 
-        function getval(){
+
+        function getval() {
             return Number(document.getElementById("Input").value);
-        }   
-       
+        }
+
 
         function update() {
             document.getElementById("display").textContent = x;
         }
 
         function roundNum() {
-            
+
             x = Math.round(getval());
             update();
         }
@@ -138,4 +163,5 @@
     </script>
 
 </body>
+
 </html>

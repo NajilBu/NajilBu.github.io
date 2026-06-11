@@ -1,35 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tables</title>
+    <title>HTML Tables</title>
 </head>
 
 <style>
-    table, th, td {
+    table,
+    th,
+    td {
         border: 1px solid black;
         border-collapse: collapse;
     }
+
     td {
         background-color: lightcyan;
         padding: 10px;
         width: 150px;
     }
-    th{
+
+    th {
         text-align: center;
         background-color: lightgray;
         padding: 10px;
     }
 </style>
+<style>
+    body {
+        text-align: center;
+        font-size: 1.5em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
 <body>
     <h3>Table</h3>
 
     <table>
         <tr><!--Table Row-->
-            <th >Name</th><!--Table Header-->
-            <th >Age</th>
-            <th >City</th>
+            <th>Name</th><!--Table Header-->
+            <th>Age</th>
+            <th>City</th>
         </tr>
         <tr>
             <td>John</td><!--Table Data-->
@@ -47,5 +62,19 @@
             <td>Chicago</td>
         </tr>
     </table>
+
+    <div
+        style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>HTML Tables Code:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>&lt;table&gt;
+    &lt;tr&gt; &lt;!-- Table Row --&gt;
+        &lt;th&gt;Name&lt;/th&gt; &lt;!-- Table Header --&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;John&lt;/td&gt; &lt;!-- Table Data --&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+    </div>
 </body>
+
 </html>

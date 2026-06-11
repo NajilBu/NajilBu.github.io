@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Randomizer</title>
+        <title>Random Number Generator</title>
     </head>
     <style>
        #box{
@@ -25,7 +25,13 @@
         border-radius: 10px;
        }
     </style>
-    <body>
+    <style>
+    body {
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
+<body>
 
         <div id="box">
 
@@ -34,6 +40,12 @@
             <h3 id="label2"></h3>
             <h3 id="label3"></h3>
 
+        </div>
+
+        <div style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+            <strong>Random Numbers:</strong><br>
+            <pre style="margin: 0; font-family: monospace;"><code>// Generate random number between min and max
+ran1 = Math.floor(Math.random() * max) + min;</code></pre>
         </div>
 
         <script>

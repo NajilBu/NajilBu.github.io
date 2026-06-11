@@ -4,8 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>If Statement</title>
+    <title>If Statements</title>
 </head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
 
 <body>
     <div>
@@ -15,6 +23,16 @@
         <label for="age">Age: </label>
         <input id="age" type="text"><br>
         <button id="submit">check</button>
+    </div>
+
+    <div
+        style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>If Statement:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>if (age >= 20) {
+    let p = document.createElement("p");
+    p.textContent = "You are old enough to vote";
+    document.body.appendChild(p);
+}</code></pre>
     </div>
 
     <script>

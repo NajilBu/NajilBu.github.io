@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ternary Operator</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        font-size: 1.5em;
+    }
+
+    #mycheckbox {
+        width: 20px;
+        height: 20px;
+    }
+</style>
+
+<body>
+
+    <h3>If this is checked, you will recieve e-mail updates.</h3>
+    <input type="checkbox" id="mycheckbox">
+    <p id="result">You are not subscribed</p>
+
+    <div
+        style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>Ternary Operator Code:</strong><br>
+        <code>result.textContent = checkbox.checked ? "You are subscribed" : "You are not subscribed";</code>
+    </div>
+
+    <script>
+
+        const checkbox = document.getElementById("mycheckbox");
+        const result = document.getElementById("result");
+
+        checkbox.addEventListener("change", () => {
+            result.textContent = checkbox.checked ? "You are subscribed" : "You are not subscribed";
+        })
+
+    </script>
+</body>
+
+</html>

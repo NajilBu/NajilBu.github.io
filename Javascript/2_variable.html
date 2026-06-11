@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Variables</title>
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
+
 <body>
-    
+
     <p id="name"> </p>
+
+    <div
+        style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>Variables & Data Types:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>let name = `bumacod`; // string
+let price = 99.99; // number (float)
+let on = false; // boolean</code></pre>
+    </div>
 
     <script>
         let x;
@@ -22,16 +39,17 @@
 
         console.log("add stuff")
         console.log(x);
-        console.log(y); 
+        console.log(y);
 
         let sum = x + y;
-        console.log("the sum is "+ sum);
+        console.log("the sum is " + sum);
         console.log(`This is price ${price} must use this type of aposthrope `);
-        console.log(`how to see the datatype ` + typeof price + ` `+ typeof name);
+        console.log(`how to see the datatype ` + typeof price + ` ` + typeof name);
         console.log(typeof on);
 
-        document.getElementById("name").textContent =  `your name is ${name}`;
+        document.getElementById("name").textContent = `your name is ${name}`;
 
     </script>
 </body>
+
 </html>

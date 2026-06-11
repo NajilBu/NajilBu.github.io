@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>External Stylesheets</title>
     <link rel="stylesheet" href="trycss.css">
     
 </head>
+<style>
+    body {
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
 <body >
     <h1>HALLO</h1>
 
@@ -19,7 +25,10 @@
 
           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit commodi cumque repellendus accusantium doloribus reprehenderit veritatis reiciendis non obcaecati, cum modi repellat dicta porro libero delectus aliquam quod fugit earum.</p>
     </div>
- 
-
+     <div style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>External Stylesheet Link:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>&lt;!-- Inside the &lt;head&gt; tag to link trycss.css --&gt;
+&lt;link rel="stylesheet" href="trycss.css"&gt;</code></pre>
+    </div>
 </body>
 </html>

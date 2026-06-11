@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CSS Transform</title>
 </head>
 <style>
     body{
@@ -58,6 +58,12 @@
     }
  
 </style>
+<style>
+    body {
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
 <body>
     <!--Tranform to rotate,skew,scale or translate elements -->
 
@@ -72,5 +78,15 @@
     <div class="box" id="box9">Z</div >
     <div class="box" id="box10">0</div >
    
+    <div style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>CSS Transform Code:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>/* Transitions smooth out the animation */
+transition: transform 0.5s ease;
+
+/* Transform properties on hover */
+transform: translateX(-50px); /* Move */
+transform: rotateX(45deg); /* Rotate 3D */
+transform: scaleX(2); /* Resize/Stretch */</code></pre>
+    </div>
 </body>
 </html>

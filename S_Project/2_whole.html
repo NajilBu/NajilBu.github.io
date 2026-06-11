@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="icon" href="SOURCES/image.png" type="image/x-icon">
-    <title> Misa website</title>
-     <script src="SOURCES/jquery-3.7.1.min.js"></script>
+    <link rel="icon" href="../SOURCES/image.png" type="image/x-icon">
+    <title>Image Click Event</title>
+    <script src="../SOURCES/jquery-3.7.1.min.js"></script>
 </head>
+
+<style>
+
+</style>
 
 <body>
     <h1>Your Idol</h1>
     <h3> <i>Saja Boys</i></h3>
 
-    <a href="https://youtu.be/FELZw2U9vpw?si=KOyPA3NL6qkYwfd-" target="_blank" rel="noopener" title="Click it to go to Youtube">
+    <a href="https://youtu.be/FELZw2U9vpw?si=KOyPA3NL6qkYwfd-" target="_blank" rel="noopener"
+        title="Click it to go to Youtube">
         <button>This is a button</button>
     </a>
     <hr>
-  
-    <!--height and width can be changed-->
-    <img id="idolimg" src="SOURCES/float.png" height="400" width="600" alt="This is your idol" title="This is your idol"
-    onclick=playAudio()>
-   
 
-    <audio id="aud" src="SOURCES/saja-boy-jingle.mp3"></audio>
+    <!--height and width can be changed-->
+    <img id="idolimg" src="../SOURCES/float.png" height="400" width="600" alt="This is your idol"
+        title="This is your idol" onclick=playAudio()>
+
+
+    <audio id="aud" src="../SOURCES/saja-boy-jingle.mp3"></audio>
 
     <script>
 
-    
+
         function playAudio() {
             let img = document.getElementById("idolimg");
             let audio = document.getElementById("aud");
             audio.play();
 
-            img.src ="SOURCES/pose.png";
+            img.src = "../SOURCES/pose.png";
 
-            setTimeout(function() {
-                img.src = "SOURCES/float.png";
-            }, 1300); 
+            setTimeout(function () {
+                img.src = "../SOURCES/float.png";
+            }, 1300);
         }
     </script>
 
@@ -134,6 +139,8 @@
         Now we runnin' wild
         You're down on your knees, I'ma be your idol
     </pre>
+
+
 </body>
 
 </html>

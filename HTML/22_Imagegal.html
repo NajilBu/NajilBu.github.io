@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Image Gallery</title>
 </head>
 
 <style>
@@ -26,6 +26,12 @@
         text-align: center;
     }
 </style>
+<style>
+    body {
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
 <body>
     <div class="gallery">
         <a target="_blank" href="SOURCES/me1.jpg">
@@ -45,5 +51,19 @@
         </a>
         <div class="description">ME 3</div>
     </div> 
+
+    <div style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>Image Gallery Hover CSS Code:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>.gallery {
+    display: inline-block; /* Aligns items in a row */
+}
+.gallery:hover {
+    box-shadow: 2px 4px 5px gray; /* Adds shadow on hover */
+}
+.gallery img:hover {
+    width: 450px; /* Enlarge image */
+    height: 450px;
+}</code></pre>
+    </div>
 </body>
 </html>

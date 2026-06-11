@@ -1,52 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CSS Pseudo-classes</title>
 
-   
+
 </head>
- <style>
-    
-    button:hover{
+<style>
+    button:hover {
         background-color: rgb(192, 144, 14);
         font-size: 5.3em;
     }
-    button:left{
+
+    button:left {
         color: white;
         font-size: 1em;
     }
 
-    li:hover{
+    li:hover {
         color: yellowgreen;
     }
-    li{
+
+    li {
         font-size: 2em;
     }
-    button{
+
+    button {
         font-size: 3em;
     }
+</style>
+<style>
+    body {
+        text-align: center;
+        font-size: 1.5em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
 
- </style>
 <body>
-    <button id="linker" type="button" onclick="window.location.href='https://google.com';">
-    A button
-</button>
+    <button id="linker" type="button" onclick="window.location.href='https://google.com', '_blank';">
+        A button
+    </button>
 
 
-<div>
-    <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
-        <li>9</li>
-    </ul>
-</div>
+    <div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+        </ul>
+    </div>
+
+    <div
+        style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>CSS Pseudo-classes Code:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>/* Changes background color when mouse hovers over button */
+button:hover {
+    background-color: rgb(192, 144, 14);
+}
+
+/* Changes text color when mouse hovers over list item */
+li:hover {
+    color: yellowgreen;
+}</code></pre>
+    </div>
 </body>
+
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checked</title>
+    <title>Checked Property</title>
 </head>
 
 <style>
@@ -21,21 +21,31 @@
 </style>
 
 <body>
+
     <h3>Click checkbox to subscribe to newsletter</h3>
     <input type="checkbox" id="mycheckbox">
-    <p id="result">Not Checked</p>
+    <p id="result">Not Subscribed</p>
+
+    <div style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>If/Else Code:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>if (checkbox.checked) {
+    result.textContent = "Subscribed";
+} else {
+    result.textContent = "Not subscribed";
+}</code></pre>
+    </div>
+
     <script>
+        const checkbox = document.getElementById("mycheckbox");
+        const result = document.getElementById("result");
 
-        document.getElementById("mycheckbox").onclick = function () {
-            const checkbox = document.getElementById("mycheckbox");
-            const result = document.getElementById("result");
-
+        checkbox.addEventListener("change", () => {
             if (checkbox.checked) {
-                result.textContent = "Checked";
+                result.textContent = "Subscribed";
             } else {
-                result.textContent = "Not Checked";
+                result.textContent = "Not subscribed";
             }
-        }
+        })
     </script>
 </body>
 

@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Span</title>
+    <title>Span vs Div</title>
 </head>
+<style>
+    body {
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
 <body>
     
       <h1><span style="background-color: tomato;">This is a span title</span> </h1>
@@ -15,5 +21,13 @@
 
     <!--span only covers the text but div the whole screen-->
 
+    <div style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>Span vs Div Code:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>&lt;!-- span is an inline element (only covers the text) --&gt;
+&lt;span style="background-color: tomato;"&gt;span sentence&lt;/span&gt;
+
+&lt;!-- div is a block element (takes up the whole width) --&gt;
+&lt;div style="background-color: coral;"&gt;Div sentence&lt;/div&gt;</code></pre>
+    </div>
 </body>
 </html>

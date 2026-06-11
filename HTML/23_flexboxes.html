@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flexbox</title>
+    <title>CSS Flexbox</title>
     
 </head>
 <style>
@@ -48,6 +48,12 @@
          background-color: green;
     }
 </style>
+<style>
+    body {
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
 <body>  
     <div class="container">
         <div class="box" id="box1">1</div>
@@ -56,5 +62,15 @@
         <div class="box" id="box4">4</div>
     </div>
     
+    <div style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>CSS Flexbox Code:</strong><br>
+        <pre style="margin: 0; font-family: monospace;"><code>.container {
+    display: flex;
+    flex-direction: row; /* Arranges items in a row */
+    justify-content: space-evenly; /* Horizontal alignment */
+    align-items: center; /* Vertical alignment */
+    flex-wrap: wrap; /* Wraps to next line if needed */
+}</code></pre>
+    </div>
 </body>
 </html>
