@@ -539,35 +539,56 @@ body.image-peek-active::after {
         box-sizing: border-box;
     }
 
+    dialog[open] {
+        display: flex;
+        flex-direction: column;
+    }
+
     .dialog-content {
         padding: 1rem;
-        height: 100%;
+        flex: 1;
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
-        overflow-y: auto;
+        overflow: hidden;
     }
 
     #noteForm {
         display: flex;
         flex-direction: column;
-        flex-grow: 1;
+        flex: 1;
+        min-height: 0;
     }
 
     #noteForm .form-group:nth-child(2) {
         display: flex;
         flex-direction: column;
-        flex-grow: 1;
+        flex: 1;
+        min-height: 0;
     }
 
     .textarea-container {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
+        flex: 1;
+        position: relative;
+        min-height: 0;
     }
 
     .form-textarea {
-        flex-grow: 1;
-        min-height: 100px;
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        resize: none;
+        min-height: 0;
+        overflow-y: auto;
+    }
+
+    .dialog-header,
+    #noteForm .form-group:first-child,
+    .dialog-actions {
+        flex-shrink: 0;
+    }
+
+    .dialog-actions {
+        padding-top: 0.5rem;
     }
 }
