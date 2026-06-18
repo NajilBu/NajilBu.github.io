@@ -26,11 +26,19 @@
     <input type="checkbox" id="mycheckbox">
     <p id="result">You are not subscribed</p>
 
+
+    <h3>Type age and press enter</h3>
+    <input type="text" id="age">
+    <p id="resultAge"></p>
+
+
     <div
         style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
         <strong>Ternary Operator Code:</strong><br>
-        <code>result.textContent = checkbox.checked ? "You are subscribed" : "You are not subscribed";</code>
+        <code>result.textContent = checkbox.checked ? "You are subscribed" : "You are not subscribed";</code><br>
+        <code>resultAge.textContent = ageInput.value >= 18 ? "You are an adult" : "You are not yet an adult";</code>
     </div>
+
 
     <script>
 
@@ -41,6 +49,11 @@
             result.textContent = checkbox.checked ? "You are subscribed" : "You are not subscribed";
         })
 
+
+        const ageInput = document.getElementById("age");
+        ageInput.addEventListener("change", () => {
+            resultAge.textContent = ageInput.value >= 18 ? "You are an adult" : "You are not yet an adult"
+        })
     </script>
 </body>
 

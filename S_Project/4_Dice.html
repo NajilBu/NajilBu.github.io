@@ -1,156 +1,203 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Roll dice</title>
-    </head>
-    <style>
-        body{
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            perspective: 800px;
-        }
-        .scene{
-            width: 200px;
-            height: 200px;
-        }
-        #box1{
-            width: 100%;
-            height: 100%;
-            position: relative;
-            
-            transform-style: preserve-3d;
-            transition: transform 1s;
-            
-        }
+<!DOCTYPE html>
+<html lang="en">
 
-        .face{
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background-color: white;
-            border: 2px solid black;
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            grid-template-rows: repeat(3,1fr);
-            border-radius: 10px;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .dot{
-            width: 30px;
-            height: 30px;
-            background-color: black;
-            border-radius: 50%;
-            justify-self: center;
-            align-self: center;
-        }
-     
-        .front{
-            transform: rotateY(0deg) translateZ(100px);
-           
-        }
-        .back{
-            transform: rotateY(180deg) translateZ(100px);
-           
-        }
-        .top{
-            transform: rotateX(90deg) translateZ(100px);
-            
-        }
-        .bottom{
-            transform: rotateX(-90deg) translateZ(100px);
-            
-        }
-        .left{
-            transform: rotateY(90deg) translateZ(100px);
-            
-        }
-        .right{
-            transform: rotateY(-90deg) translateZ(100px);
-            
-        }
-    </style>
-    <body>
-        <div class="scene">
-            <div id="box1">
-                <div class="face front">
-                    <div></div><div></div><div></div>
-                    <div></div><div class="dot"></div><div></div>
-                    <div ></div><div></div><div></div>
-                </div>
-                <div class="face back">
-                    <div class="dot"></div><div></div><div class="dot"></div>
-                    <div class="dot"></div><div></div><div class="dot"></div>
-                    <div class="dot"></div><div></div><div class="dot"></div>
-                </div>
-                <div class="face top">
-                    <div class="dot"></div><div></div><div></div>
-                    <div></div><div ></div><div></div>
-                    <div ></div><div></div><div class="dot"></div>
-                </div>
-                <div class="face bottom">
-                    <div class="dot"></div><div></div><div class="dot"></div>
-                    <div></div><div class="dot"></div><div></div>
-                    <div class="dot"></div><div></div><div class="dot"></div>
-                </div>
-                <div class="face left">
-                   <div class="dot"></div><div></div><div class="dot"></div>
-                    <div></div><div></div><div></div>
-                    <div class="dot"></div><div></div><div class="dot"></div>
-                </div>
-                <div class="face right">
-                    <div class="dot"></div><div></div><div></div>
-                    <div></div><div class="dot"></div><div></div>
-                    <div ></div><div></div><div class="dot"></div>
-                </div>
-            </div>  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll dice</title>
+</head>
+<style>
+    body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        perspective: 800px;
+    }
+
+    .scene {
+        width: 200px;
+        height: 200px;
+    }
+
+    #box1 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        transform-style: preserve-3d;
+        transition: transform 1s;
+
+    }
+
+    .face {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background-color: white;
+        border: 2px solid black;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        border-radius: 10px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .dot {
+        width: 30px;
+        height: 30px;
+        background-color: black;
+        border-radius: 50%;
+        justify-self: center;
+        align-self: center;
+    }
+
+    .front {
+        transform: rotateY(0deg) translateZ(100px);
+
+    }
+
+    .back {
+        transform: rotateY(180deg) translateZ(100px);
+
+    }
+
+    .top {
+        transform: rotateX(90deg) translateZ(100px);
+
+    }
+
+    .bottom {
+        transform: rotateX(-90deg) translateZ(100px);
+
+    }
+
+    .left {
+        transform: rotateY(90deg) translateZ(100px);
+
+    }
+
+    .right {
+        transform: rotateY(-90deg) translateZ(100px);
+
+    }
+</style>
+
+<body>
+    <div class="scene">
+        <div id="box1">
+            <div class="face front" id="face1">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="dot"></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="face back">
+                <div class="dot"></div>
+                <div></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div></div>
+                <div class="dot"></div>
+            </div>
+            <div class="face top">
+                <div class="dot"></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="dot"></div>
+            </div>
+            <div class="face bottom">
+                <div class="dot"></div>
+                <div></div>
+                <div class="dot"></div>
+                <div></div>
+                <div class="dot"></div>
+                <div></div>
+                <div class="dot"></div>
+                <div></div>
+                <div class="dot"></div>
+            </div>
+            <div class="face left">
+                <div class="dot"></div>
+                <div></div>
+                <div class="dot"></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="dot"></div>
+                <div></div>
+                <div class="dot"></div>
+            </div>
+            <div class="face right">
+                <div class="dot"></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="dot"></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="dot"></div>
+            </div>
         </div>
-      
-        <div class="pop">
-            <div class="tod"></div>
-        </div>
+    </div>
+    <br>
 
-        <script>
-           
-          
-            let x= 0;
-            let y =0;;
-            const box = document.getElementById("box1");
 
-            const rotations = {
-                        1: "rotateX(0deg) rotateY(0deg)",
-                        2: "rotateX(-90deg) rotateY(0deg)",
-                        3: "rotateX(0deg) rotateY(90deg)",
-                        4: "rotateX(0deg) rotateY(-90deg)",
-                        5: "rotateX(90deg) rotateY(0deg)",
-                        6: "rotateX(180deg) rotateY(0deg)"
-                };  
+    <h2 id="result"></h2>
+    <script>
 
-            let rolling = false;
-            box.addEventListener("click", () => {
+
+        let x = 0;
+        let y = 0;;
+        const box = document.getElementById("box1");
+
+        const rotations = {
+            1: "rotateX(0deg) rotateY(0deg)",
+            2: "rotateX(-90deg) rotateY(0deg)",
+            3: "rotateX(0deg) rotateY(90deg)",
+            4: "rotateX(0deg) rotateY(-90deg)",
+            5: "rotateX(90deg) rotateY(0deg)",
+            6: "rotateX(180deg) rotateY(0deg)"
+        };
+
+        let rolling = false;
+        box.addEventListener("click", () => {
             let d6 = Math.floor(Math.random() * 6) + 1;
 
             if (rolling) return;
             rolling = true;
 
-                x += 720;
-                y += 720;
-                   
-                box.style.transform =
-                    `rotateX(${x}deg) rotateY(${y}deg) ${rotations[d6]}` ; 
-            setTimeout(() => 
+            x += 720;
+            y += 720;
+
+            box.style.transform =
+                `rotateX(${x}deg) rotateY(${y}deg) ${rotations[d6]}`;
+            setTimeout(() =>
                 rolling = false
-            , 1000); 
+                , 1000);
 
-             console.log(d6);
-            });
-           
+            result.textContent = d6;
+        });
 
-        </script>
-        
-    </body>
-    </html>
+
+    </script>
+
+</body>
+
+</html>

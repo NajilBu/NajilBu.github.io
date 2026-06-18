@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Type Conversion</title>
+    <title>Conversion</title>
 </head>
 
+
 <style>
-    body{
+    body {
         text-align: center;
         font-size: 3em;
     }
 </style>
-<style>
-    body {
-        text-align: center;
-        font-size: 1.5em;
-    }
-</style>
+
 <body>
-    
+
     <h1 id="nocon"></h1>
     <h1 id="con"></h1>
 
-    <div style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.5em;">
+    <div
+        style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.5em;">
         <strong>Type Conversion:</strong><br>
         <pre style="margin: 0; font-family: monospace;"><code>let input = "10";
 let num1 = input; // stays string
@@ -37,16 +35,17 @@ let num2 = Number(input); // converts to number</code></pre>
         let num1 = input
         let num2 = Number(input);
 
-        num1+=1;
-        num2+= 1;
+        num1 += 1;
+        num2 += 1;
 
-        console.log(`Here is your num no con ${num1} `+ typeof num1);
+        console.log(`Here is your num no con ${num1} ` + typeof num1);
         document.getElementById("nocon").textContent = `Here is your num no con ${num1}`;
 
-      
-        console.log(`Here is your num wtih con ${num2} `+ typeof num2);
+
+        console.log(`Here is your num wtih con ${num2} ` + typeof num2);
         document.getElementById("con").textContent = `Here is your num with con ${num2} `;
 
     </script>
 </body>
+
 </html>

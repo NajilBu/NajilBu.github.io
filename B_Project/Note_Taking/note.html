@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTER</title>
+    <link rel="icon" href="Web_icon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+
+
+<body>
+
+    <header>
+        <h1>Oh Take Note</h1>
+        <div>
+            <button class="add-note-btn" id="addBtn" onclick="openDialog()">+</button>
+            <button id="themeToggleBtn" class="theme-toggle-btn">🌙</button>
+        </div>
+    </header>
+    <main id="notesContainer" class="notes-grid">
+
+    </main>
+
+    <dialog id="noteDialog">
+        <div class="dialog-content">
+            <div class="dialog-header">
+                <h2 class="dialog-title" id="dialogTitle">+ New Note</h2>
+                <button class="close-btn" onclick="closeDialog()">X</button>
+            </div>
+
+            <form id="noteForm">
+                <div class="form-group">
+                    <label for="titleInput" class="form-label">Title:</label>
+                    <input type="text" id="titleInput" class="form-input" placeholder="Enter note Title" required>
+                </div>
+                <div class="form-group">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <label for="contentInput" class="form-label" style="margin-bottom: 0;">Content:</label>
+                        <button type="button" class="search-toggle-btn" onclick="toggleSearchBar()" title="Find in note"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                    
+                    <div class="textarea-container">
+                        <div class="search-bar" id="searchBar" style="display: none;">
+                            <input type="text" id="searchInput" placeholder="Find..." oninput="handleSearch()">
+                            <span id="searchCounter" class="search-counter">0/0</span>
+                            <button type="button" onclick="navigateSearch(-1)" title="Previous"><i class="fa-solid fa-chevron-up"></i></button>
+                            <button type="button" onclick="navigateSearch(1)" title="Next"><i class="fa-solid fa-chevron-down"></i></button>
+                            <button type="button" onclick="toggleSearchBar()" title="Close"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        
+                        <div class="backdrop" id="backdrop">
+                            <div class="highlights" id="highlights"></div>
+                        </div>
+                        <textarea id="contentInput" class="form-textarea" placeholder="Enter note content" oninput="handleInput()" onscroll="syncScroll()"></textarea>
+                    </div>
+                </div>
+                <div class="dialog-actions">
+                    <button type="button" class="delete-btn" id="modalDeleteBtn"
+                        onclick="if(editingNoteId) { deleteNote(editingNoteId); closeDialog(); }"
+                        style="display: none; margin-right: auto;"><i class="fa-solid fa-trash"></i> Delete</button>
+                    <button type="button" class="cancel-btn" onclick="closeDialog()">Cancel</button>
+                    <button type="submit" class="save-btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+    <script defer>
+        let notes = [];
+        let editingNoteId = null;
+
+        function loadNotes() {
+            const savedNotes = localStorage.getItem('notes');
+            return savedNotes ? JSON.parse(savedNotes) : [];
+        }
+
+        function saveNote(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('titleInput').value;
+            const content = document.getElementById('contentInput').value;
+
+
+            if (editingNoteId) {
+                const noteIndex = notes.findIndex(note => note.id === editingNoteId);
+                notes[noteIndex] = {
+                    ...notes[noteIndex],
+                    title: title,
+                    content: content,
+                    timestamp: new Date().toISOString()
+                }
+
+            } else {
+                notes.unshift({
+                    id: Date.now().toString(),
+                    title: title,
+                    content: content,
+                    timestamp: new Date().toISOString()
+                })
+            }
+            saveNotes();
+            renderNotes();
+            closeDialog();
+            document.getElementById('noteForm').reset();
+
+        }
+
+        function saveNotes() {
+            localStorage.setItem('notes', JSON.stringify(notes));
+        }
+
+
+
+        function deleteNote(noteId) {
+            notes = notes.filter(note => note.id !== noteId);
+            saveNotes();
+            renderNotes();
+        }
+
+        function renderNotes() {
+            const notesContainer = document.getElementById('notesContainer');
+
+            if (notes.length === 0) {
+                notesContainer.innerHTML = `
+                    <div class="empty-state">
+                    <h2>No notes found</h2>
+                    <p>Add your first note to get started</p>
+                    </div>
+                `;
+                return;
+            }
+
+
+            notesContainer.innerHTML = notes.map(note => `
+                <div class="note-card" onclick="openDialog('${note.id}')" style="cursor: pointer;">
+                    <h2 class="note-title">${note.title}</h2>
+                    <p class="note-content">${note.content}</p>
+                </div>
+            `).join('');
+
+        }
+
+        function openDialog(noteID = null) {
+            const dialog = document.getElementById('noteDialog');
+            const titleInput = document.getElementById('titleInput');
+            const contentInput = document.getElementById('contentInput');
+
+            if (noteID) {
+                const note = notes.find(note => note.id === noteID);
+                editingNoteId = noteID;
+
+                document.getElementById('dialogTitle').textContent = "Edit Note";
+                titleInput.value = note.title;
+                contentInput.value = note.content;
+                document.getElementById('modalDeleteBtn').style.display = 'block';
+            } else {
+                editingNoteId = null;
+                document.getElementById('dialogTitle').textContent = "Add new Note";
+                document.getElementById('noteForm').reset();
+                document.getElementById('modalDeleteBtn').style.display = 'none';
+            }
+
+            document.getElementById('searchBar').style.display = 'none';
+            document.getElementById('searchInput').value = '';
+            applyHighlights();
+
+            dialog.showModal();
+            titleInput.focus();
+
+
+        }
+        function closeDialog() {
+            document.getElementById('noteDialog').close();
+        }
+        function toggleTheme() {
+            const isdark = document.body.classList.toggle('dark-theme');
+            localStorage.setItem('Theme', isdark ? 'dark' : 'light');
+            document.getElementById('themeToggleBtn').textContent = isdark ? '🌙' : '🌞';
+        }
+
+        function applyStoredTheme() {
+            if (localStorage.getItem('Theme') == 'dark') {
+                document.body.classList.add('dark-theme');
+                document.getElementById('themeToggleBtn').textContent = '🌞';
+            } else {
+                document.body.classList.remove('dark-theme');
+                document.getElementById('themeToggleBtn').textContent = '🌙';
+            }
+        }
+
+        let searchMatches = [];
+        let currentMatchIndex = -1;
+
+        function toggleSearchBar() {
+            const searchBar = document.getElementById('searchBar');
+            if (searchBar.style.display === 'none') {
+                searchBar.style.display = 'flex';
+                document.getElementById('searchInput').focus();
+            } else {
+                searchBar.style.display = 'none';
+                document.getElementById('searchInput').value = '';
+                handleSearch();
+            }
+        }
+
+        function handleInput() {
+            applyHighlights();
+        }
+
+        function syncScroll() {
+            document.getElementById('backdrop').scrollTop = document.getElementById('contentInput').scrollTop;
+        }
+
+        function handleSearch() {
+            applyHighlights();
+        }
+
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function applyHighlights() {
+            const textarea = document.getElementById('contentInput');
+            const highlightsDiv = document.getElementById('highlights');
+            const searchInput = document.getElementById('searchInput').value;
+            const text = textarea.value;
+
+            if (!searchInput) {
+                highlightsDiv.textContent = text + '\n';
+                searchMatches = [];
+                currentMatchIndex = -1;
+                updateSearchCounter();
+                return;
+            }
+
+            const regex = new RegExp(`(${escapeRegExp(searchInput)})`, 'gi');
+            searchMatches = [];
+            
+            const parts = text.split(regex);
+            let html = '';
+            let matchCount = 0;
+            
+            for (let i = 0; i < parts.length; i++) {
+                if (i % 2 !== 0) {
+                    html += `<mark id="match-${matchCount}">${escapeHtml(parts[i])}</mark>`;
+                    searchMatches.push(matchCount);
+                    matchCount++;
+                } else {
+                    html += escapeHtml(parts[i]);
+                }
+            }
+            
+            highlightsDiv.innerHTML = html + '\n';
+            
+            if (searchMatches.length > 0) {
+                if (currentMatchIndex === -1 || currentMatchIndex >= searchMatches.length) {
+                    currentMatchIndex = 0;
+                }
+            } else {
+                currentMatchIndex = -1;
+            }
+            
+            updateActiveHighlight();
+            updateSearchCounter();
+        }
+
+        function navigateSearch(direction) {
+            if (searchMatches.length === 0) return;
+            
+            currentMatchIndex += direction;
+            if (currentMatchIndex < 0) {
+                currentMatchIndex = searchMatches.length - 1;
+            } else if (currentMatchIndex >= searchMatches.length) {
+                currentMatchIndex = 0;
+            }
+            
+            updateActiveHighlight();
+            updateSearchCounter();
+        }
+
+        function updateActiveHighlight() {
+            document.querySelectorAll('mark.active').forEach(el => el.classList.remove('active'));
+            
+            if (currentMatchIndex !== -1 && searchMatches.length > 0) {
+                const activeMark = document.getElementById(`match-${currentMatchIndex}`);
+                if (activeMark) {
+                    activeMark.classList.add('active');
+                    
+                    const backdrop = document.getElementById('backdrop');
+                    const textarea = document.getElementById('contentInput');
+                    
+                    const markTop = activeMark.offsetTop;
+                    backdrop.scrollTop = markTop - (backdrop.clientHeight / 2);
+                    textarea.scrollTop = backdrop.scrollTop;
+                }
+            }
+        }
+
+        function updateSearchCounter() {
+            const counter = document.getElementById('searchCounter');
+            if (searchMatches.length === 0) {
+                counter.textContent = '0/0';
+            } else {
+                counter.textContent = `${currentMatchIndex + 1}/${searchMatches.length}`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            applyStoredTheme();
+            notes = loadNotes();
+            renderNotes();
+
+            document.getElementById('noteForm').addEventListener('submit', saveNote)
+            document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme)
+            document.getElementById('noteDialog').addEventListener('click', function (event) {
+                if (event.target === this) {
+                    closeDialog();
+                }
+            })
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
+
+<body>
+
+    <h3>Enter a day number (1-7) and press enter</h3>
+    <input type="number" id="dayInput" min="1" max="7">
+    <p id="dayResult">Day of the week will appear here</p>
+
+    <h3>Enter your grade (0-100) and press enter</h3>
+    <input type="number" id="gradeInput" min="0" max="100" value=0 maxlength="3">
+    <p id="gradeResult">Grade description will appear here</p>
+
+    <div
+        style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>Switch Statement Code:</strong><br>
+        <code>
+            switch (dayNumber) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;case 1:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dayName = "Monday";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;default:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dayName = "Invalid";<br>
+            }
+        </code>
+    </div>
+
+    <script>
+        const dayInput = document.getElementById("dayInput");
+        const dayResult = document.getElementById("dayResult");
+
+        dayInput.addEventListener("input", () => {
+            let dayNumber = Number(dayInput.value);
+            let dayName;
+
+            switch (dayNumber) {
+                case 1:
+                    dayName = "Monday";
+                    break;
+                case 2:
+                    dayName = "Tuesday";
+                    break;
+                case 3:
+                    dayName = "Wednesday";
+                    break;
+                case 4:
+                    dayName = "Thursday";
+                    break;
+                case 5:
+                    dayName = "Friday";
+                    break;
+                case 6:
+                    dayName = "Saturday";
+                    break;
+                case 7:
+                    dayName = "Sunday";
+                    break;
+                default:
+                    dayName = "Invalid day number";
+            }
+
+            dayResult.textContent = dayName;
+        });
+
+        const gradeInput = document.getElementById("gradeInput");
+        const gradeResult = document.getElementById("gradeResult");
+
+        gradeInput.addEventListener("input", () => {
+            let grade = Number(gradeInput.value);
+            let description;
+
+            switch (true) {
+                case (grade >= 90 && grade <= 100):
+                    description = "Excellent!";
+                    break;
+                case (grade >= 80 && grade < 90):
+                    description = "Good job!";
+                    break;
+                case (grade >= 70 && grade < 80):
+                    description = "You passed!";
+                    break;
+                case (grade >= 60 && grade < 70):
+                    description = "You need to improve.";
+                    break;
+                case (grade >= 0 && grade < 60):
+                    description = "You failed.";
+                    break;
+                default:
+                    description = "Invalid grade";
+            }
+
+            gradeResult.textContent = description;
+        });
+    </script>
+</body>
+
+</html>
