@@ -425,15 +425,28 @@ body.easter-egg-active {
     background-position: center !important;
     background-attachment: fixed !important;
     background-repeat: no-repeat !important;
-    transition: background-image 0.2s ease-in-out;
 }
 
-body.image-peek-active {
-    background-image: linear-gradient(rgba(30, 31, 38, 0.99), rgba(30, 31, 38, 0.99)), url('./image.png') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-attachment: fixed !important;
-    background-repeat: no-repeat !important;
+/* Fade-in/out image overlay using pseudo-element */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(30, 31, 38, 0.99), rgba(30, 31, 38, 0.99)), url('./image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    transition: opacity 1.2s ease-in-out;
+}
+
+body.image-peek-active::after {
+    opacity: 1;
 }
 
 /* Mobile Responsiveness */

@@ -363,11 +363,13 @@
             const delay = (Math.random() * (10 - 3) + 3) * 1000; // 3–10 seconds
             imageCycleTimeout = setTimeout(() => {
                 if (!document.body.classList.contains('dark-theme')) return;
-                const duration = (Math.random() * (4 - 2) + 2) * 1000; // 2–4 seconds
+                const duration = (Math.random() * (4 - 2) + 2) * 1000; // 2–4 seconds visible
+                const fadeDuration = 1200; // matches CSS transition 1.2s
                 document.body.classList.add('image-peek-active');
                 setTimeout(() => {
                     document.body.classList.remove('image-peek-active');
-                    scheduleImageCycle(); // schedule the next one
+                    // Wait for fade-out to finish before scheduling next
+                    setTimeout(scheduleImageCycle, fadeDuration);
                 }, duration);
             }, delay);
         }
