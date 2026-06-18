@@ -423,6 +423,15 @@ mark.active {
     background-color: #ff9800;
 }
 
+body.easter-egg-active {
+    background-image: url('./image.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    transition: background-image 0.2s ease-in-out;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 600px) {
     body {

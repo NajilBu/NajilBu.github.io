@@ -38,24 +38,30 @@
                     <input type="text" id="titleInput" class="form-input" placeholder="Enter note Title" required>
                 </div>
                 <div class="form-group">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
                         <label for="contentInput" class="form-label" style="margin-bottom: 0;">Content:</label>
-                        <button type="button" class="search-toggle-btn" onclick="toggleSearchBar()" title="Find in note"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <button type="button" class="search-toggle-btn" onclick="toggleSearchBar()"
+                            title="Find in note"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
-                    
+
                     <div class="textarea-container">
                         <div class="search-bar" id="searchBar" style="display: none;">
                             <input type="text" id="searchInput" placeholder="Find..." oninput="handleSearch()">
                             <span id="searchCounter" class="search-counter">0/0</span>
-                            <button type="button" onclick="navigateSearch(-1)" title="Previous"><i class="fa-solid fa-chevron-up"></i></button>
-                            <button type="button" onclick="navigateSearch(1)" title="Next"><i class="fa-solid fa-chevron-down"></i></button>
-                            <button type="button" onclick="toggleSearchBar()" title="Close"><i class="fa-solid fa-xmark"></i></button>
+                            <button type="button" onclick="navigateSearch(-1)" title="Previous"><i
+                                    class="fa-solid fa-chevron-up"></i></button>
+                            <button type="button" onclick="navigateSearch(1)" title="Next"><i
+                                    class="fa-solid fa-chevron-down"></i></button>
+                            <button type="button" onclick="toggleSearchBar()" title="Close"><i
+                                    class="fa-solid fa-xmark"></i></button>
                         </div>
-                        
+
                         <div class="backdrop" id="backdrop">
                             <div class="highlights" id="highlights"></div>
                         </div>
-                        <textarea id="contentInput" class="form-textarea" placeholder="Enter note content" oninput="handleInput()" onscroll="syncScroll()"></textarea>
+                        <textarea id="contentInput" class="form-textarea" placeholder="Enter note content"
+                            oninput="handleInput()" onscroll="syncScroll()"></textarea>
                     </div>
                 </div>
                 <div class="dialog-actions">
@@ -185,9 +191,6 @@
             if (localStorage.getItem('Theme') == 'dark') {
                 document.body.classList.add('dark-theme');
                 document.getElementById('themeToggleBtn').textContent = '🌞';
-            } else {
-                document.body.classList.remove('dark-theme');
-                document.getElementById('themeToggleBtn').textContent = '🌙';
             }
         }
 
@@ -247,11 +250,11 @@
 
             const regex = new RegExp(`(${escapeRegExp(searchInput)})`, 'gi');
             searchMatches = [];
-            
+
             const parts = text.split(regex);
             let html = '';
             let matchCount = 0;
-            
+
             for (let i = 0; i < parts.length; i++) {
                 if (i % 2 !== 0) {
                     html += `<mark id="match-${matchCount}">${escapeHtml(parts[i])}</mark>`;
@@ -261,9 +264,9 @@
                     html += escapeHtml(parts[i]);
                 }
             }
-            
+
             highlightsDiv.innerHTML = html + '\n';
-            
+
             if (searchMatches.length > 0) {
                 if (currentMatchIndex === -1 || currentMatchIndex >= searchMatches.length) {
                     currentMatchIndex = 0;
@@ -271,36 +274,36 @@
             } else {
                 currentMatchIndex = -1;
             }
-            
+
             updateActiveHighlight();
             updateSearchCounter();
         }
 
         function navigateSearch(direction) {
             if (searchMatches.length === 0) return;
-            
+
             currentMatchIndex += direction;
             if (currentMatchIndex < 0) {
                 currentMatchIndex = searchMatches.length - 1;
             } else if (currentMatchIndex >= searchMatches.length) {
                 currentMatchIndex = 0;
             }
-            
+
             updateActiveHighlight();
             updateSearchCounter();
         }
 
         function updateActiveHighlight() {
             document.querySelectorAll('mark.active').forEach(el => el.classList.remove('active'));
-            
+
             if (currentMatchIndex !== -1 && searchMatches.length > 0) {
                 const activeMark = document.getElementById(`match-${currentMatchIndex}`);
                 if (activeMark) {
                     activeMark.classList.add('active');
-                    
+
                     const backdrop = document.getElementById('backdrop');
                     const textarea = document.getElementById('contentInput');
-                    
+
                     const markTop = activeMark.offsetTop;
                     backdrop.scrollTop = markTop - (backdrop.clientHeight / 2);
                     textarea.scrollTop = backdrop.scrollTop;
@@ -316,6 +319,34 @@
                 counter.textContent = `${currentMatchIndex + 1}/${searchMatches.length}`;
             }
         }
+
+        let clickCount = 0;
+        let clickTimeout = null;
+
+        document.addEventListener('click', function (e) {
+            // Check if clicking on the background elements (body, main container, or html)
+            if (e.target === document.body || e.target.id === 'notesContainer' || e.target.tagName === 'HTML') {
+                clickCount++;
+                
+                clearTimeout(clickTimeout);
+                // Reset count if the user stops clicking for more than 400ms
+                clickTimeout = setTimeout(() => {
+                    clickCount = 0;
+                }, 400);
+
+                // Trigger easter egg on 5 rapid clicks
+                if (clickCount >= 5) {
+                    clickCount = 0;
+                    document.body.classList.add('easter-egg-active');
+                    setTimeout(() => {
+                        document.body.classList.remove('easter-egg-active');
+                    }, 1000);
+                }
+            } else {
+                // Reset count if they click a button or note card
+                clickCount = 0;
+            }
+        });
 
         document.addEventListener('DOMContentLoaded', function () {
             applyStoredTheme();
