@@ -47,20 +47,20 @@
                                 <button type="button" class="search-toggle-btn" onclick="changeFontSize(1)" title="Increase font size" style="padding: 0 0.25rem;"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
-                        <button type="button" class="search-toggle-btn" onclick="toggleSearchBar()" title="Find in note"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <div style="display: flex; align-items: center; gap: 0.25rem;">
+                            <button type="button" class="search-toggle-btn" id="searchToggleBtn" onclick="toggleSearchBar()" title="Find in note"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <div class="search-bar" id="searchBar" style="display: none; position: static; box-shadow: none; border-radius: 0.375rem; padding: 0.15rem 0.4rem;">
+                                <input type="text" id="searchInput" placeholder="Find..." oninput="handleSearch()">
+                                <span id="searchCounter" class="search-counter">0/0</span>
+                                <button type="button" onclick="navigateSearch(-1)" title="Previous"><i class="fa-solid fa-chevron-up"></i></button>
+                                <button type="button" onclick="navigateSearch(1)" title="Next"><i class="fa-solid fa-chevron-down"></i></button>
+                                <button type="button" onclick="toggleSearchBar()" title="Close"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="textarea-container">
-                        <div class="search-bar" id="searchBar" style="display: none;">
-                            <input type="text" id="searchInput" placeholder="Find..." oninput="handleSearch()">
-                            <span id="searchCounter" class="search-counter">0/0</span>
-                            <button type="button" onclick="navigateSearch(-1)" title="Previous"><i
-                                    class="fa-solid fa-chevron-up"></i></button>
-                            <button type="button" onclick="navigateSearch(1)" title="Next"><i
-                                    class="fa-solid fa-chevron-down"></i></button>
-                            <button type="button" onclick="toggleSearchBar()" title="Close"><i
-                                    class="fa-solid fa-xmark"></i></button>
-                        </div>
+                        <div style="display:none;" id="searchBarPlaceholder"></div>
 
                         <div class="backdrop" id="backdrop">
                             <div class="highlights" id="highlights"></div>
@@ -190,6 +190,11 @@
             const isdark = document.body.classList.toggle('dark-theme');
             localStorage.setItem('Theme', isdark ? 'dark' : 'light');
             document.getElementById('themeToggleBtn').textContent = isdark ? '🌞' : '🌙';
+            if (isdark) {
+                scheduleImageCycle();
+            } else {
+                stopImageCycle();
+            }
         }
 
         function applyStoredTheme() {
@@ -207,11 +212,14 @@
 
         function toggleSearchBar() {
             const searchBar = document.getElementById('searchBar');
+            const toggleBtn = document.getElementById('searchToggleBtn');
             if (searchBar.style.display === 'none') {
                 searchBar.style.display = 'flex';
+                toggleBtn.style.display = 'none';
                 document.getElementById('searchInput').focus();
             } else {
                 searchBar.style.display = 'none';
+                toggleBtn.style.display = '';
                 document.getElementById('searchInput').value = '';
                 handleSearch();
             }
@@ -231,11 +239,14 @@
             if (currentFontSize < 16) {
                 currentFontSize = 16;
             }
+            applyFontSize();
+            localStorage.setItem('noteFontSize', currentFontSize);
+        }
+
+        function applyFontSize() {
             document.getElementById('fontSizeDisplay').textContent = currentFontSize + 'px';
             document.getElementById('contentInput').style.fontSize = currentFontSize + 'px';
             document.getElementById('highlights').style.fontSize = currentFontSize + 'px';
-            
-            // Sync highlights after resize
             setTimeout(applyHighlights, 10);
         }
 
@@ -345,6 +356,27 @@
         let clickCount = 0;
         let clickTimeout = null;
 
+        // Auto background image cycle (dark mode only)
+        let imageCycleTimeout = null;
+
+        function scheduleImageCycle() {
+            const delay = (Math.random() * (10 - 3) + 3) * 1000; // 3–10 seconds
+            imageCycleTimeout = setTimeout(() => {
+                if (!document.body.classList.contains('dark-theme')) return;
+                const duration = (Math.random() * (4 - 2) + 2) * 1000; // 2–4 seconds
+                document.body.classList.add('image-peek-active');
+                setTimeout(() => {
+                    document.body.classList.remove('image-peek-active');
+                    scheduleImageCycle(); // schedule the next one
+                }, duration);
+            }, delay);
+        }
+
+        function stopImageCycle() {
+            clearTimeout(imageCycleTimeout);
+            document.body.classList.remove('image-peek-active');
+        }
+
         document.addEventListener('click', function (e) {
             // Check if clicking on the background elements (body, main container, or html)
             if (e.target === document.body || e.target.id === 'notesContainer' || e.target.tagName === 'HTML') {
@@ -356,13 +388,15 @@
                     clickCount = 0;
                 }, 1000);
 
-                // Trigger easter egg on 5 rapid clicks
+                // Trigger easter egg on 5 rapid clicks (dark mode only)
                 if (clickCount >= 5) {
                     clickCount = 0;
-                    document.body.classList.add('easter-egg-active');
-                    setTimeout(() => {
-                        document.body.classList.remove('easter-egg-active');
-                    }, 1000);
+                    if (document.body.classList.contains('dark-theme')) {
+                        document.body.classList.add('easter-egg-active');
+                        setTimeout(() => {
+                            document.body.classList.remove('easter-egg-active');
+                        }, 1000);
+                    }
                 }
             } else {
                 // Reset count if they click a button or note card
@@ -374,6 +408,18 @@
             applyStoredTheme();
             notes = loadNotes();
             renderNotes();
+
+            // Restore saved font size
+            const savedFontSize = parseInt(localStorage.getItem('noteFontSize'));
+            if (savedFontSize && savedFontSize >= 16) {
+                currentFontSize = savedFontSize;
+                applyFontSize();
+            }
+
+            // Start image cycle if dark mode is already active
+            if (document.body.classList.contains('dark-theme')) {
+                scheduleImageCycle();
+            }
 
             document.getElementById('noteForm').addEventListener('submit', saveNote)
             document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme)

@@ -35,11 +35,7 @@ body {
 }
 
 body.dark-theme {
-    background-image: linear-gradient(rgba(30, 31, 38, 0.99), rgba(30, 31, 38, 0.99)), url('./image.png') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-attachment: fixed !important;
-    background-repeat: no-repeat !important;
+    background-image: none !important;
 }
 
 h1 {
@@ -430,6 +426,14 @@ body.easter-egg-active {
     background-attachment: fixed !important;
     background-repeat: no-repeat !important;
     transition: background-image 0.2s ease-in-out;
+}
+
+body.image-peek-active {
+    background-image: linear-gradient(rgba(30, 31, 38, 0.99), rgba(30, 31, 38, 0.99)), url('./image.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
 }
 
 /* Mobile Responsiveness */
