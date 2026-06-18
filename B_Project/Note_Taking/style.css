@@ -28,7 +28,7 @@
 
 body {
     font-family: Poppins, sans-serif;
-    margin: 3rem;
+    margin: 2rem;
     background: var(--base-color);
     color: var(--text-color);
     min-height: 100vh;
@@ -44,6 +44,10 @@ body.dark-theme {
 
 h1 {
     margin-bottom: 1rem;
+}
+
+header h1 {
+    margin-bottom: 0;
 }
 
 button,
@@ -445,5 +449,17 @@ mark.active {
 
     .search-bar input {
         width: 70px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .add-note-btn, .theme-toggle-btn {
+        padding: 0.5rem 1rem;
+    }
+
+    header {
+        margin-bottom: 1rem;
     }
 }
