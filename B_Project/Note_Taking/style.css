@@ -530,7 +530,8 @@ body.image-peek-active::after {
 
     dialog {
         width: 100vw;
-        height: 100vh;
+        height: 100vh; /* Fallback */
+        height: 100dvh;
         max-width: none;
         max-height: none;
         border-radius: 0;
@@ -544,6 +545,7 @@ body.image-peek-active::after {
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
+        overflow-y: auto;
     }
 
     #noteForm {
@@ -566,5 +568,6 @@ body.image-peek-active::after {
 
     .form-textarea {
         flex-grow: 1;
+        min-height: 100px;
     }
 }
