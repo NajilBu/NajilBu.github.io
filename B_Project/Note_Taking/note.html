@@ -327,12 +327,12 @@
             // Check if clicking on the background elements (body, main container, or html)
             if (e.target === document.body || e.target.id === 'notesContainer' || e.target.tagName === 'HTML') {
                 clickCount++;
-                
+
                 clearTimeout(clickTimeout);
                 // Reset count if the user stops clicking for more than 400ms
                 clickTimeout = setTimeout(() => {
                     clickCount = 0;
-                }, 400);
+                }, 1000);
 
                 // Trigger easter egg on 5 rapid clicks
                 if (clickCount >= 5) {
