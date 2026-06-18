@@ -43,12 +43,12 @@
                         <div style="display: flex; align-items: center; gap: 0.75rem;">
                             <label for="contentInput" class="form-label" style="margin-bottom: 0;">Content:</label>
                             <div style="display: flex; align-items: center; gap: 0.25rem;">
-                                <button type="button" class="search-toggle-btn" onclick="changeFontSize(-1)"
+                                <button type="button" class="search-toggle-btn" onclick="changeFontSize(-10)"
                                     title="Decrease font size" style="padding: 0 0.25rem;"><i
                                         class="fa-solid fa-minus"></i></button>
                                 <span id="fontSizeDisplay"
-                                    style="font-size: 0.85rem; color: var(--secondary-text-color); min-width: 35px; text-align: center;">100%</span>
-                                <button type="button" class="search-toggle-btn" onclick="changeFontSize(1)"
+                                    style="font-size: 0.85rem; color: var(--secondary-text-color); min-width: 40px; text-align: center;">100%</span>
+                                <button type="button" class="search-toggle-btn" onclick="changeFontSize(10)"
                                     title="Increase font size" style="padding: 0 0.25rem;"><i
                                         class="fa-solid fa-plus"></i></button>
                             </div>
@@ -245,20 +245,20 @@
             document.getElementById('backdrop').scrollTop = document.getElementById('contentInput').scrollTop;
         }
 
-        let currentFontSize = 16;
+        let currentFontSize = 100;
         function changeFontSize(delta) {
             currentFontSize += delta;
-            if (currentFontSize < 16) {
-                currentFontSize = 16;
+            if (currentFontSize < 100) {
+                currentFontSize = 100;
             }
             applyFontSize();
             localStorage.setItem('noteFontSize', currentFontSize);
         }
 
         function applyFontSize() {
-            document.getElementById('fontSizeDisplay').textContent = currentFontSize + 'px';
-            document.getElementById('contentInput').style.fontSize = currentFontSize + 'px';
-            document.getElementById('highlights').style.fontSize = currentFontSize + 'px';
+            document.getElementById('fontSizeDisplay').textContent = currentFontSize + '%';
+            document.getElementById('contentInput').style.fontSize = currentFontSize + '%';
+            document.getElementById('highlights').style.fontSize = currentFontSize + '%';
             setTimeout(applyHighlights, 10);
         }
 
@@ -425,7 +425,7 @@
 
             // Restore saved font size
             const savedFontSize = parseInt(localStorage.getItem('noteFontSize'));
-            if (savedFontSize && savedFontSize >= 16) {
+            if (savedFontSize && savedFontSize >= 100) {
                 currentFontSize = savedFontSize;
                 applyFontSize();
             }
