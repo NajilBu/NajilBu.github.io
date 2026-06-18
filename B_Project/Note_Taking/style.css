@@ -195,7 +195,7 @@ dialog::backdrop {
 }
 
 .dialog-content {
-    padding: 2rem;
+    padding: 1.25rem;
 }
 
 .dialog-header {
@@ -266,7 +266,8 @@ dialog::backdrop {
 }
 
 .cancel-btn,
-.save-btn {
+.save-btn,
+#modalDeleteBtn {
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 0.5rem;
@@ -283,6 +284,11 @@ dialog::backdrop {
 .save-btn {
     background: var(--brand-color);
     color: white;
+}
+
+#modalDeleteBtn {
+    width: auto;
+    height: auto;
 }
 
 .save-btn:hover {
@@ -478,15 +484,87 @@ body.image-peek-active::after {
     }
 
     header h1 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
     .add-note-btn,
     .theme-toggle-btn {
-        padding: 0.5rem 1rem;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .search-toggle-btn {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.85rem;
     }
 
     header {
         margin-bottom: 1rem;
+    }
+
+    .dialog-title {
+        font-size: 1.25rem;
+    }
+
+    .close-btn {
+        font-size: 1.25rem;
+        padding: 0.15rem;
+    }
+
+    .cancel-btn,
+    .save-btn,
+    #modalDeleteBtn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .form-label {
+        font-size: 0.9rem;
+    }
+
+    .form-input,
+    .form-textarea {
+        padding: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    dialog {
+        width: 100vw;
+        height: 100vh;
+        max-width: none;
+        max-height: none;
+        border-radius: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .dialog-content {
+        padding: 1rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+    }
+
+    #noteForm {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    #noteForm .form-group:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .textarea-container {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-textarea {
+        flex-grow: 1;
     }
 }
