@@ -35,7 +35,7 @@ body {
 }
 
 body.dark-theme {
-    background-image: linear-gradient(rgba(30, 31, 38, 0.98), rgba(30, 31, 38, 0.98)), url('./image.png') !important;
+    background-image: linear-gradient(rgba(30, 31, 38, 0.99), rgba(30, 31, 38, 0.99)), url('./image.png') !important;
     background-size: cover !important;
     background-position: center !important;
     background-attachment: fixed !important;
@@ -464,7 +464,8 @@ body.easter-egg-active {
         font-size: 1.5rem;
     }
 
-    .add-note-btn, .theme-toggle-btn {
+    .add-note-btn,
+    .theme-toggle-btn {
         padding: 0.5rem 1rem;
     }
 
