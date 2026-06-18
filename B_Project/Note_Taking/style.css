@@ -206,7 +206,7 @@ dialog::backdrop {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .dialog-title {
@@ -230,12 +230,12 @@ dialog::backdrop {
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .form-label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     font-weight: 500;
     color: var(--text-color);
 }
@@ -260,7 +260,7 @@ dialog::backdrop {
 
 .form-textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 200px;
 }
 
 .dialog-actions {
