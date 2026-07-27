@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String methods</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
+
+<body>
+    <h1>String Methods</h1>
+    <p>Enter a string and press enter</p>
+    <input type="text" id="stringInput">
+    <p id="stringResult"></p>
+    <p id="errors"></p>
+    <div
+        style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>String Methods Code:</strong><br>
+        <code>
+            if (string.startsWith(" ")) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;let errormess = "Error: String cannot start with a space";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;errors.textContent = errormess;<br>
+            } else {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;errors.textContent = "";<br>
+            }<br>
+            let formattedString = string.replaceAll("-", "_");<br>
+            result = formattedString.toUpperCase();
+        </code>
+
+    </div>
+
+    <script>
+        const stringInput = document.getElementById("stringInput");
+        const stringResult = document.getElementById("stringResult");
+        const errors = document.getElementById("errors");
+
+        stringInput.addEventListener("input", () => {
+            let string = stringInput.value;
+            let result;
+
+            if (string.startsWith(" ")) { // endswith, includes searches for the specific value
+                let errormess = "Error: String cannot start with a space";
+                errors.textContent = errormess;
+            } else {
+                errors.textContent = "";
+            }
+
+            let formattedString = string.replaceAll("-", "_");
+            result = formattedString.toUpperCase();
+
+            stringResult.textContent = result;
+        });
+    </script>
+</body>
+
+</html>

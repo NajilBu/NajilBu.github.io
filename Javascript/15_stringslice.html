@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Slice</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        font-size: 1.5em;
+    }
+</style>
+
+<body>
+    <h1>String Slice</h1>
+    <p>Enter a string and press enter (this is capitalize the first letter of each word)</p>
+    <input type="text" id="stringInput">
+    <p id="raw"></p>
+
+    <p id="stringResult"></p>
+
+    <div
+        style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; border: 2.5px solid #ccc; display: inline-block; text-align: left; margin-top: 20px; font-size: 0.8em;">
+        <strong>String Slice Code:</strong><br>
+        <code>
+
+            let formattedString = string.slice(0, 1).toUpperCase() + string.slice(1);
+            result = formattedString;
+        </code>
+
+    </div>
+    <script>
+        const stringInput = document.getElementById("stringInput");
+        const raw = document.getElementById("raw");
+
+        const stringResult = document.getElementById("stringResult");
+
+        stringInput.addEventListener("input", () => {
+            let string = stringInput.value;
+            let result;
+
+            let StartOf = string.slice(0, 1).toUpperCase();
+            let EndOf = string.slice(1);
+            raw.textContent = StartOf + " " + EndOf;
+
+
+            let formattedString = StartOf + EndOf;
+            result = formattedString;
+
+
+            stringResult.textContent = result;
+        });
+    </script>
+</body>
+
+</html>

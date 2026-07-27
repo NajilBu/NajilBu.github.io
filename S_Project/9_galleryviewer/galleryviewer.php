@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-$folder = "pictures/";
+$folder = "../pictures/";
 $files = glob($folder . "*.{jpg,jpeg,png}", GLOB_BRACE);
 
 // Only send the relative path for each image

@@ -1,6 +1,6 @@
 <?php
 
-$folder = "pictures/";
+$folder = "../pictures/";
 
 if(!file_exists($folder)){
     mkdir($folder, 0777, true);
