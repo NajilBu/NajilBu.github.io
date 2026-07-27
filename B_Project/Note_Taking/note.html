@@ -367,6 +367,7 @@
 
         let clickCount = 0;
         let clickTimeout = null;
+        const easterEggAudio = new Audio('SRCS/thelight.mp3');
 
         // Auto background image cycle (dark mode only)
         let imageCycleTimeout = null;
@@ -407,9 +408,13 @@
                     clickCount = 0;
                     if (document.body.classList.contains('dark-theme')) {
                         document.body.classList.add('easter-egg-active');
+                        easterEggAudio.currentTime = 0;
+                        easterEggAudio.play().catch(err => console.log(err));
                         setTimeout(() => {
                             document.body.classList.remove('easter-egg-active');
-                        }, 1000);
+                            easterEggAudio.pause();
+                            easterEggAudio.currentTime = 0;
+                        }, 4500);
                     }
                 }
             } else {
