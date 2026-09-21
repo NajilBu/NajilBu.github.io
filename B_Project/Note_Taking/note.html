@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NOTER</title>
     <link rel="icon" href="./SRCS/Web_icon.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -368,6 +368,42 @@
         let clickCount = 0;
         let clickTimeout = null;
         const easterEggAudio = new Audio('SRCS/thelight.mp3');
+        const easterEggDuration = 4500;
+        const audioFadeDuration = 1200;
+        let easterEggTimeout = null;
+        let audioFadeFrame = null;
+
+        function stopEasterEgg() {
+            clearTimeout(easterEggTimeout);
+            cancelAnimationFrame(audioFadeFrame);
+            document.body.classList.remove('easter-egg-active');
+            easterEggAudio.pause();
+            easterEggAudio.currentTime = 0;
+            easterEggAudio.volume = 0;
+        }
+
+        function playEasterEgg() {
+            stopEasterEgg();
+            // Restart the image animation even when the effect is triggered again immediately.
+            void document.body.offsetWidth;
+            document.body.classList.add('easter-egg-active');
+            const startedAt = performance.now();
+
+            function updateAudioFade(now) {
+                const elapsed = now - startedAt;
+                const fadeIn = elapsed / audioFadeDuration;
+                const fadeOut = (easterEggDuration - elapsed) / audioFadeDuration;
+                easterEggAudio.volume = Math.max(0, Math.min(1, fadeIn, fadeOut));
+                if (elapsed < easterEggDuration && !easterEggAudio.paused) {
+                    audioFadeFrame = requestAnimationFrame(updateAudioFade);
+                }
+            }
+
+            easterEggAudio.play()
+                .then(() => { audioFadeFrame = requestAnimationFrame(updateAudioFade); })
+                .catch(err => console.log(err));
+            easterEggTimeout = setTimeout(stopEasterEgg, easterEggDuration);
+        }
 
         // Auto background image cycle (dark mode only)
         let imageCycleTimeout = null;
@@ -407,14 +443,7 @@
                 if (clickCount >= 5) {
                     clickCount = 0;
                     if (document.body.classList.contains('dark-theme')) {
-                        document.body.classList.add('easter-egg-active');
-                        easterEggAudio.currentTime = 0;
-                        easterEggAudio.play().catch(err => console.log(err));
-                        setTimeout(() => {
-                            document.body.classList.remove('easter-egg-active');
-                            easterEggAudio.pause();
-                            easterEggAudio.currentTime = 0;
-                        }, 4500);
+                        playEasterEgg();
                     }
                 }
             } else {
