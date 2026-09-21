@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Najil Bumacod's web development projects and practice library.">
     <title>Najil Bumacod</title>
     <link rel="icon" href="SOURCES/pxArt.png" type="image/png">
-    <link rel="stylesheet" href="B_Project/theformat.css?v=3">
+    <link rel="stylesheet" href="B_Project/theformat.css?v=9">
 </head>
 <body>
-    <nav>
+    <nav aria-label="Main navigation">
         <ul>
             <li><a href="#hero">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -18,88 +19,306 @@
         </ul>
     </nav>
 
-    <section id="hero" class="hero">
-        <h1>Welcome to My Portfolio</h1>
-        <p>I'm a passionate developer creating amazing digital experiences</p>
-        <p>Scroll down to learn more about me</p>
-    </section>
+    <main>
+        <section id="hero" class="hero">
+            <p class="eyebrow">Hello, I'm Najil Bumacod</p>
+            <h1>I build and learn through web projects.</h1>
+            <p>Explore my work, from a browser-based note taker to a growing library of HTML and JavaScript experiments.</p>
+            <a class="hero-link" href="#projects">Explore projects</a>
+        </section>
 
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <p>I'm a creative developer with a passion for building beautiful and functional websites. I love turning ideas into reality through code and design.</p>
-        <p>With experience in various technologies, I enjoy solving complex problems and creating user-friendly interfaces.</p>
-    </section>
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <p>I'm learning web development by making practical tools and trying new ideas in code. This portfolio brings together my larger projects and the smaller exercises I use to practice.</p>
+            <p>My work includes interactive pages, browser features, and a note-taking app. I keep building and improving them as I learn.</p>
+        </section>
 
-    <section id="skills" class="skills">
-        <h2>My Skills</h2>
-        <div class="skill-grid">
-            <div class="skill-item">
-                <h3>HTML & CSS</h3>
-                <p>Creating responsive and accessible web layouts</p>
+        <section id="skills" class="skills">
+            <h2>What I Work With</h2>
+            <div class="skill-grid">
+                <div class="skill-item">
+                    <h3>HTML &amp; CSS</h3>
+                    <p>Page structure, layouts, and responsive styling.</p>
+                </div>
+                <div class="skill-item">
+                    <h3>JavaScript</h3>
+                    <p>Interactive pages and browser-based tools.</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Browser APIs</h3>
+                    <p>Experiments with cameras, images, and page interactions.</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Node.js</h3>
+                    <p>Server-side practice for larger projects.</p>
+                </div>
             </div>
-            <div class="skill-item">
-                <h3>JavaScript</h3>
-                <p>Building interactive web applications</p>
+        </section>
+
+        <section id="projects" class="projects">
+            <div class="section-heading">
+                <div>
+                    <h2>My Projects</h2>
+                    <p>Drag sideways or swipe to browse two rows of projects. Select a card to learn more.</p>
+                </div>
             </div>
-            <div class="skill-item">
-                <h3>React</h3>
-                <p>Developing modern user interfaces</p>
+            <div class="project-viewport" id="project-viewport" aria-label="Projects" tabindex="0">
+                <div class="project-grid">
+                    <div class="project-column">
+                    <button type="button" class="project-card" data-href="library.html" data-description="A growing collection of HTML, CSS, and JavaScript practice pages. It brings smaller experiments and interactive exercises together so visitors can explore what I have been learning.">
+                        <div class="project-media project-media--library">
+                            <img src="SOURCES/pxArt.png" alt="">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-status">Available</span>
+                            <h3>Practice Library</h3>
+                            <p>My HTML, JavaScript, and project practice pages.</p>
+                        </div>
+                    </button>
+                    <button type="button" class="project-card" data-description="A planned tool for writing down things to buy and keeping a market list organized. The idea is to make everyday shopping easier to track.">
+                        <div class="project-media project-media--market" aria-hidden="true">ML</div>
+                        <div class="project-content">
+                            <span class="project-status project-status--planned">Planned</span>
+                            <h3>Market List</h3>
+                            <p>A planned tool for keeping track of market items.</p>
+                        </div>
+                    </button>
+                    </div>
+                    <div class="project-column">
+                    <button type="button" class="project-card" data-description="An early project concept from my big projects list. Its purpose and features are still being defined, so this card will grow as the idea becomes clearer.">
+                        <div class="project-media project-media--call" aria-hidden="true">CD</div>
+                        <div class="project-content">
+                            <span class="project-status project-status--planned">Planned</span>
+                            <h3>Call for Disab</h3>
+                            <p>A project idea from my big projects list.</p>
+                        </div>
+                    </button>
+                    <button type="button" class="project-card" data-description="A planned reminder tool for keeping important tasks and life updates in view. I want it to make it easier to remember what needs attention.">
+                        <div class="project-media project-media--life" aria-hidden="true">LN</div>
+                        <div class="project-content">
+                            <span class="project-status project-status--planned">Planned</span>
+                            <h3>Life Notification</h3>
+                            <p>A planned project for useful life reminders.</p>
+                        </div>
+                    </button>
+                    </div>
+                    <div class="project-column">
+                    <button type="button" class="project-card" data-description="A planned browser version of the classic Snake and Ladder board game. The goal is a simple, interactive game that people can play on the web.">
+                        <div class="project-media project-media--game" aria-hidden="true">SL</div>
+                        <div class="project-content">
+                            <span class="project-status project-status--planned">Planned</span>
+                            <h3>Snake and Ladder</h3>
+                            <p>A planned browser version of the board game.</p>
+                        </div>
+                    </button>
+                    <button type="button" class="project-card" data-href="B_Project/Note_Taking/note.html" data-description="A browser-based note-taking app for writing and organizing notes. It includes controls for finding text, changing text size, and switching the theme.">
+                        <div class="project-media project-media--notes">
+                            <img src="B_Project/Note_Taking/SRCS/Web_icon.jpg" alt="">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-status">Available</span>
+                            <h3>Note Taker</h3>
+                            <p>Create and organize notes in the browser.</p>
+                        </div>
+                    </button>
+                    </div>
+                </div>
             </div>
-            <div class="skill-item">
-                <h3>Node.js</h3>
-                <p>Server-side JavaScript development</p>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="contact-info">
+                <h2>Explore My Work</h2>
+                <p>See the source code and follow what I'm building on GitHub.</p>
+                <a class="contact-link" href="https://github.com/NajilBu" target="_blank" rel="noopener noreferrer">Visit my GitHub profile</a>
+            </div>
+        </section>
+    </main>
+
+    <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+        <div class="dialog-top">
+            <span class="project-status" id="dialog-status"></span>
+            <button type="button" class="dialog-close" id="dialog-close" aria-label="Close project details">&times;</button>
+        </div>
+        <div class="dialog-gallery" id="dialog-gallery" tabindex="0" aria-label="Project screenshot placeholders">
+            <div class="dialog-slide" role="img" aria-label="Screenshot 1 coming soon">
+                <span class="dialog-screenshot-icon" aria-hidden="true">▧</span>
+                <span>Screenshot 1 coming soon</span>
+            </div>
+            <div class="dialog-slide" role="img" aria-label="Screenshot 2 coming soon">
+                <span class="dialog-screenshot-icon" aria-hidden="true">▧</span>
+                <span>Screenshot 2 coming soon</span>
+            </div>
+            <div class="dialog-slide" role="img" aria-label="Screenshot 3 coming soon">
+                <span class="dialog-screenshot-icon" aria-hidden="true">▧</span>
+                <span>Screenshot 3 coming soon</span>
             </div>
         </div>
-    </section>
-
-    <section id="projects" class="projects">
-        <h2>My Projects</h2>
-        <div class="project-grid">
-            <div class="project-item">
-                <a href="SOURCES/Daboys.jpg">
-                    <img src="SOURCES/Daboys.jpg" alt="Project 1">
-                </a>
-                <div class="project-content">
-                    <h3>Project One</h3>
-                    <p>A creative web application built with modern technologies.</p>
-                </div>
-            </div>
-            <div class="project-item">
-                <a href="SOURCES/Gen.jpg">
-                     <img src="SOURCES/Gen.jpg" alt="Project 2">
-                </a>
-                <div class="project-content">
-                    <h3>Project Two</h3>
-                    <p>An innovative solution for everyday problems.</p>
-                </div>
-            </div>
-            <div class="project-item">
-                <a href="SOURCES/idol.png">
-                    <img src="SOURCES/idol.png" alt="Project 3">
-                </a>
-                <div class="project-content">
-                    <h3>Project Three</h3>
-                    <p>A user-focused design with attention to detail.</p>
-                </div>
-            </div>
-            <a class="project-item library-card" href="library.html">
-                <img src="SOURCES/pxArt.png" alt="" aria-hidden="true">
-                <div class="project-content">
-                    <h3>Practice Library</h3>
-                    <p>Browse my HTML, JavaScript, and project practice pages.</p>
-                </div>
-            </a>
+        <div class="dialog-gallery-dots" aria-label="Choose screenshot">
+            <button type="button" class="dialog-gallery-dot" aria-label="Show screenshot 1" aria-current="false"></button>
+            <button type="button" class="dialog-gallery-dot" aria-label="Show screenshot 2" aria-current="true"></button>
+            <button type="button" class="dialog-gallery-dot" aria-label="Show screenshot 3" aria-current="false"></button>
         </div>
-    </section>
+        <h2 id="dialog-title"></h2>
+        <p id="dialog-description"></p>
+        <a class="dialog-open" id="dialog-open" target="_blank" rel="noopener noreferrer" hidden>Open Project</a>
+    </dialog>
 
-    <section id="contact" class="contact">
-        <div class="contact-info">
-            <h2>Contact Me</h2>
-            <p>Let's work together on your next project!</p>
-            <p>Email: your.email@example.com</p>
-            <p>Phone: (123) 456-7890</p>
-            <p>Location: Your City, Country</p>
-        </div>
-    </section>
+    <script>
+        const projectViewport = document.getElementById('project-viewport');
+        const projectColumns = [...document.querySelectorAll('.project-column')];
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        let revealFrame = 0;
+
+        const updateProjectReveal = () => {
+            revealFrame = 0;
+            if (reducedMotion.matches) {
+                projectColumns.forEach((column) => column.style.removeProperty('opacity'));
+                projectColumns.forEach((column) => column.style.removeProperty('transform'));
+                return;
+            }
+            const top = projectViewport.getBoundingClientRect().top;
+            const viewportHeight = window.innerHeight;
+            projectColumns.forEach((column, index) => {
+                const revealDistance = viewportHeight * (0.35 + index * 0.15);
+                const progress = Math.max(0, Math.min(1, (viewportHeight - top) / revealDistance));
+                column.style.opacity = progress;
+                column.style.transform = `translateY(${(1 - progress) * 80}px)`;
+            });
+        };
+        const queueProjectReveal = () => {
+            if (!revealFrame) revealFrame = requestAnimationFrame(updateProjectReveal);
+        };
+        window.addEventListener('scroll', queueProjectReveal, { passive: true });
+        window.addEventListener('resize', queueProjectReveal);
+        reducedMotion.addEventListener('change', queueProjectReveal);
+        queueProjectReveal();
+
+        const projectDialog = document.getElementById('project-dialog');
+        const dialogStatus = document.getElementById('dialog-status');
+        const dialogTitle = document.getElementById('dialog-title');
+        const dialogDescription = document.getElementById('dialog-description');
+        const dialogOpen = document.getElementById('dialog-open');
+        const dialogGallery = document.getElementById('dialog-gallery');
+        const gallerySlides = [...dialogGallery.querySelectorAll('.dialog-slide')];
+        const galleryDots = [...document.querySelectorAll('.dialog-gallery-dot')];
+        const galleryStep = () => gallerySlides[1].getBoundingClientRect().left - gallerySlides[0].getBoundingClientRect().left;
+
+        const updateGalleryDots = () => {
+            const slide = Math.max(0, Math.min(galleryDots.length - 1, Math.round(dialogGallery.scrollLeft / galleryStep())));
+            galleryDots.forEach((dot, index) => dot.setAttribute('aria-current', String(index === slide)));
+        };
+        dialogGallery.addEventListener('scroll', updateGalleryDots);
+        galleryDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dialogGallery.scrollTo({ left: index * galleryStep(), behavior: 'smooth' });
+            });
+        });
+
+        projectViewport.querySelectorAll('.project-card').forEach((card) => {
+            card.addEventListener('click', () => {
+                if (dragged) return;
+                const status = card.querySelector('.project-status');
+                dialogStatus.textContent = status.textContent;
+                dialogStatus.className = status.className;
+                dialogTitle.textContent = card.querySelector('h3').textContent;
+                dialogDescription.textContent = card.dataset.description || card.querySelector('p').textContent;
+                dialogOpen.hidden = !card.dataset.href;
+                if (card.dataset.href) dialogOpen.href = card.dataset.href;
+                else dialogOpen.removeAttribute('href');
+                projectDialog.showModal();
+                dialogGallery.scrollLeft = galleryStep();
+                updateGalleryDots();
+            });
+        });
+
+        let galleryPointerDown = false;
+        let galleryStartX = 0;
+        let galleryScrollStart = 0;
+        dialogGallery.addEventListener('pointerdown', (event) => {
+            if (event.pointerType !== 'mouse' || event.button !== 0) return;
+            galleryPointerDown = true;
+            galleryStartX = event.clientX;
+            galleryScrollStart = dialogGallery.scrollLeft;
+        });
+        dialogGallery.addEventListener('pointermove', (event) => {
+            if (!galleryPointerDown) return;
+            const distance = event.clientX - galleryStartX;
+            if (Math.abs(distance) > 6) {
+                dialogGallery.classList.add('is-dragging');
+                dialogGallery.setPointerCapture(event.pointerId);
+            }
+            if (dialogGallery.classList.contains('is-dragging')) {
+                dialogGallery.scrollLeft = galleryScrollStart - distance;
+            }
+        });
+        const endGalleryDrag = () => {
+            galleryPointerDown = false;
+            dialogGallery.classList.remove('is-dragging');
+        };
+        dialogGallery.addEventListener('pointerup', endGalleryDrag);
+        dialogGallery.addEventListener('pointercancel', endGalleryDrag);
+
+        const closeProjectDialog = () => {
+            if (!projectDialog.open || projectDialog.classList.contains('is-closing')) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                projectDialog.close();
+                return;
+            }
+            projectDialog.classList.add('is-closing');
+            setTimeout(() => projectDialog.close(), 220);
+        };
+
+        document.getElementById('dialog-close').addEventListener('click', closeProjectDialog);
+        projectDialog.addEventListener('cancel', (event) => {
+            event.preventDefault();
+            closeProjectDialog();
+        });
+        projectDialog.addEventListener('close', () => projectDialog.classList.remove('is-closing'));
+        projectDialog.addEventListener('click', (event) => {
+            const bounds = projectDialog.getBoundingClientRect();
+            const outside = event.clientX < bounds.left || event.clientX > bounds.right ||
+                event.clientY < bounds.top || event.clientY > bounds.bottom;
+            if (outside) closeProjectDialog();
+        });
+
+        let pointerStartX = 0;
+        let scrollStart = 0;
+        let pointerDown = false;
+        let dragged = false;
+
+        projectViewport.addEventListener('pointerdown', (event) => {
+            if (event.pointerType !== 'mouse' || event.button !== 0) return;
+            pointerDown = true;
+            dragged = false;
+            pointerStartX = event.clientX;
+            scrollStart = projectViewport.scrollLeft;
+        });
+
+        projectViewport.addEventListener('pointermove', (event) => {
+            if (!pointerDown) return;
+            const distance = event.clientX - pointerStartX;
+            if (!dragged && Math.abs(distance) > 6) {
+                dragged = true;
+                projectViewport.classList.add('is-dragging');
+                projectViewport.setPointerCapture(event.pointerId);
+            }
+            if (dragged) projectViewport.scrollLeft = scrollStart - distance;
+        });
+
+        const endDrag = () => {
+            pointerDown = false;
+            projectViewport.classList.remove('is-dragging');
+            if (dragged) setTimeout(() => { dragged = false; }, 0);
+        };
+        projectViewport.addEventListener('pointerup', endDrag);
+        projectViewport.addEventListener('pointercancel', endDrag);
+        projectViewport.addEventListener('click', (event) => {
+            if (dragged) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        }, true);
+    </script>
 </body>
 </html>
