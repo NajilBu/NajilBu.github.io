@@ -6,7 +6,7 @@
     <meta name="description" content="Najil Bumacod's web development projects and practice library.">
     <title>Najil Bumacod</title>
     <link rel="icon" href="SOURCES/pxArt.png" type="image/png">
-    <link rel="stylesheet" href="B_Project/theformat.css?v=9">
+    <link rel="stylesheet" href="B_Project/theformat.css?v=11">
 </head>
 <body>
     <nav aria-label="Main navigation">
@@ -179,11 +179,14 @@
             }
             const top = projectViewport.getBoundingClientRect().top;
             const viewportHeight = window.innerHeight;
+            const sharedDistance = viewportHeight * 0.5;
+            const sharedProgress = Math.max(0, Math.min(1, (viewportHeight - top) / sharedDistance));
+            const sharedOffset = (1 - sharedProgress) * 80;
             projectColumns.forEach((column, index) => {
                 const revealDistance = viewportHeight * (0.35 + index * 0.15);
                 const progress = Math.max(0, Math.min(1, (viewportHeight - top) / revealDistance));
                 column.style.opacity = progress;
-                column.style.transform = `translateY(${(1 - progress) * 80}px)`;
+                column.style.transform = `translateY(${sharedOffset}px)`;
             });
         };
         const queueProjectReveal = () => {

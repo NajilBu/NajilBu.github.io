@@ -146,6 +146,9 @@ section h2 {
 
 .projects {
     align-items: stretch;
+    justify-content: flex-start;
+    padding-top: 104px;
+    scroll-margin-top: 0;
 }
 
 .section-heading {
