@@ -135,11 +135,11 @@ section {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.5s ease;
+    transition: translate 0.5s ease;
 }
 
 .project-item:hover {
-    transform: translateY(-10px);
+    translate: 0 -10px;
    
    
 }
@@ -152,6 +152,52 @@ section {
 
 .project-content {
     padding: 20px;
+}
+
+.project-grid a.library-card,
+.project-grid a.library-card:visited,
+.project-grid a.library-card:hover,
+.project-grid a.library-card:active,
+.project-grid a.library-card h3,
+.project-grid a.library-card p {
+    display: block;
+    color: #333;
+    text-decoration: none !important;
+}
+
+.library-card img {
+    background: #e0e0e0;
+    object-fit: contain;
+    padding: 36px;
+    image-rendering: pixelated;
+}
+
+.library-card:focus-visible {
+    outline: 3px solid #333;
+    outline-offset: 4px;
+}
+
+@keyframes appearslideup {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .skill-item,
+        .project-item {
+            animation: appearslideup linear both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
+        }
+    }
 }
 
 /* CONTACT */
