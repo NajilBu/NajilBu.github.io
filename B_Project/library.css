@@ -154,19 +154,24 @@ a {
     color: #666;
 }
 
-.planned-item {
-    color: #666;
+.project-list-item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    color: #333;
 }
 
-.planned-item span {
-    display: inline-block;
-    margin-left: 8px;
-    color: #755b2b;
+.project-badge {
+    flex: none;
     font-size: .72rem;
     font-weight: bold;
     letter-spacing: .06em;
     text-transform: uppercase;
 }
+
+.project-badge--available { color: #286044; }
+.project-badge--planned { color: #755b2b; }
 
 .library-footer {
     padding: 30px 24px;
