@@ -4,107 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice library</title>
-    <link rel="icon" href="SOURCES/pxArt.png" type="image/x-icon">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-
-        }
-
-        main {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        ol {
-            padding: 25px;
-            display: block;
-        }
-
-        li {
-            margin: 10px 5px;
-
-        }
-
-        a {
-            text-decoration: none;
-            color: #007bff;
-            font-size: 18px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        li:hover {
-            transform: translateX(7px);
-        }
-
-        div::-webkit-scrollbar {
-            display: none;
-        }
-
-        .container {
-            width: 350px;
-            height: 600px;
-            border: 2px solid gray;
-            box-shadow: 2px 5px 10px gray;
-            overflow: auto;
-            border-radius: 5px;
-            animation: slide ease both;
-            padding-left: 5px;
-            animation-duration: 2s;
-
-
-        }
-
-        h2 {
-            margin: 5px;
-            text-align: center;
-
-        }
-
-        .container:nth-child(4n +1) {
-            animation-delay: 0s;
-        }
-
-        .container:nth-child(4n +2) {
-            animation-delay: 0.2s;
-        }
-
-        .container:nth-child(4n +3) {
-            animation-delay: 0.4s;
-        }
-
-        .container:nth-child(4n +4) {
-            animation-delay: 0.6s;
-        }
-
-        @keyframes slide {
-            from {
-                opacity: 0;
-                transform: translateY(-100%);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    <meta name="description" content="Najil Bumacod's collection of HTML, JavaScript, and small web practice projects.">
+    <title>Practice Library | Najil Bumacod</title>
+    <link rel="icon" href="SOURCES/pxArt.png" type="image/png">
+    <link rel="stylesheet" href="B_Project/library.css">
 </head>
 
 <body>
-    <h1>Navigate to Practices Pages</h1>
-    <main>
+    <nav class="library-nav" aria-label="Main navigation">
+        <a class="nav-name" href="index.html">Najil Bumacod</a>
+        <a class="nav-back" href="index.html">Back to Portfolio</a>
+    </nav>
+    <header class="library-hero">
+        <p class="eyebrow">Explore my work</p>
+        <h1>Practice Library</h1>
+        <p>HTML, JavaScript, and small projects collected as I learn and build.</p>
+    </header>
+    <main class="library-main">
         <div class="container" id="html">
             <h2>HTML</h2>
             <div>
@@ -170,9 +86,7 @@
 
             <div>
                 <h3>Tutorial</h3>
-                <ol>
-                    <li><a href="" target="_blank"></a></li>
-                </ol>
+                <p class="empty-state">React exercises are coming soon.</p>
             </div>
         </div>
 
@@ -225,11 +139,11 @@
             <div>
                 <h3>Full</h3>
                 <ol>
-                    <li><a href="index.html" target="_blank">My Portfolio</a></li>
-                    <li><a href="" target="_blank">Market list</a></li>
-                    <li><a href="" target="_blank">call for disab</a></li>
-                    <li><a href="" target="_blank">Life notification</a></li>
-                    <li><a href="" target="_blank">Snake and ladder</a></li>
+                    <li><a href="index.html">My Portfolio</a></li>
+                    <li><span class="planned-item">Market List <span>Planned</span></span></li>
+                    <li><span class="planned-item">Call for Disab <span>Planned</span></span></li>
+                    <li><span class="planned-item">Life Notification <span>Planned</span></span></li>
+                    <li><span class="planned-item">Snake and Ladder <span>Planned</span></span></li>
                     <li><a href="B_Project/Note_Taking/note.html" target="_blank">Note Taker</a></li>
                 </ol>
             </div>
@@ -237,10 +151,7 @@
 
     </main>
 
-    <script>
-        console.log(window.innerWidth + "x" + window.innerHeight)
-
-    </script>
+    <footer class="library-footer">Made by Najil Bumacod</footer>
 </body>
 
 </html>
