@@ -180,6 +180,13 @@ section h2 {
     scrollbar-width: none;
 }
 
+.project-shell { position: relative; width: min(100%, 920px); margin: 0 auto; }
+.project-shell::after { content: ""; position: absolute; top: 10px; right: 0; bottom: 24px; width: 42px; pointer-events: none; background: linear-gradient(90deg, transparent, #f8f9fc); transition: opacity .2s; }
+.project-shell.at-end::after { opacity: 0; }
+.project-navigation { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: min(100%, 920px); margin: 0 auto; color: #626b78; font-size: .85rem; }
+.project-progress { width: 110px; height: 4px; flex: none; border-radius: 4px; background: #dce1e8; overflow: hidden; }
+.project-progress span { display: block; width: 20%; height: 100%; border-radius: inherit; background: #303a49; }
+
 .project-viewport::-webkit-scrollbar {
     display: none;
 }
@@ -349,7 +356,7 @@ section h2 {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    flex: 0 0 100%;
+    flex: 0 0 68%;
     aspect-ratio: 16 / 9;
     border: 2px dashed #b8bec9;
     border-radius: 10px;
@@ -359,6 +366,9 @@ section h2 {
     scroll-snap-align: center;
     user-select: none;
 }
+
+.dialog-slide.has-image { border: 0; background: #eef1f5; overflow: hidden; }
+.dialog-slide img { display: block; width: 100%; height: 100%; object-fit: contain; }
 
 .dialog-slide:nth-child(2) { background: #eef1f5; }
 .dialog-slide:nth-child(3) { background: #f4f1ed; }

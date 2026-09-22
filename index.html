@@ -65,10 +65,11 @@
                     <p>Drag sideways or swipe to browse two rows of projects. Select a card to learn more.</p>
                 </div>
             </div>
-            <div class="project-viewport" id="project-viewport" aria-label="Projects" tabindex="0">
+            <div class="project-shell" id="project-shell">
+            <div class="project-viewport" id="project-viewport" aria-label="Projects. Drag, swipe, or use left and right arrow keys to browse." tabindex="0">
                 <div class="project-grid">
                     <div class="project-column">
-                    <button type="button" class="project-card" data-href="#library" data-view="library" data-description="A growing collection of HTML, CSS, and JavaScript practice pages. It brings smaller experiments and interactive exercises together so visitors can explore what I have been learning.">
+                    <button type="button" class="project-card" data-href="#library" data-view="library" data-gallery="library" data-description="A growing collection of HTML, CSS, and JavaScript practice pages. It brings smaller experiments and interactive exercises together so visitors can explore what I have been learning.">
                         <div class="project-media project-media--library">
                             <img src="SOURCES/pxArt.png" alt="">
                         </div>
@@ -76,6 +77,26 @@
                             <span class="project-status">Available</span>
                             <h3>Practice Library</h3>
                             <p>My HTML, JavaScript, and project practice pages.</p>
+                        </div>
+                    </button>
+                    <button type="button" class="project-card" data-href="B_Project/Note_Taking/note.html" data-gallery="notes" data-description="A browser-based note-taking app for writing and organizing notes. It includes controls for finding text, changing text size, and switching the theme.">
+                        <div class="project-media project-media--notes">
+                            <img src="B_Project/Note_Taking/SRCS/Web_icon.jpg" alt="">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-status">Available</span>
+                            <h3>Note Taker</h3>
+                            <p>Create and organize notes in the browser.</p>
+                        </div>
+                    </button>
+                    </div>
+                    <div class="project-column">
+                    <button type="button" class="project-card" data-download="https://github.com/NajilBu/CTF_Project/releases/download/v1.0.1/GridExplorer.exe" data-gallery="grid" data-description="A Windows multiplayer grid exploration game built with Python and Tkinter. Players navigate an encrypted grid, recover hidden flags, and compete with other players over a local network. Difficulty choices and quick-time challenges add variety.">
+                        <div class="project-media project-media--ctf" aria-hidden="true">CTF</div>
+                        <div class="project-content">
+                            <span class="project-status">Windows download</span>
+                            <h3>Grid Explorer (CTF)</h3>
+                            <p>A Python multiplayer grid game with hidden flags.</p>
                         </div>
                     </button>
                     <button type="button" class="project-card" data-description="A planned tool for writing down things to buy and keeping a market list organized. The idea is to make everyday shopping easier to track.">
@@ -114,29 +135,11 @@
                             <p>A planned browser version of the board game.</p>
                         </div>
                     </button>
-                    <button type="button" class="project-card" data-href="B_Project/Note_Taking/note.html" data-description="A browser-based note-taking app for writing and organizing notes. It includes controls for finding text, changing text size, and switching the theme.">
-                        <div class="project-media project-media--notes">
-                            <img src="B_Project/Note_Taking/SRCS/Web_icon.jpg" alt="">
-                        </div>
-                        <div class="project-content">
-                            <span class="project-status">Available</span>
-                            <h3>Note Taker</h3>
-                            <p>Create and organize notes in the browser.</p>
-                        </div>
-                    </button>
-                    </div>
-                    <div class="project-column">
-                    <button type="button" class="project-card" data-download="https://github.com/NajilBu/CTF_Project/releases/download/v1.0.1/GridExplorer.exe" data-description="A Windows multiplayer grid exploration game built with Python and Tkinter. Players navigate an encrypted grid, recover hidden flags, and compete with other players over a local network. Difficulty choices and quick-time challenges add variety.">
-                        <div class="project-media project-media--ctf" aria-hidden="true">CTF</div>
-                        <div class="project-content">
-                            <span class="project-status">Windows download</span>
-                            <h3>Grid Explorer (CTF)</h3>
-                            <p>A Python multiplayer grid game with hidden flags.</p>
-                        </div>
-                    </button>
                     </div>
                 </div>
             </div>
+            </div>
+            <div class="project-navigation"><span>Drag, swipe, or use ← → to browse</span><div class="project-progress" role="progressbar" aria-label="Project carousel position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="project-progress-fill"></span></div></div>
         </section>
 
         <section id="contact" class="contact">
@@ -328,6 +331,9 @@
     <script>
         const projectViewport = document.getElementById('project-viewport');
         const projectColumns = [...document.querySelectorAll('.project-column')];
+        const projectShell = document.getElementById('project-shell');
+        const projectProgress = document.querySelector('.project-progress');
+        const projectProgressFill = document.getElementById('project-progress-fill');
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
         const portfolioView = document.getElementById('portfolio-view');
         const libraryView = document.getElementById('library-view');
@@ -390,6 +396,22 @@
         window.addEventListener('resize', queueProjectReveal);
         reducedMotion.addEventListener('change', queueProjectReveal);
         queueProjectReveal();
+        const updateProjectProgress = () => {
+            const distance = projectViewport.scrollWidth - projectViewport.clientWidth;
+            const progress = distance > 0 ? Math.max(0, Math.min(1, projectViewport.scrollLeft / distance)) : 1;
+            projectProgressFill.style.width = `${20 + progress * 80}%`;
+            projectProgress.setAttribute('aria-valuenow', String(Math.round(progress * 100)));
+            projectShell.classList.toggle('at-end', progress > 0.99);
+        };
+        projectViewport.addEventListener('scroll', updateProjectProgress, { passive: true });
+        window.addEventListener('resize', updateProjectProgress);
+        projectViewport.addEventListener('keydown', (event) => {
+            if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+            event.preventDefault();
+            const step = projectColumns[1].offsetLeft - projectColumns[0].offsetLeft;
+            projectViewport.scrollBy({ left: event.key === 'ArrowRight' ? step : -step, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+        });
+        updateProjectProgress();
 
         const projectDialog = document.getElementById('project-dialog');
         const dialogStatus = document.getElementById('dialog-status');
@@ -400,6 +422,41 @@
         const dialogGallery = document.getElementById('dialog-gallery');
         const gallerySlides = [...dialogGallery.querySelectorAll('.dialog-slide')];
         const galleryDots = [...document.querySelectorAll('.dialog-gallery-dot')];
+        const galleryPlaceholders = gallerySlides.map((slide) => ({ html: slide.innerHTML, label: slide.getAttribute('aria-label') }));
+        const projectScreenshots = {
+            library: [
+                ['library-overview.png', 'Practice Library overview'],
+                ['library-lessons.png', 'HTML and JavaScript lesson lists'],
+                ['library-projects.png', 'Practice Library project list']
+            ],
+            notes: [
+                ['notes-dark.png', 'Note Taker dark theme'],
+                ['notes-editor.png', 'Note Taker editor'],
+                ['notes-light.png', 'Note Taker light theme']
+            ],
+            grid: [
+                ['grid-menu.png', 'Grid Explorer main menu'],
+                ['grid-lobby.png', 'Grid Explorer multiplayer lobby'],
+                ['grid-gameplay.png', 'Grid Explorer gameplay']
+            ]
+        };
+        const showProjectGallery = (card) => {
+            const images = projectScreenshots[card.dataset.gallery];
+            gallerySlides.forEach((slide, index) => {
+                slide.classList.toggle('has-image', Boolean(images));
+                if (images) {
+                    const image = document.createElement('img');
+                    image.src = `SOURCES/project-screenshots/${images[index][0]}`;
+                    image.alt = images[index][1];
+                    slide.replaceChildren(image);
+                    slide.setAttribute('aria-label', images[index][1]);
+                } else {
+                    slide.innerHTML = galleryPlaceholders[index].html;
+                    slide.setAttribute('aria-label', galleryPlaceholders[index].label);
+                }
+            });
+            dialogGallery.setAttribute('aria-label', images ? `${card.querySelector('h3').textContent} screenshots` : 'Project screenshot placeholders');
+        };
         const galleryStep = () => gallerySlides[1].getBoundingClientRect().left - gallerySlides[0].getBoundingClientRect().left;
 
         const updateGalleryDots = () => {
@@ -421,6 +478,7 @@
                 dialogStatus.className = status.className;
                 dialogTitle.textContent = card.querySelector('h3').textContent;
                 dialogDescription.textContent = card.dataset.description || card.querySelector('p').textContent;
+                showProjectGallery(card);
                 dialogOpen.hidden = !card.dataset.href;
                 if (card.dataset.href) dialogOpen.href = card.dataset.href;
                 else dialogOpen.removeAttribute('href');
