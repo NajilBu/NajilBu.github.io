@@ -133,22 +133,14 @@ section h2 {
 
 .about-copy p:last-child { margin-bottom: 0; }
 
-.about-photo-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+.about-photo {
+    display: block;
     width: 100%;
     aspect-ratio: 4 / 5;
-    border: 2px dashed #abb4c2;
     border-radius: 14px;
-    background: #e9edf3;
-    color: #596575;
-    font-weight: bold;
+    object-fit: cover;
+    object-position: center top;
 }
-
-.about-photo-icon { font-size: 2.4rem; line-height: 1; }
 
 .skill-grid {
     display: grid;
@@ -560,7 +552,7 @@ section h2 {
     .contact-methods { grid-template-columns: 1fr; }
     .dialog-details { grid-template-columns: 1fr; }
     .about-layout { grid-template-columns: 1fr; text-align: center; }
-    .about-photo-placeholder { width: min(100%, 260px); margin: 0 auto; }
+    .about-photo { width: min(100%, 260px); margin: 0 auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
