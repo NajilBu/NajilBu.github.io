@@ -260,6 +260,7 @@ section h2 {
 .project-media--life { background: #dce7ef; }
 .project-media--game { background: #f3e3ce; }
 .project-media--notes { background: #e9dfe3; }
+.project-media--ctf { background: #17283d; color: #c9e9ff; }
 
 .project-content {
     padding: 16px 20px 20px;
@@ -398,14 +399,23 @@ section h2 {
     max-width: 62ch;
 }
 
+.dialog-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .dialog-open {
     display: inline-block;
     padding: 10px 18px;
+    border: 0;
     border-radius: 7px;
     background: #222;
     color: white;
     text-decoration: none;
+    font: inherit;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .dialog-open:hover, .dialog-open:focus-visible {
