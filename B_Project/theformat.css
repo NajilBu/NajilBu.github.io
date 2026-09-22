@@ -140,6 +140,7 @@ section h2 {
     border-radius: 14px;
     overflow: hidden;
     touch-action: pan-y;
+    -webkit-touch-callout: none;
 }
 
 .about-photo {
@@ -152,6 +153,8 @@ section h2 {
     object-position: center top;
     user-select: none;
     -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    pointer-events: none;
 }
 
 .about-photo--hover { opacity: 0; transition: opacity .45s ease; }
@@ -161,10 +164,6 @@ section h2 {
 }
 
 .about-photo-frame.is-pressed .about-photo--hover { opacity: 1; }
-
-@media (hover: none) {
-    .about-photo-frame:active .about-photo--hover { opacity: 1; }
-}
 
 @media (prefers-reduced-motion: reduce) {
     .about-photo--hover { transition: none; }

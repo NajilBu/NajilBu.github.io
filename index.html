@@ -6,7 +6,7 @@
     <meta name="description" content="Najil Bumacod's web development projects and practice library.">
     <title>Najil Bumacod</title>
     <link rel="icon" href="SOURCES/pxArt.png" type="image/png">
-    <link rel="stylesheet" href="B_Project/theformat.css?v=20">
+    <link rel="stylesheet" href="B_Project/theformat.css?v=21">
     <link rel="stylesheet" href="B_Project/library.css?v=2">
     <script>if (location.hash === '#library') document.documentElement.classList.add('initial-library');</script>
 </head>
@@ -347,24 +347,35 @@
 
     <script>
         const aboutPhotoFrame = document.querySelector('.about-photo-frame');
-        let photoPointerId = null;
+        let photoTouchId = null;
+        let photoReleaseTimer = 0;
         const releaseAboutPhoto = (event) => {
-            if (event && event.pointerId !== photoPointerId) return;
-            photoPointerId = null;
+            if (event && ![...event.changedTouches].some((touch) => touch.identifier === photoTouchId)) return;
+            clearTimeout(photoReleaseTimer);
+            photoReleaseTimer = 0;
+            photoTouchId = null;
             aboutPhotoFrame.classList.remove('is-pressed');
         };
-        aboutPhotoFrame.addEventListener('pointerdown', (event) => {
-            if (event.pointerType === 'mouse') return;
-            photoPointerId = event.pointerId;
+        const queuePhotoRelease = () => {
+            if (photoTouchId === null) return;
+            clearTimeout(photoReleaseTimer);
+            photoReleaseTimer = setTimeout(() => releaseAboutPhoto(), 700);
+        };
+        aboutPhotoFrame.addEventListener('touchstart', (event) => {
+            clearTimeout(photoReleaseTimer);
+            photoReleaseTimer = 0;
+            photoTouchId = event.changedTouches[0].identifier;
             aboutPhotoFrame.classList.add('is-pressed');
-        });
-        window.addEventListener('pointerup', releaseAboutPhoto);
-        window.addEventListener('pointercancel', releaseAboutPhoto);
-        window.addEventListener('scroll', () => releaseAboutPhoto(), { passive: true });
+        }, { passive: true });
+        window.addEventListener('touchend', releaseAboutPhoto, { passive: true });
+        window.addEventListener('touchcancel', (event) => {
+            if ([...event.changedTouches].some((touch) => touch.identifier === photoTouchId)) queuePhotoRelease();
+        }, { passive: true });
+        window.addEventListener('scroll', () => {
+            if (photoReleaseTimer) queuePhotoRelease();
+        }, { passive: true });
         window.addEventListener('blur', () => releaseAboutPhoto());
-        aboutPhotoFrame.addEventListener('contextmenu', (event) => {
-            if (photoPointerId !== null) event.preventDefault();
-        });
+        aboutPhotoFrame.addEventListener('contextmenu', (event) => event.preventDefault());
         const projectViewport = document.getElementById('project-viewport');
         const projectColumns = [...document.querySelectorAll('.project-column')];
         const projectShell = document.getElementById('project-shell');
