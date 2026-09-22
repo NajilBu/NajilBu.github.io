@@ -71,7 +71,7 @@
                     <div class="project-column">
                     <button type="button" class="project-card" data-href="#library" data-view="library" data-gallery="library" data-description="A growing collection of HTML, CSS, and JavaScript practice pages. It brings smaller experiments and interactive exercises together so visitors can explore what I have been learning.">
                         <div class="project-media project-media--library">
-                            <img src="SOURCES/project-screenshots/library-lessons.png" alt="" loading="lazy">
+                            <img src="SOURCES/project-screenshots/library-overview.png" alt="" loading="lazy">
                         </div>
                         <div class="project-content">
                             <span class="project-status">Available</span>
@@ -81,7 +81,7 @@
                     </button>
                     <button type="button" class="project-card" data-href="B_Project/Note_Taking/note.html" data-gallery="notes" data-description="A browser-based note-taking app for writing and organizing notes. It includes controls for finding text, changing text size, and switching the theme.">
                         <div class="project-media project-media--notes">
-                            <img src="SOURCES/project-screenshots/notes-editor.png" alt="" loading="lazy">
+                            <img src="SOURCES/project-screenshots/notes-dark.png" alt="" loading="lazy">
                         </div>
                         <div class="project-content">
                             <span class="project-status">Available</span>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="project-column">
                     <button type="button" class="project-card" data-download="https://github.com/NajilBu/CTF_Project/releases/download/v1.0.1/GridExplorer.exe" data-gallery="grid" data-description="A Windows multiplayer grid exploration game built with Python and Tkinter. Players navigate an encrypted grid, recover hidden flags, and compete with other players over a local network. Difficulty choices and quick-time challenges add variety.">
-                        <div class="project-media project-media--ctf"><img src="SOURCES/project-screenshots/grid-lobby.png" alt="" loading="lazy"></div>
+                        <div class="project-media project-media--ctf"><img src="SOURCES/project-screenshots/grid-menu.png" alt="" loading="lazy"></div>
                         <div class="project-content">
                             <span class="project-status">Windows download</span>
                             <h3>Grid Explorer (CTF)</h3>
@@ -448,6 +448,7 @@
                     const image = document.createElement('img');
                     image.src = `SOURCES/project-screenshots/${images[index][0]}`;
                     image.alt = images[index][1];
+                    image.draggable = false;
                     slide.replaceChildren(image);
                     slide.setAttribute('aria-label', images[index][1]);
                 } else {
@@ -497,6 +498,8 @@
         let galleryScrollStart = 0;
         dialogGallery.addEventListener('pointerdown', (event) => {
             if (event.pointerType !== 'mouse' || event.button !== 0) return;
+            event.preventDefault();
+            dialogGallery.setPointerCapture(event.pointerId);
             galleryPointerDown = true;
             galleryStartX = event.clientX;
             galleryScrollStart = dialogGallery.scrollLeft;
@@ -506,7 +509,6 @@
             const distance = event.clientX - galleryStartX;
             if (Math.abs(distance) > 6) {
                 dialogGallery.classList.add('is-dragging');
-                dialogGallery.setPointerCapture(event.pointerId);
             }
             if (dialogGallery.classList.contains('is-dragging')) {
                 dialogGallery.scrollLeft = galleryScrollStart - distance;
@@ -518,6 +520,7 @@
         };
         dialogGallery.addEventListener('pointerup', endGalleryDrag);
         dialogGallery.addEventListener('pointercancel', endGalleryDrag);
+        dialogGallery.addEventListener('dragstart', (event) => event.preventDefault());
 
         const closeProjectDialog = () => {
             if (!projectDialog.open || projectDialog.classList.contains('is-closing')) return;
