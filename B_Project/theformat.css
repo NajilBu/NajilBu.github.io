@@ -439,6 +439,18 @@ section h2 {
     max-width: 62ch;
 }
 
+.dialog-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 22px 0;
+}
+
+.dialog-details[hidden] { display: none; }
+.dialog-details > div { padding: 18px; border-radius: 10px; background: #f3f5f8; }
+.dialog-details h3 { margin: 0 0 6px; font-size: 1rem; }
+.dialog-details p { margin: 0; }
+
 .dialog-actions {
     display: flex;
     flex-wrap: wrap;
@@ -518,6 +530,7 @@ section h2 {
     .project-column { flex-basis: min(78vw, 320px); }
     .project-card { min-height: 285px; }
     .contact-methods { grid-template-columns: 1fr; }
+    .dialog-details { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -6,7 +6,7 @@
     <meta name="description" content="Najil Bumacod's web development projects and practice library.">
     <title>Najil Bumacod</title>
     <link rel="icon" href="SOURCES/pxArt.png" type="image/png">
-    <link rel="stylesheet" href="B_Project/theformat.css?v=15">
+    <link rel="stylesheet" href="B_Project/theformat.css?v=16">
     <link rel="stylesheet" href="B_Project/library.css?v=2">
     <script>if (location.hash === '#library') document.documentElement.classList.add('initial-library');</script>
 </head>
@@ -26,7 +26,7 @@
         <section id="hero" class="hero">
             <p class="eyebrow">Hello, I'm Najil Bumacod</p>
             <h1>I build browser tools and a Windows grid game.</h1>
-            <p>Explore my Note Taker, Practice Library, and Grid Explorer game, along with the smaller experiments I build while learning web development.</p>
+            <p>Explore browser-based tools, interactive practice pages, and a multiplayer Windows game, along with the smaller experiments I build while learning web development.</p>
             <a class="hero-link" href="#projects">Explore projects</a>
         </section>
 
@@ -69,7 +69,7 @@
             <div class="project-viewport" id="project-viewport" aria-label="Projects. Drag, swipe, or use left and right arrow keys to browse." tabindex="0">
                 <div class="project-grid">
                     <div class="project-column">
-                    <button type="button" class="project-card" data-href="#library" data-view="library" data-gallery="library" data-description="A growing collection of HTML, CSS, and JavaScript practice pages. It brings smaller experiments and interactive exercises together so visitors can explore what I have been learning.">
+                    <button type="button" class="project-card" data-href="#library" data-view="library" data-gallery="library" data-description="A collection of hands-on web lessons and small interactive projects.">
                         <div class="project-media project-media--library">
                             <img src="SOURCES/project-screenshots/library-overview.png" alt="" loading="lazy">
                         </div>
@@ -79,7 +79,7 @@
                             <p>My HTML, JavaScript, and project practice pages.</p>
                         </div>
                     </button>
-                    <button type="button" class="project-card" data-href="B_Project/Note_Taking/note.html" data-gallery="notes" data-description="A browser-based note-taking app for writing and organizing notes. It includes controls for finding text, changing text size, and switching the theme.">
+                    <button type="button" class="project-card" data-href="B_Project/Note_Taking/note.html" data-gallery="notes" data-description="A browser app for writing, editing, and organizing personal notes.">
                         <div class="project-media project-media--notes">
                             <img src="SOURCES/project-screenshots/notes-dark.png" alt="" loading="lazy">
                         </div>
@@ -91,7 +91,7 @@
                     </button>
                     </div>
                     <div class="project-column">
-                    <button type="button" class="project-card" data-download="https://github.com/NajilBu/CTF_Project/releases/download/v1.0.1/GridExplorer.exe" data-gallery="grid" data-description="A Windows multiplayer grid exploration game built with Python and Tkinter. Players navigate an encrypted grid, recover hidden flags, and compete with other players over a local network. Difficulty choices and quick-time challenges add variety.">
+                    <button type="button" class="project-card" data-download="https://github.com/NajilBu/CTF_Project/releases/download/v1.0.1/GridExplorer.exe" data-gallery="grid" data-description="A multiplayer Windows grid game built around exploration and hidden flags.">
                         <div class="project-media project-media--ctf"><img src="SOURCES/project-screenshots/grid-menu.png" alt="" loading="lazy"></div>
                         <div class="project-content">
                             <span class="project-status">Windows download</span>
@@ -327,6 +327,10 @@
         </div>
         <h2 id="dialog-title"></h2>
         <p id="dialog-description"></p>
+        <div class="dialog-details" id="dialog-details" hidden>
+            <div><h3>Purpose</h3><p id="dialog-purpose"></p></div>
+            <div><h3>Built with</h3><p id="dialog-built-with"></p></div>
+        </div>
         <div class="dialog-actions">
             <a class="dialog-open" id="dialog-open" target="_blank" rel="noopener noreferrer" hidden>Open Project</a>
             <a class="dialog-open" id="dialog-download" target="_blank" rel="noopener noreferrer" hidden>Download for Windows</a>
@@ -422,6 +426,23 @@
         const dialogStatus = document.getElementById('dialog-status');
         const dialogTitle = document.getElementById('dialog-title');
         const dialogDescription = document.getElementById('dialog-description');
+        const dialogDetails = document.getElementById('dialog-details');
+        const dialogPurpose = document.getElementById('dialog-purpose');
+        const dialogBuiltWith = document.getElementById('dialog-built-with');
+        const projectDetails = {
+            library: {
+                purpose: 'A place to explore my smaller web exercises, from HTML and JavaScript lessons to interactive experiments and simple projects.',
+                builtWith: 'HTML, CSS, and JavaScript, with some PHP-backed practice pages.'
+            },
+            notes: {
+                purpose: 'A simple way to write, edit, and organize notes in the browser. Notes and theme preferences stay saved on the same device.',
+                builtWith: 'HTML, CSS, JavaScript, and browser localStorage for saving notes and preferences.'
+            },
+            grid: {
+                purpose: 'A Windows multiplayer game where players explore a grid, find hidden items and flags, and compete or cooperate across a network.',
+                builtWith: 'Python and Tkinter for the desktop interface, plus socket networking for multiplayer sessions.'
+            }
+        };
         const dialogOpen = document.getElementById('dialog-open');
         const dialogDownload = document.getElementById('dialog-download');
         const dialogGallery = document.getElementById('dialog-gallery');
@@ -484,6 +505,10 @@
                 dialogStatus.className = status.className;
                 dialogTitle.textContent = card.querySelector('h3').textContent;
                 dialogDescription.textContent = card.dataset.description || card.querySelector('p').textContent;
+                const details = projectDetails[card.dataset.gallery];
+                dialogDetails.hidden = !details;
+                dialogPurpose.textContent = details?.purpose || '';
+                dialogBuiltWith.textContent = details?.builtWith || '';
                 showProjectGallery(card);
                 dialogOpen.hidden = !card.dataset.href;
                 if (card.dataset.href) dialogOpen.href = card.dataset.href;
