@@ -133,13 +133,32 @@ section h2 {
 
 .about-copy p:last-child { margin-bottom: 0; }
 
-.about-photo {
-    display: block;
+.about-photo-frame {
+    position: relative;
     width: 100%;
     aspect-ratio: 4 / 5;
     border-radius: 14px;
+    overflow: hidden;
+}
+
+.about-photo {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center top;
+}
+
+.about-photo--hover { opacity: 0; transition: opacity .45s ease; }
+
+@media (hover: hover) and (pointer: fine) {
+    .about-photo-frame:hover .about-photo--hover { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-photo--hover { transition: none; }
 }
 
 .skill-grid {
@@ -552,7 +571,7 @@ section h2 {
     .contact-methods { grid-template-columns: 1fr; }
     .dialog-details { grid-template-columns: 1fr; }
     .about-layout { grid-template-columns: 1fr; text-align: center; }
-    .about-photo { width: min(100%, 260px); margin: 0 auto; }
+    .about-photo-frame { width: min(100%, 260px); margin: 0 auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
