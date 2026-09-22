@@ -6,7 +6,7 @@
     <meta name="description" content="Najil Bumacod's web development projects and practice library.">
     <title>Najil Bumacod</title>
     <link rel="icon" href="SOURCES/pxArt.png" type="image/png">
-    <link rel="stylesheet" href="B_Project/theformat.css?v=19">
+    <link rel="stylesheet" href="B_Project/theformat.css?v=20">
     <link rel="stylesheet" href="B_Project/library.css?v=2">
     <script>if (location.hash === '#library') document.documentElement.classList.add('initial-library');</script>
 </head>
@@ -38,8 +38,8 @@
                     <p>My work includes interactive pages, browser features, and a note-taking app. I keep building and improving them as I learn.</p>
                 </div>
                 <div class="about-photo-frame">
-                    <img class="about-photo" src="SOURCES/najil-portrait.jpg" alt="Portrait of Najil Bumacod" loading="lazy">
-                    <img class="about-photo about-photo--hover" src="SOURCES/najil-portrait-hover.jpg" alt="" aria-hidden="true" loading="lazy">
+                    <img class="about-photo" src="SOURCES/najil-portrait.jpg" alt="Portrait of Najil Bumacod" loading="lazy" draggable="false">
+                    <img class="about-photo about-photo--hover" src="SOURCES/najil-portrait-hover.jpg" alt="" aria-hidden="true" loading="lazy" draggable="false">
                 </div>
             </div>
         </section>
@@ -346,6 +346,25 @@
     </dialog>
 
     <script>
+        const aboutPhotoFrame = document.querySelector('.about-photo-frame');
+        let photoPointerId = null;
+        const releaseAboutPhoto = (event) => {
+            if (event && event.pointerId !== photoPointerId) return;
+            photoPointerId = null;
+            aboutPhotoFrame.classList.remove('is-pressed');
+        };
+        aboutPhotoFrame.addEventListener('pointerdown', (event) => {
+            if (event.pointerType === 'mouse') return;
+            photoPointerId = event.pointerId;
+            aboutPhotoFrame.classList.add('is-pressed');
+        });
+        window.addEventListener('pointerup', releaseAboutPhoto);
+        window.addEventListener('pointercancel', releaseAboutPhoto);
+        window.addEventListener('scroll', () => releaseAboutPhoto(), { passive: true });
+        window.addEventListener('blur', () => releaseAboutPhoto());
+        aboutPhotoFrame.addEventListener('contextmenu', (event) => {
+            if (photoPointerId !== null) event.preventDefault();
+        });
         const projectViewport = document.getElementById('project-viewport');
         const projectColumns = [...document.querySelectorAll('.project-column')];
         const projectShell = document.getElementById('project-shell');

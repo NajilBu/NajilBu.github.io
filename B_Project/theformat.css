@@ -139,6 +139,7 @@ section h2 {
     aspect-ratio: 4 / 5;
     border-radius: 14px;
     overflow: hidden;
+    touch-action: pan-y;
 }
 
 .about-photo {
@@ -149,12 +150,20 @@ section h2 {
     height: 100%;
     object-fit: cover;
     object-position: center top;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .about-photo--hover { opacity: 0; transition: opacity .45s ease; }
 
 @media (hover: hover) and (pointer: fine) {
     .about-photo-frame:hover .about-photo--hover { opacity: 1; }
+}
+
+.about-photo-frame.is-pressed .about-photo--hover { opacity: 1; }
+
+@media (hover: none) {
+    .about-photo-frame:active .about-photo--hover { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
